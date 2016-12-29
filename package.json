@@ -1,0 +1,25 @@
+{
+  "name": "uchat",
+  "version": "1.0.0",
+  "description": "chat room demo based on nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Back0/UChat.git"
+  },
+  "keywords": [
+    "websocket聊天室",
+    "node聊天室",
+    "node在线聊天室",
+    "node+websocket"
+  ],
+  "author": "honor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Back0/UChat/issues"
+  },
+  "homepage": "https://github.com/Back0/UChat#readme"
+}
