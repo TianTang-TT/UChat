@@ -6,6 +6,7 @@
 }
 html, body {
   height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif;
 }
 .clearfix:after {
   content: '';
@@ -23,22 +24,50 @@ html, body {
   width: 300px;
   float: left;
   overflow: hidden;
-  background: red;
+  background-color: #2e3238;
+  border-right: 1px solid #e0e0e0;
 }
 #chatting {
-  width: 100%;
   margin-left: 300px;
-  background: gray;
+  position: relative;
 }
 #chatting #dialog {
   width: 100%;
   position: absolute;
   top: 0;
   bottom: 150px;
-  background: #f40;
+  border-bottom: 1px solid #ececec;
 }
 #chatting #typing {
   width: 100%;
   height: 150px;
-  background: #fff;
+  position: absolute;
+  bottom: 0;
+}
+
+#members header {
+  height: 150px;
+
+}
+#members .mem-item {
+  height: 40px;
+  padding: 12.5px;
+}
+#members .active {
+  background-color: #3a3f45;
+}
+#members .mem-item .portrait {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
+#members .mem-item .desc {
+  margin-left: 50px;
+}
+#members .mem-item .desc {
+  font-weight: 400;
+  font-size: 13px;
+  color: #FFF;
+  line-height: 20px;
 }
