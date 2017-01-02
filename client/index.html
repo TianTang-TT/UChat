@@ -7,9 +7,13 @@
   <script type="text/javascript" src="assets/js/socket.io.js"></script>
 </head>
 <body>
+<!--整个页面容器-->
 <div id="page">
+  <!--左侧搜索菜单及联系人列表-->
   <section id="members" class="container">
+    <!--头部-->
     <header class="header">
+      <!--个人资料-->
       <div class="mem-item profile">
         <img class="portrait" src="assets/imgs/1.jpg"></img>
         <div class="desc">
@@ -17,13 +21,17 @@
           <p class="speak">过去的信息</p>
         </div>
       </div>
+      <!--搜索框-->
       <div class="mem-item search">
         
       </div>
+      <!--菜单-->
       <div class="mem-item menu">
         
       </div>
     </header>
+
+    <!--联系人列表-->
     <div class="mems-list">
       <div class="mem-item">
         <img class="portrait" src="assets/imgs/1.jpg"></img>
@@ -46,15 +54,47 @@
           <p class="speak">过去的信息</p>
         </div>
       </div>
-    </div>
-    
+    </div>    
   </section>
+
+
+  <!--右侧对话及输入-->
   <section id="chatting" class="container">
+    <!--对话部分-->
     <section id="dialog">
-      
+      <!--对方名称-->
+      <div class="title">tiantang zhengzai shu ru </div>  
+      <!--已发送对话-->
+      <div class="dialogs">
+        <div class="speaking">
+          <img src="assets/imgs/1.jpg" class="speak-portrait">
+          <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
+        </div>
+        <div class="speaking">
+          <img src="assets/imgs/1.jpg" class="speak-portrait">
+          <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
+        </div>
+        <div class="speaking">
+          <img src="assets/imgs/1.jpg" class="speak-portrait">
+          <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
+        </div>
+      </div>
+
     </section>
+
+    <!--下方输入框-->
     <section id="typing">
-      
+      <!--聊天工具-->
+      <ul class="tools clearfix">
+        <li class="tool-item emoji">emoji</li>
+        <li class="tool-item img">img</li>
+        <li class="tool-item">scissors</li>
+        <li class="tool-item">emoji</li>
+      </ul>
+      <!--输入框-->
+      <div class="content">
+        <textarea id="typeContent"></textarea>
+      </div>
     </section>
   </section>  
 </div>

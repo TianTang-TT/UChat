@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  list-style-type: none;
 }
 html, body {
   height: 100%;
@@ -70,6 +71,76 @@ html, body {
   font-size: 13px;
   color: #FFF;
   line-height: 20px;
+}
+/**
+ * dialog
+ */
+#dialog .title {
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #ececec;
+}
+
+#dialog .dialogs {
+  padding: 0 20px;
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  overflow-y: scroll;
+}
+#dialog .speaking {
+  margin: 15px 0;
+  position: relative;
+}
+#dialog .speak-portrait {
+  width: 30px;
+  height: 30px;
+  float: left;
+  border-radius: 2px;
+}
+#dialog .speak-content {
+  margin-left: 38px;
+  padding: 8px;
+  max-width: 85%;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: green;
+}
+#dialog .speak-content:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border: 7px solid;
+  border-color: transparent green transparent transparent;
+  position: absolute;
+  left: 25px;
+  top: 5px;
+}
+
+/**
+ * inputing
+ */
+#typing .tools {
+  padding: 0 20px;
+}
+#typing .tools li{
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  padding-right: 16px;
+}
+#typing .content {
+  font-size: 0;
+}
+#typing .content textarea {
+  width: 100%;
+  height: 110px;
+  border: none;
+  outline: none;
+  padding: 0 30px 0 20px;
+  box-sizing: border-box;
 }
 
 
