@@ -14,6 +14,9 @@ html, body {
   display: block;
   clear: both;
 }
+/**
+ * 页面整体布局
+ */
 #page {
   position: relative;
   height: 100%;
@@ -30,6 +33,7 @@ html, body {
 }
 #chatting {
   margin-left: 300px;
+  background-color: #eeeeee;
   position: relative;
 }
 #chatting #dialog {
@@ -37,7 +41,7 @@ html, body {
   position: absolute;
   top: 0;
   bottom: 150px;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #d6d6d6;
 }
 #chatting #typing {
   width: 100%;
@@ -46,6 +50,9 @@ html, body {
   bottom: 0;
 }
 
+/**
+ * 左侧菜单及联系人列表
+ */
 #members header {
   height: 150px;
 
@@ -54,7 +61,7 @@ html, body {
   height: 40px;
   padding: 12.5px;
 }
-#members .active {
+#members .mems-list .active {
   background-color: #3a3f45;
 }
 #members .mem-item .portrait {
@@ -62,6 +69,11 @@ html, body {
   width: 40px;
   height: 40px;
   border-radius: 3px;
+}
+#members .mem-item .nick-name{
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 100;
 }
 #members .mem-item .desc {
   margin-left: 50px;
@@ -72,6 +84,57 @@ html, body {
   color: #FFF;
   line-height: 20px;
 }
+
+#members .search {
+  padding: 0 12.5px;
+  position: relative;
+}
+#members .search .icon-search {
+  font-size: 15px;
+  color: #a9a9a9;
+  position: absolute;
+  left: 20px;
+  top: 12px;
+}
+#members .search .icon-search:before {
+  color: #a9a9a9;
+  font-size: 15px;
+  margin-right: 5px;
+}
+#members .search .search-input {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  border: none;
+  outline: none;
+  background-color: #26292e;
+}
+
+#members .menu {
+  padding: 0 12.5px;
+  margin: 0 -3px;
+}
+
+#members .menu .menu-li {
+  float: left;
+  width: 33.33%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  box-sizing: border-box;
+}
+#members .menu .menu-li:not(:last-child) {
+  border-right: 1px solid #24272c;
+}
+#members .menu .menu-li i {
+  font-size: 30px;
+  color: #fff;
+}
+#members .menu .active i {
+  color: #3caf36;
+}
+
+
 /**
  * dialog
  */
@@ -95,28 +158,28 @@ html, body {
   position: relative;
 }
 #dialog .speak-portrait {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   float: left;
   border-radius: 2px;
 }
 #dialog .speak-content {
-  margin-left: 38px;
+  margin-left: 55px;
   padding: 8px;
   max-width: 85%;
   border-radius: 3px;
   box-sizing: border-box;
-  background-color: green;
+  background-color: #b2e281;
 }
 #dialog .speak-content:before {
   content: '';
   width: 0;
   height: 0;
   border: 7px solid;
-  border-color: transparent green transparent transparent;
+  border-color: transparent #b2e281 transparent transparent;
   position: absolute;
-  left: 25px;
-  top: 5px;
+  left: 41px;
+  top: 10px;
 }
 
 /**
@@ -131,6 +194,10 @@ html, body {
   line-height: 40px;
   padding-right: 16px;
 }
+#typing .tools li i {
+  font-size: 25px;
+  font-weight: 500;
+}
 #typing .content {
   font-size: 0;
 }
@@ -141,6 +208,9 @@ html, body {
   outline: none;
   padding: 0 30px 0 20px;
   box-sizing: border-box;
+  font-size: 15px;
+  font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif;
+  background-color: #eeeeee;
 }
 
 

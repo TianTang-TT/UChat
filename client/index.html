@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>UChat</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/iconfont.css">
   <link rel="stylesheet" type="text/css" href="assets/css/index.css">
   <script type="text/javascript" src="assets/js/socket.io.js"></script>
 </head>
@@ -17,17 +18,21 @@
       <div class="mem-item profile">
         <img class="portrait" src="assets/imgs/1.jpg"></img>
         <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
+          <p class="nick-name">昵称</p>
         </div>
       </div>
       <!--搜索框-->
       <div class="mem-item search">
-        
+        <i class="iconfont icon-search">搜索</i>
+        <input type="text" class="search-input">
       </div>
       <!--菜单-->
       <div class="mem-item menu">
-        
+        <ul class="menu-ul clearfix">
+          <li class="menu-li active"><i class="iconfont icon-chat"></i></li>
+          <li class="menu-li"><i class="iconfont icon-publicnumber"></i></li>
+          <li class="menu-li"><i class="iconfont icon-list"></i></li>
+        </ul>
       </div>
     </header>
 
@@ -63,7 +68,7 @@
     <!--对话部分-->
     <section id="dialog">
       <!--对方名称-->
-      <div class="title">tiantang zhengzai shu ru </div>  
+      <div class="title">对方正在输入... </div>  
       <!--已发送对话-->
       <div class="dialogs">
         <div class="speaking">
@@ -72,7 +77,7 @@
         </div>
         <div class="speaking">
           <img src="assets/imgs/1.jpg" class="speak-portrait">
-          <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
+          <p class="speak-content">this is content，this is content，this is content</p>
         </div>
         <div class="speaking">
           <img src="assets/imgs/1.jpg" class="speak-portrait">
@@ -86,10 +91,9 @@
     <section id="typing">
       <!--聊天工具-->
       <ul class="tools clearfix">
-        <li class="tool-item emoji">emoji</li>
-        <li class="tool-item img">img</li>
-        <li class="tool-item">scissors</li>
-        <li class="tool-item">emoji</li>
+        <li class="tool-item"><i class="iconfont icon-face"></i></li>
+        <li class="tool-item"><i class="iconfont icon-scissors"></i></li>
+        <li class="tool-item"><i class="iconfont icon-folder"></i></li>
       </ul>
       <!--输入框-->
       <div class="content">
