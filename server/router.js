@@ -1,7 +1,7 @@
-const path = require('path');
+
 const router = app => {
-  app.get('/', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+  app.get('/hello', (req, res) => {
+    res.send('hello')
   });
 }
 module.exports = router;

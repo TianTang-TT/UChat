@@ -1,7 +1,8 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-//const router = require('./router');
+const router = require('./router');
+const socketIO = require('./socket.js');
 
 const app = express();
 const server = http.createServer(app)
@@ -16,12 +17,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// router(server);
+// 设置express路由
+router(app);
 
+// 监听7777端口(一定要用server来监听，否则socket不能正常链接)
 server.listen(7777, () => {console.log('server is started!')});
 
-io.on('connection', socket => {
-	socket.on('foo', data => {
-		console.log(data);
-	})
-})
+// socket通信事件及相应的处理程序
+socketIO(io);
