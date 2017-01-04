@@ -147,6 +147,8 @@ html, body {
 }
 
 #dialog .dialogs {
+  width: 100%;
+  box-sizing: border-box;
   padding: 0 10px 0 20px;
   position: absolute;
   top: 50px;
@@ -188,6 +190,7 @@ html, body {
   border-radius: 3px;
   box-sizing: border-box;
   background-color: #fff;
+  word-wrap: break-word;
 }
 
 #dialog .speak-content:before {
