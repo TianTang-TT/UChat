@@ -2,7 +2,6 @@
  * created by honor
  */
 //  全局连接变量
-var num = 0;
 window.onload = function () {
 	uchat = new UChat();
 	uchat.init();
