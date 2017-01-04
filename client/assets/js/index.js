@@ -25,9 +25,6 @@ UChat.prototype = {
     this.socket.on('message', function (msg) {
       self.addDialogItem(msg);
     });
-    this.socket.on('discontect', function () {
-      
-    });
     this.bindEvent();
 	},
   /**
