@@ -67,7 +67,7 @@
     <!--对话部分-->
     <section id="dialog">
       <!--对方名称-->
-      <div class="title">UChat</div>  
+      <div class="title">对方正在输入... </div>  
       <!--已发送对话-->
       <div class="dialogs">
         <div class="speaking">

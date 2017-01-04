@@ -40,12 +40,12 @@ html, body {
   width: 100%;
   position: absolute;
   top: 0;
-  bottom: 150px;
+  bottom: 170px;
   border-bottom: 1px solid #d6d6d6;
 }
 #chatting #typing {
   width: 100%;
-  height: 150px;
+  height: 170px;
   position: absolute;
   bottom: 0;
 }
@@ -55,7 +55,6 @@ html, body {
  */
 #members header {
   height: 150px;
-
 }
 #members .mem-item {
   height: 40px;
@@ -148,7 +147,7 @@ html, body {
 }
 
 #dialog .dialogs {
-  padding: 0 0 0 20px;
+  padding: 0 10px 0 20px;
   position: absolute;
   top: 50px;
   bottom: 0;
@@ -234,20 +233,35 @@ html, body {
 }
 #typing .content {
   font-size: 0;
+  text-align: right;
 }
 #typing .content textarea {
   width: 100%;
-  height: 110px;
+  height: 80px;
   border: none;
   outline: none;
+  resize: none;
   padding: 0 30px 0 20px;
   box-sizing: border-box;
   font-size: 15px;
   font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif;
   background-color: #eeeeee;
 }
+#typing .content .btn-send {
+  width: 70px;
+  height: 25px;
+  margin-top: 15px;
+  margin-right: 20px;
+  font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif;
 
-
+}
+#typing .content .btn-send:hover {
+  background-color: #3caf36;
+  outline: none;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 2px;
+}
 
 
 
