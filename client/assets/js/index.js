@@ -53,9 +53,17 @@ UChat.prototype = {
   },
   bindSendMsg: function () {
     var self = this;
+    var speakArea = document.querySelector('#typing #typeContent');
     var sendBtn = document.querySelector('#typing .btn-send');
-    sendBtn.addEventListener('click', function () {
-      var speakArea = document.querySelector('#typing #typeContent');
+    // 点击按钮发送
+    sendBtn.addEventListener('click', sendMsg);
+    // 回车发送
+    speakArea.addEventListener('keydown', function (e) {
+      if (e.keyCode === 13 || e.code.tolowerCase() === 'enter') {
+        sendMsg();
+      }
+    });
+    function sendMsg () {     
       var speaking = speakArea.value;
       if (speaking.trim().length) {
         self.socket.send(speaking);
@@ -65,6 +73,6 @@ UChat.prototype = {
         // 清空输入区
         speakArea.value = '';
       }
-    })
+    }
   }
 }
