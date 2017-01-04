@@ -59,7 +59,7 @@ UChat.prototype = {
     sendBtn.addEventListener('click', sendMsg);
     // 回车发送
     speakArea.addEventListener('keydown', function (e) {
-      if (e.keyCode === 13 || e.code.tolowerCase() === 'enter') {
+      if (e.keyCode === 13 || e.code.toLowerCase() === 'enter') {
         sendMsg();
       }
     });
