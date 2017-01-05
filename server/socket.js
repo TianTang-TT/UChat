@@ -25,7 +25,7 @@ const socketIO = io => {
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
       let user = users.get(userId);
-      let msg = `${user.name} has left`;
+      let msg = `${user.name} left`;
       users.delete(userId);
       socket.broadcast.emit('message', {type: 'system', data: msg});
     });

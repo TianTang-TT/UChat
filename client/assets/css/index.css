@@ -26,15 +26,16 @@ html, body {
  */
 #login {
   width: 100%;
-  height: 100%;
+  height: 100%; 
   position: absolute; 
   background-color: gray;
   z-index: 999;
 }
 #user {
-  width: 250px;
-  height: 350px;
-  padding: 20px 10px;
+  width: 280px;
+  height: 400px;
+  padding: 20px;
+  box-sizing: border-box;
   border-radius: 2px;
   background-color: #fff;
   position: absolute;
@@ -43,29 +44,45 @@ html, body {
   transform: translate(-50%, -50%);
 }
 #user .page-title {
+  text-align: left;
+}
+#user .logo {
+  margin: 45px 0;
   text-align: center;
 }
+#user .logo .logo-img {
+  width: 90px;
+  height: 90px;
+}
 #user .username {
-  width: 200px;
-  height: 25px;
+  width: 210px;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
   display: block;
   padding-left: 8px;
-  margin: 100px auto 20px auto;
+  margin: 0 auto;
   border: 1px solid gray;
   border-radius: 2px;
 }
 
 #user .btn-login {
   display: block;
-  width: 100px;
-  height: 30px;
-  font-size: 20px;
+  width: 210px;
+  height: 40px;
+  font-size: 14px;
   color: #fff;
-  background: #3caf36;
-  border: 1px solid gray;
-  border-radius: 3px;
+  background: #3dce3d;
+  border: none;
+  border-radius: 1px;
   margin: 20px auto;
   outline: none;
+}
+#user .welcome {
+  text-align: center;
+  font-size: 14px;
+  color: #436895;
+  margin-top: 40px;
 }
 
 
