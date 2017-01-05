@@ -42,6 +42,11 @@ UChat.prototype = {
     this.socket.on('message', function (msg) {
       self.addDialogItem(msg);
     });
+    // 当前群聊人员变动
+    this.socket.on('membersChange', function (memberArr) {
+      // 更新在线人员列表
+      debugger;
+    })
     this.bindEvent();
 	},
   /**
