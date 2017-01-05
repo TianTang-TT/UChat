@@ -250,6 +250,7 @@ html, body {
   background-color: #fff;
   border: 1px solid #dadada;
   border-radius: 2px;
+  display: none;
 }
 #typing .emoji .emoji-container .emoji-list {
   padding: 5px;
@@ -259,6 +260,7 @@ html, body {
 }
 #typing .emoji .emoji-container .common {
   padding: 5px;
+  display: none;
 }
 #typing .emoji .emoji-container .common img {
   width: 50px;
@@ -290,8 +292,8 @@ html, body {
   text-align: center;
 }
 #typing .emoji .emoji-container .selector .selector-li img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   vertical-align: middle;
 }
 #typing .content {
