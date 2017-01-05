@@ -21,9 +21,61 @@ html, body {
   position: relative;
   height: 100%;
 }
+/**
+ * 登陆模块
+ */
+#login {
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  background-color: gray;
+  z-index: 999;
+}
+#user {
+  width: 250px;
+  height: 350px;
+  padding: 20px 10px;
+  border-radius: 2px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#user .page-title {
+  text-align: center;
+}
+#user .username {
+  width: 200px;
+  height: 25px;
+  display: block;
+  padding-left: 8px;
+  margin: 100px auto 20px auto;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
+#user .btn-login {
+  display: block;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  color: #fff;
+  background: #3caf36;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin: 20px auto;
+  outline: none;
+}
+
+
 .container {
   height: 100%;
 }
+
+/**
+ * 联系人模块
+ */
 #members {
   width: 300px;
   float: left;
