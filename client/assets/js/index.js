@@ -5,7 +5,7 @@
 var uchat = null;
 window.onload = function () {
 	uchat = new UChat();
-	uchat.init();
+  uchat.login();
 }
 
 function UChat () {
@@ -13,6 +13,23 @@ function UChat () {
 }
 
 UChat.prototype = {
+  login: function () {
+    var self = this;
+    var loginPage = document.querySelector('#login');
+    var userInput = loginPage.querySelector('.username');
+    var loginBtn = loginPage.querySelector('.btn-login');
+    loginBtn.addEventListener('click', function (e) {
+      var username = userInput.value;
+      if (!username.trim().length) {
+        alert('请输入昵称');
+        return;
+      }
+      
+      loginPage.style.display = 'none';
+      self.name = username;
+      self.init();
+    });
+  },
 	init: function () {
     var self = this;
 		// 链接到服务器
@@ -20,7 +37,7 @@ UChat.prototype = {
 		// 建立连接
 		this.socket.on('connect', function () {
 			// 此处需要展示登陆界面
-      self.socket.emit('login', 'user' + Math.random());
+      self.socket.emit('login', self.name);
 		});
     this.socket.on('message', function (msg) {
       self.addDialogItem(msg);

@@ -7,7 +7,7 @@ const socketIO = io => {
     
     // 发送消息测试
     socket.on('login', name => {
-      if (!users.has(userId)) {
+      if (!isLogin(userId)) {
         users.set(userId, {name});
 
         let msg = `${name} joined`;
@@ -18,7 +18,9 @@ const socketIO = io => {
 
     // 接受消息事件
     socket.on('message', msg => {
-      socket.broadcast.emit('message', msg);
+      if (isLogin(userId)) {
+        socket.broadcast.emit('message', msg);
+      }     
     })
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
@@ -27,6 +29,12 @@ const socketIO = io => {
       users.delete(userId);
       socket.broadcast.emit('message', {type: 'system', data: msg});
     });
+    function isLogin (id) {
+      if (users.has(id)) {
+        return true;
+      }
+      return false;
+    }
   });
 }
 module.exports = socketIO;
