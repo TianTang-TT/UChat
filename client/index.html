@@ -71,6 +71,7 @@
       <!--已发送对话-->
       <div class="dialogs">
         <!-- 此处为对话内容区-->
+
       </div>
     </section>
 
@@ -126,8 +127,14 @@
             </ul>
           </div>
         </li>
-        <li class="tool-item"><i class="iconfont icon-scissors"></i></li>
-        <li class="tool-item"><i class="iconfont icon-folder"></i></li>
+        <li class="tool-item"><i class="iconfont icon-scissors"></i>
+
+        </li>
+        <li class="tool-item upload">
+          <i class="iconfont icon-folder">
+            <input type="file" class="uploadImg">
+          </i>          
+        </li>
       </ul>
       <!--输入框-->
       <div class="content">
@@ -140,10 +147,17 @@
 <script type="text/html" id="msgTpl">
   <div class="speaking <%= type %>">
   <% if (type == 'system') { %>
-        <span><%= data %></span>
+    <span><%= data %></span>
   <% } else { %>
-        <img src="assets/imgs/1.jpg" class="speak-portrait">
-        <p class="speak-content"><%= data %></p>
+    <img src="assets/imgs/1.jpg" class="speak-portrait">
+    <p class="speak-content">
+    <% if(msgType == 'img') { %>
+      <img src="<%= data %>">
+    <% } else { %>    
+      <%= data %>
+    <% } %>
+      
+    </p>
   <% } %>
   </div>
 </script>

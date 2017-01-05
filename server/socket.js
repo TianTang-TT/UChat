@@ -18,7 +18,7 @@ const socketIO = io => {
 
     // 接受消息事件
     socket.on('message', msg => {
-      socket.broadcast.emit('message', {type: 'dialog', data: msg});
+      socket.broadcast.emit('message', msg);
     })
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {

@@ -203,6 +203,10 @@ html, body {
   left: 41px;
   top: 10px;
 }
+
+#dialog .speak-content img {
+  max-width: 99%;
+}
 #dialog .self .speak-portrait {
   float: right;
 }
@@ -274,6 +278,22 @@ html, body {
   width: 25px;
   height: 25px;
   margin: 0 4px;
+}
+#typing .upload .icon-folder {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1
+}
+#typing .upload input[type=file] {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0;
+  position: absolute;  
+  top: 0;
+  opacity: 0;
+  cursor: pointer
 }
 #typing .emoji .emoji-container .selector {
   height: 40px;

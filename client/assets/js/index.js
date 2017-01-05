@@ -34,6 +34,8 @@ UChat.prototype = {
   bindEvent: function () {
     // 发送消息
     this.bindSendMsg();
+    // 发送图片
+    this.bindSendImg();
   },
   /**
    * [bindSendMsg 发送信息]
@@ -63,7 +65,7 @@ UChat.prototype = {
     function sendMsg () {     
       var speaking = speakArea.value;
       if (speaking.trim().length) {
-        self.socket.send(speaking);
+        self.socket.send({msgType: 'text', data: speaking});
         // 把信息显示在对话区域
         self.addDialogItem({type: 'self', data: speaking});
 
@@ -71,5 +73,33 @@ UChat.prototype = {
         speakArea.value = '';
       }
     }
+  },
+  bindSendImg: function () {
+    var self = this;
+    var file = null;
+    var reader = null;
+    var fileName = '';
+    var imgReg = /\.(jpg|jpeg|png|gif)$/;
+    var imgInput = document.querySelector('#typing .uploadImg');
+    imgInput.addEventListener('change', function () {
+      if (!this.files.length) {
+        return;
+      }
+      file = this.files[0];
+      fileName = file.name;
+      if (!imgReg.test(fileName)) {
+        alert('请选择一张图片');
+        imgInput.value = '';
+        return;
+      }
+      reader = new FileReader();
+      // 图片读取完毕之后马上显示
+      reader.onload = function (e) {
+        self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img'});
+        self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result});
+        imgInput.value = '';
+      }
+      reader.readAsDataURL(file);
+    })
   }
 }
