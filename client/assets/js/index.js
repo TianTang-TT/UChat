@@ -6,6 +6,8 @@ var uchat = null;
 window.onload = function () {
 	uchat = new UChat();
   uchat.login();
+  // test
+  
 }
 
 function UChat () {
@@ -26,9 +28,13 @@ UChat.prototype = {
       }
       
       loginPage.style.display = 'none';
-      self.name = username;
+      self.name = 'username';
       self.init();
     });
+
+    loginPage.style.display = 'none';
+    self.name = 'username';
+    self.init();
   },
 	init: function () {
     var self = this;
@@ -56,8 +62,11 @@ UChat.prototype = {
   bindEvent: function () {
     // 发送消息
     this.bindSendMsg();
+    // 发送表情
+    this.bindSendEmoji();
     // 发送图片
     this.bindSendImg();
+
   },
   /**
    * [bindSendMsg 发送信息]
@@ -123,5 +132,42 @@ UChat.prototype = {
       }
       reader.readAsDataURL(file);
     })
+  },
+  bindSendEmoji: function () {
+    var self = this;
+    var emojiTool = document.querySelector('#typing .tools .emoji');
+    var container = emojiTool.querySelector('.emoji-container');
+    var emojiSelector = container.querySelector('.selector');
+    emojiTool.addEventListener('click', function (e) {
+      if (container.clientHeight > 10) {
+        container.style.display = 'none';
+      } else {
+        container.style.display = 'block';
+      }
+      e.stopPropagation();
+    });
+    // 选择表情类型
+    emojiSelector.addEventListener('click', function (e) { 
+      var target = e.target.parentNode;
+      var type = target.getAttribute('data-type');
+      if (!type) {
+        return;
+      }
+      var sections = container.querySelectorAll('.emoji-list');
+      [].slice.call(sections).forEach(function (item) {
+        var itemType = item.getAttribute('data-type');
+        if (itemType === type) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      e.stopPropagation();
+
+    });
+    // 点击空白处隐藏表情面板
+    document.addEventListener('click', function () {
+      container.style.display = 'none';
+    });
   }
 }

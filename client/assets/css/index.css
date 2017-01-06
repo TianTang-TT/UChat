@@ -307,7 +307,7 @@ html, body {
   font-size: 25px;
   font-weight: 500;
 }
-#typing .tools .active i {
+#typing .tools .tool-item:hover i {
   color: #3caf36;
 }
 #typing .tools .emoji {
