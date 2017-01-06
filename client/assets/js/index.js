@@ -138,6 +138,7 @@ UChat.prototype = {
     var emojiTool = document.querySelector('#typing .tools .emoji');
     var container = emojiTool.querySelector('.emoji-container');
     var emojiSelector = container.querySelector('.selector');
+    var emojiTab = container.querySelector('.tab');
     emojiTool.addEventListener('click', function (e) {
       if (container.clientHeight > 10) {
         container.style.display = 'none';
@@ -165,6 +166,16 @@ UChat.prototype = {
       e.stopPropagation();
 
     });
+    // 选择表情
+    emojiTab.addEventListener('click', function (e) {
+      var target = e.target;
+      var type = target.parentNode.getAttribute('data-type');
+      var num = target.getAttribute('data-num');
+      if (!type || !num) return;
+      var speakArea = document.querySelector('#typing #typeContent');
+      speakArea.value += ('[emoji:' + type + '_' + num + ']');
+      e.stopPropagation();
+    })
     // 点击空白处隐藏表情面板
     document.addEventListener('click', function () {
       container.style.display = 'none';
