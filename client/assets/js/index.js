@@ -162,7 +162,7 @@ UChat.prototype = {
         // qq表情75个
         for (var i = 1; i <= 75; i++) {
           img = document.createElement('img');
-          img['data-num'] = i;
+          img.setAttribute('data-num', i);
           img.src = 'assets/imgs/qq/' + i + '.gif';
           qqFragment.appendChild(img);
         }
@@ -170,7 +170,7 @@ UChat.prototype = {
         // 兔斯基表情18个
         for (var j = 1; j <= 69; j++) {
           img = document.createElement('img');
-          img['data-num'] = j;
+          img.setAttribute('data-num', i);
           img.src = 'assets/imgs/tsj/' + j + '.gif';
           tsjFragment.appendChild(img);
         }
@@ -206,6 +206,7 @@ UChat.prototype = {
       if (!type || !num) return;
       var speakArea = document.querySelector('#typing #typeContent');
       speakArea.value += ('[emoji:' + type + '_' + num + ']');
+      container.style.display = 'none';
       e.stopPropagation();
     })
     // 点击空白处隐藏表情面板

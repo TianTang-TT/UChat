@@ -326,13 +326,16 @@ html, body {
   display: none;
 }
 #typing .emoji .emoji-container .emoji-list {
-  padding: 5px;
+  padding: 10px;
   position: absolute;
   top: 0;
   bottom: 40px;
+  overflow-y: scroll;
+}
+#typing .emoji .emoji-container .emoji-list img:hover {
+  background-color: #dcdcdc;
 }
 #typing .emoji .emoji-container .common {
-  padding: 5px;
   display: none;
 }
 #typing .emoji .emoji-container .common img {
@@ -344,8 +347,8 @@ html, body {
 
 }
 #typing .emoji .emoji-container .small img {
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   margin: 0 4px;
 }
 #typing .upload .icon-folder {
@@ -381,9 +384,14 @@ html, body {
   text-align: center;
 }
 #typing .emoji .emoji-container .selector .selector-li img {
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   vertical-align: middle;
+}
+
+#typing .emoji .emoji-container .selector [data-type=tsj] img {
+  width: 26px;
+  height: 26px;
 }
 #typing .content {
   font-size: 0;
