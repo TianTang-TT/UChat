@@ -15,7 +15,7 @@
       <div class="logo">
         <img src="assets/imgs/1.jpg" class="logo-img">
       </div>
-      <input class="username" type="text" placeholder="请输入昵称"></input>
+      <input class="username" type="text" placeholder="请输入昵称" />
       <button class="btn-login">Join</button>
       <p class="welcome">welcome to UChat~</p>
     </div>
@@ -29,7 +29,7 @@
     <header class="header">
       <!--个人资料-->
       <div class="mem-item profile">
-        <img class="portrait" src="assets/imgs/1.jpg">
+        <img class="portrait" src="assets/imgs/1.jpg" />
         <div class="desc">
           <p class="nick-name">天棠</p>
         </div>
@@ -51,27 +51,7 @@
 
     <!--联系人列表-->
     <div class="mems-list">
-      <div class="mem-item">
-        <img class="portrait" src="assets/imgs/1.jpg">
-        <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
-        </div>
-      </div>
-      <div class="mem-item active">
-        <img class="portrait" src="assets/imgs/1.jpg">
-        <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
-        </div>
-      </div>
-      <div class="mem-item">
-        <img class="portrait" src="assets/imgs/1.jpg">
-        <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
-        </div>
-      </div>
+
     </div>    
   </section>
 
@@ -96,15 +76,9 @@
           <div class="emoji-container">
             <div class="tab">
               <section class="emoji-list small" data-type="qq">
-                <img src="assets/imgs/qq/1.gif" data-num="1">
-                <img src="assets/imgs/qq/1.gif" data-num="2">
-                <img src="assets/imgs/qq/1.gif" data-num="3">
                 
               </section>
               <section class="emoji-list common" data-type="tsj">
-                <img src="assets/imgs/tsj/1.gif" data-num="1">
-                <img src="assets/imgs/tsj/1.gif" data-num="2">
-                <img src="assets/imgs/tsj/1.gif" data-num="3">
 
               </section>
             </div>
@@ -147,6 +121,17 @@
     </p>
   <% } %>
   </div>
+</script>
+<script type="text/html" id="memTpl">
+  <% for (var i = 0; i < memberArr.length; i++) { %>
+    <div class="mem-item">
+      <img class="portrait" src="assets/imgs/1.jpg">
+      <div class="desc">
+        <p class="name"><%= memberArr[i].name %></p>
+        <p class="speak"></p>
+      </div>
+    </div>
+  <% } %>
 </script>
 <script type="text/javascript" src="assets/js/template-native.js"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>

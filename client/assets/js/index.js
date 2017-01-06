@@ -4,7 +4,7 @@
 //  全局连接变量
 var uchat = null;
 window.onload = function () {
-	uchat = new UChat();
+  uchat = new UChat();
   uchat.login();
   // test
   
@@ -37,25 +37,25 @@ UChat.prototype = {
     self.name = 'username';
     self.init();
   },
-	init: function () {
+  init: function () {
     var self = this;
-		// 链接到服务器
-		this.socket = io.connect();
-		// 建立连接
-		this.socket.on('connect', function () {
-			// 此处需要展示登陆界面
+    // 链接到服务器
+    this.socket = io.connect();
+    // 建立连接
+    this.socket.on('connect', function () {
+      // 此处需要展示登陆界面
       self.socket.emit('login', self.name);
-		});
+    });
     this.socket.on('message', function (msg) {
       self.addDialogItem(msg);
     });
     // 当前群聊人员变动
     this.socket.on('membersChange', function (memberArr) {
       // 更新在线人员列表
-      
-    })
+      self.upDateMemItem(memberArr);
+    });
     this.bindEvent();
-	},
+  },
   /**
    * [bindEvent 绑定事件入口]
    * @return {[undefined]} 
@@ -81,6 +81,11 @@ UChat.prototype = {
     dialogArea.innerHTML += html;
     // 消息更新后滚动条滚到底
     dialogArea.scrollTop = dialogArea.scrollHeight;
+  },
+  upDateMemItem: function(memberArr){
+    var memHtml = template('memTpl', {memberArr: memberArr});
+    var memList = document.querySelector('.mems-list');
+    memList.innerHTML = memHtml;
   },
   bindSendMsg: function () {
     var self = this;
@@ -134,6 +139,7 @@ UChat.prototype = {
       reader.readAsDataURL(file);
     })
   },
+  
   bindSendEmoji: function () {
     var self = this;
     var emojiTool = document.querySelector('#typing .tools .emoji');
@@ -156,7 +162,7 @@ UChat.prototype = {
         // qq表情75个
         for (var i = 1; i <= 75; i++) {
           img = document.createElement('img');
-          img['data-num'] = i;
+          img.setAttribute('data-num', i);
           img.src = 'assets/imgs/qq/' + i + '.gif';
           qqFragment.appendChild(img);
         }
@@ -164,7 +170,7 @@ UChat.prototype = {
         // 兔斯基表情18个
         for (var j = 1; j <= 69; j++) {
           img = document.createElement('img');
-          img['data-num'] = j;
+          img.setAttribute('data-num', i);
           img.src = 'assets/imgs/tsj/' + j + '.gif';
           tsjFragment.appendChild(img);
         }
@@ -200,6 +206,7 @@ UChat.prototype = {
       if (!type || !num) return;
       var speakArea = document.querySelector('#typing #typeContent');
       speakArea.value += ('[emoji:' + type + '_' + num + ']');
+      container.style.display = 'none';
       e.stopPropagation();
     })
     // 点击空白处隐藏表情面板
