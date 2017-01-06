@@ -130,15 +130,15 @@
 </script>
 
 <script type="text/html" id="memTpl">
-    <%for ( i＝0; i < memberArr.length; i++) {%>
-      <div class="mem-item">
-        <img class="portrait" src="assets/imgs/1.jpg">
-        <div class="desc">
-          <p class="name"><%= memberArr[i].name %></p>
-          <p class="speak"></p>
-        </div>
+  <% for (var i = 0; i < memberArr.length; i++) { %>
+    <div class="mem-item">
+      <img class="portrait" src="assets/imgs/1.jpg">
+      <div class="desc">
+        <p class="name"><%= memberArr[i].name %></p>
+        <p class="speak"></p>
       </div>
-    <%}%>
+    </div>
+  <% } %>
 </script>
 <script type="text/javascript" src="assets/js/template-native.js"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>

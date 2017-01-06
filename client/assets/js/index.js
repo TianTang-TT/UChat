@@ -82,6 +82,11 @@ UChat.prototype = {
     // 消息更新后滚动条滚到底
     dialogArea.scrollTop = dialogArea.scrollHeight;
   },
+  upDateMemItem: function(memberArr){
+    var memHtml = template('memTpl', {memberArr: memberArr});
+    var memList = document.querySelector('.mems-list');
+    memList.innerHTML = memHtml;
+  },
   bindSendMsg: function () {
     var self = this;
     var speakArea = document.querySelector('#typing #typeContent');
@@ -134,12 +139,7 @@ UChat.prototype = {
       reader.readAsDataURL(file);
     })
   },
-  upDateMemItem: function(memberArr){
-    debugger;
-    var memHtml = template('memTpl', memberArr);
-    var memList = document.querySelector('.mems-list');
-    memList.innerHTML += memHtml;
-  },
+  
   bindSendEmoji: function () {
     var self = this;
     var emojiTool = document.querySelector('#typing .tools .emoji');
