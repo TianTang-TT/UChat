@@ -78,7 +78,7 @@ UChat.prototype = {
     // {type: 信息类型, data: 具体的信息}
     var html = template('msgTpl', data);
     // 过滤，将表情代码换成图片
-    // html = filterEmoji(html);
+    html = this.codeToImg(html);
     var dialogArea = document.querySelector('#chatting .dialogs');
     dialogArea.innerHTML += html;
     // 消息更新后滚动条滚到底
@@ -108,6 +108,7 @@ UChat.prototype = {
     });
     function sendMsg () {     
       var speaking = speakArea.innerHTML;
+      speaking = self.imgToCode(speaking);
       if (speaking.trim().length) {
         self.socket.send({msgType: 'text', data: speaking});
         // 把信息显示在对话区域
@@ -169,6 +170,7 @@ UChat.prototype = {
         // qq表情75个
         for (var i = 1; i <= 75; i++) {
           img = document.createElement('img');
+          img.setAttribute('data-type', 'qq');
           img.setAttribute('data-num', i);
           img.src = 'assets/imgs/qq/' + i + '.gif';
           qqFragment.appendChild(img);
@@ -177,7 +179,8 @@ UChat.prototype = {
         // 兔斯基表情18个
         for (var j = 1; j <= 69; j++) {
           img = document.createElement('img');
-          img.setAttribute('data-num', i);
+          img.setAttribute('data-type', 'tsj');
+          img.setAttribute('data-num', j);
           img.src = 'assets/imgs/tsj/' + j + '.gif';
           tsjFragment.appendChild(img);
         }
@@ -222,9 +225,11 @@ UChat.prototype = {
     });
   },
   imgToCode: function (str) {
-    //var emojiReg = //;
+    var emojiReg = /<img.+?data-type="(\w+)".+?data-num="(\d+)".*?>/g;
+    return str.replace(emojiReg, '[emoji:$1_$2]');
   },
   codeToImg: function (str) {
-
+    var codeReg = /\[emoji:(\w+?)_(\d+?)\]/g;
+    return str.replace(codeReg, '<img src="assets/imgs/$1/$2.gif">');
   }
 }
