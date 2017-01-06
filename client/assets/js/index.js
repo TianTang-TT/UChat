@@ -12,6 +12,7 @@ window.onload = function () {
 
 function UChat () {
 	this.socket = null;
+  this.emojiLoaded = false;
 }
 
 UChat.prototype = {
@@ -139,11 +140,36 @@ UChat.prototype = {
     var container = emojiTool.querySelector('.emoji-container');
     var emojiSelector = container.querySelector('.selector');
     var emojiTab = container.querySelector('.tab');
+    var img, qqFragment, tsjFragment;
     emojiTool.addEventListener('click', function (e) {
+      var qqSection = container.querySelector('section[data-type=qq]');
+      var tsjSection = container.querySelector('section[data-type=tsj]');
       if (container.clientHeight > 10) {
         container.style.display = 'none';
       } else {
         container.style.display = 'block';
+      }
+      // 下载表情
+      if (!self.emojiLoaded) {
+        qqFragment = document.createDocumentFragment();
+        tsjFragment = document.createDocumentFragment();
+        // qq表情75个
+        for (var i = 1; i <= 75; i++) {
+          img = document.createElement('img');
+          img['data-num'] = i;
+          img.src = 'assets/imgs/qq/' + i + '.gif';
+          qqFragment.appendChild(img);
+        }
+        qqSection.appendChild(qqFragment);
+        // 兔斯基表情18个
+        for (var j = 1; j <= 69; j++) {
+          img = document.createElement('img');
+          img['data-num'] = j;
+          img.src = 'assets/imgs/tsj/' + j + '.gif';
+          tsjFragment.appendChild(img);
+        }
+        tsjSection.appendChild(tsjFragment);
+        self.emojiLoaded = true;
       }
       e.stopPropagation();
     });
