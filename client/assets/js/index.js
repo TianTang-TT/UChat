@@ -77,11 +77,18 @@ UChat.prototype = {
     // 接收到后台发来的信息然后在对话区展现出来
     // {type: 信息类型, data: 具体的信息}
     var html = template('msgTpl', data);
+    // 过滤，将表情代码换成图片
+    // html = filterEmoji(html);
     var dialogArea = document.querySelector('#chatting .dialogs');
     dialogArea.innerHTML += html;
     // 消息更新后滚动条滚到底
     dialogArea.scrollTop = dialogArea.scrollHeight;
   },
+  /**
+   * [upDateMemItem 更新在线人员列表]
+   * @param  {[type]} memberArr [description]
+   * @return {[type]}           [description]
+   */
   upDateMemItem: function(memberArr){
     var memHtml = template('memTpl', {memberArr: memberArr});
     var memList = document.querySelector('.mems-list');
@@ -100,14 +107,14 @@ UChat.prototype = {
       }
     });
     function sendMsg () {     
-      var speaking = speakArea.value;
+      var speaking = speakArea.innerHTML;
       if (speaking.trim().length) {
         self.socket.send({msgType: 'text', data: speaking});
         // 把信息显示在对话区域
         self.addDialogItem({type: 'self', data: speaking});
 
         // 清空输入区
-        speakArea.value = '';
+        speakArea.innerHTML = '';
       }
     }
   },
@@ -205,7 +212,7 @@ UChat.prototype = {
       var num = target.getAttribute('data-num');
       if (!type || !num) return;
       var speakArea = document.querySelector('#typing #typeContent');
-      speakArea.value += ('[emoji:' + type + '_' + num + ']');
+      speakArea.innerHTML += target.outerHTML;
       container.style.display = 'none';
       e.stopPropagation();
     })
@@ -213,5 +220,11 @@ UChat.prototype = {
     document.addEventListener('click', function () {
       container.style.display = 'none';
     });
+  },
+  imgToCode: function (str) {
+    //var emojiReg = //;
+  },
+  codeToImg: function (str) {
+
   }
 }

@@ -13,7 +13,7 @@ const socketIO = io => {
         let msg = `${name} joined`;
         // 通知其他用户有人加入群聊
         io.sockets.emit('message', {type: 'system', data: msg});
-        socket.broadcast.emit('membersChange', userArr());
+        io.sockets.emit('membersChange', userArr());
       }      
     });
 
