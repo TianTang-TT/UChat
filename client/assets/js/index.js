@@ -51,8 +51,8 @@ UChat.prototype = {
     // 当前群聊人员变动
     this.socket.on('membersChange', function (memberArr) {
       // 更新在线人员列表
-      
-    })
+      self.upDateMemItem(memberArr);
+    });
     this.bindEvent();
 	},
   /**
@@ -132,6 +132,12 @@ UChat.prototype = {
       }
       reader.readAsDataURL(file);
     })
+  },
+  upDateMemItem: function(memberArr){
+    debugger;
+    var memHtml = template('memTpl', memberArr);
+    var memList = document.querySelector('.mems-list');
+    memList.innerHTML += memHtml;
   },
   bindSendEmoji: function () {
     var self = this;
