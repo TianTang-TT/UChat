@@ -106,9 +106,9 @@ UChat.prototype = {
       var speaking = speakArea.innerHTML;
       speaking = self.imgToCode(speaking);
       if (speaking.trim().length) {
-        self.socket.send({msgType: 'text', data: speaking});
+        self.socket.send({msgType: 'text', data: speaking, username: self.name});
         // 把信息显示在对话区域
-        self.addDialogItem({type: 'self', data: speaking});
+        self.addDialogItem({type: 'self', data: speaking, username: self.name});
 
         // 清空输入区
         speakArea.innerHTML = '';
@@ -136,8 +136,8 @@ UChat.prototype = {
       reader = new FileReader();
       // 图片读取完毕之后马上显示
       reader.onload = function (e) {
-        self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img'});
-        self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result});
+        self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img', username: self.name});
+        self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result, username: self.name});
         imgInput.value = '';
       }
       reader.readAsDataURL(file);
