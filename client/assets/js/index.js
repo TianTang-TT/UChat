@@ -5,9 +5,7 @@
 var uchat = null;
 window.onload = function () {
   uchat = new UChat();
-  uchat.login();
-  // test
-  
+  uchat.login();  
 }
 
 function UChat () {
@@ -29,13 +27,9 @@ UChat.prototype = {
       }
       
       loginPage.style.display = 'none';
-      self.name = 'username';
+      self.name = username;
       self.init();
     });
-
-    loginPage.style.display = 'none';
-    self.name = 'username';
-    self.init();
   },
   init: function () {
     var self = this;
@@ -90,9 +84,11 @@ UChat.prototype = {
    * @return {[type]}           [description]
    */
   upDateMemItem: function(memberArr){
+
     var memHtml = template('memTpl', {memberArr: memberArr});
     var memList = document.querySelector('.mems-list');
     memList.innerHTML = memHtml;
+    document.querySelector('#dialog .count').innerText = memberArr.length;
   },
   bindSendMsg: function () {
     var self = this;
@@ -132,7 +128,7 @@ UChat.prototype = {
       }
       file = this.files[0];
       fileName = file.name;
-      if (!imgReg.test(fileName)) {
+      if (!imgReg.test(fileName.toLowerCase())) {
         alert('请选择一张图片');
         imgInput.value = '';
         return;
