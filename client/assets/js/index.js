@@ -24,8 +24,7 @@ UChat.prototype = {
       if (!username.trim().length) {
         alert('请输入昵称');
         return;
-      }
-      
+      }      
       loginPage.style.display = 'none';
       self.name = username;
       self.init();
@@ -33,6 +32,8 @@ UChat.prototype = {
   },
   init: function () {
     var self = this;
+    // 显示左侧用户资料
+    this.displayProgile();
     // 链接到服务器
     this.socket = io.connect();
     // 建立连接
@@ -49,6 +50,11 @@ UChat.prototype = {
       self.upDateMemItem(memberArr);
     });
     this.bindEvent();
+  },
+  displayProgile: function () {
+    var self = this;
+    var profile = document.querySelector('#members .profile');
+    profile.querySelector('.nick-name').innerText = self.name;
   },
   /**
    * [bindEvent 绑定事件入口]

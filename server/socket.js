@@ -7,8 +7,9 @@ const socketIO = io => {
     
     // 发送消息测试
     socket.on('login', name => {
+      let headline = '';
       if (!isLogin(userId)) {
-        users.set(userId, {name});
+        users.set(userId, {name, headline});
 
         let msg = `${name} joined`;
         // 通知其他用户有人加入群聊
