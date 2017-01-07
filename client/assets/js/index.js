@@ -5,9 +5,7 @@
 var uchat = null;
 window.onload = function () {
   uchat = new UChat();
-  uchat.login();
-  // test
-  
+  uchat.login();  
 }
 
 function UChat () {
@@ -29,13 +27,9 @@ UChat.prototype = {
       }
       
       loginPage.style.display = 'none';
-      self.name = 'username';
+      self.name = username;
       self.init();
     });
-
-    loginPage.style.display = 'none';
-    self.name = 'username';
-    self.init();
   },
   init: function () {
     var self = this;
@@ -90,9 +84,11 @@ UChat.prototype = {
    * @return {[type]}           [description]
    */
   upDateMemItem: function(memberArr){
+
     var memHtml = template('memTpl', {memberArr: memberArr});
     var memList = document.querySelector('.mems-list');
     memList.innerHTML = memHtml;
+    document.querySelector('#dialog .count').innerText = memberArr.length;
   },
   bindSendMsg: function () {
     var self = this;
@@ -110,9 +106,9 @@ UChat.prototype = {
       var speaking = speakArea.innerHTML;
       speaking = self.imgToCode(speaking);
       if (speaking.trim().length) {
-        self.socket.send({msgType: 'text', data: speaking});
+        self.socket.send({msgType: 'text', data: speaking, username: self.name});
         // 把信息显示在对话区域
-        self.addDialogItem({type: 'self', data: speaking});
+        self.addDialogItem({type: 'self', data: speaking, username: self.name});
 
         // 清空输入区
         speakArea.innerHTML = '';
@@ -132,7 +128,7 @@ UChat.prototype = {
       }
       file = this.files[0];
       fileName = file.name;
-      if (!imgReg.test(fileName)) {
+      if (!imgReg.test(fileName.toLowerCase())) {
         alert('请选择一张图片');
         imgInput.value = '';
         return;
@@ -140,8 +136,8 @@ UChat.prototype = {
       reader = new FileReader();
       // 图片读取完毕之后马上显示
       reader.onload = function (e) {
-        self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img'});
-        self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result});
+        self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img', username: self.name});
+        self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result, username: self.name});
         imgInput.value = '';
       }
       reader.readAsDataURL(file);

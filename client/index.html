@@ -60,11 +60,13 @@
     <!--对话部分-->
     <section id="dialog">
       <!--对方名称-->
-      <div class="title">UChat</div>  
+      <div class="title">
+        UChat～(当前在线人数：<span class="count">0</span>人）
+      </div>  
       <!--已发送对话-->
       <div class="dialogs">
         <!-- 此处为对话内容区-->
-
+        
       </div>
     </section>
 
@@ -111,6 +113,9 @@
     <span><%= data %></span>
   <% } else { %>
     <img src="assets/imgs/1.jpg" class="speak-portrait">
+    <p class="speak-user">
+      <%= username %>
+    </p>
     <p class="speak-content">
     <% if(msgType == 'img') { %>
       <img src="<%= data %>">
