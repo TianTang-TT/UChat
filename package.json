@@ -2,9 +2,9 @@
   "name": "uchat",
   "version": "1.0.0",
   "description": "chat room demo based on nodejs",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
-    "server": "node server/app.js"
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
