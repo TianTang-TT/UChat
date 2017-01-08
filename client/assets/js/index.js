@@ -19,16 +19,23 @@ UChat.prototype = {
     var loginPage = document.querySelector('#login');
     var userInput = loginPage.querySelector('.username');
     var loginBtn = loginPage.querySelector('.btn-login');
-    loginBtn.addEventListener('click', function (e) {
+    loginBtn.addEventListener('click', join);
+    userInput.addEventListener('keydown', function (e) {
+      if (e.keyCode === 13 || e.code.toLowerCase() === 'enter') {
+        join();
+      }
+    });
+    function join () {
       var username = userInput.value;
       if (!username.trim().length) {
         alert('请输入昵称');
         return;
       }      
+      userInput.value = '';
       loginPage.style.display = 'none';
       self.name = username;
       self.init();
-    });
+    }
   },
   init: function () {
     var self = this;
