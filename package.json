@@ -4,7 +4,7 @@
   "description": "chat room demo based on nodejs",
   "main": "index.js",
   "scripts": {
-    "server": "node server/app.js"
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
