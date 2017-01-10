@@ -2,10 +2,8 @@
 const users = new Map();
 const socketIO = io => {
   io.on('connection', socket => {
-    // 加入在线用户列表
     let userId = socket.id;
-    
-    // 发送消息测试
+
     socket.on('login', name => {
       let headline = '';
       if (!isLogin(userId)) {
