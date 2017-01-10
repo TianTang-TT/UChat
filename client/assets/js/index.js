@@ -97,7 +97,6 @@ UChat.prototype = {
    * @return {[type]}           [description]
    */
   upDateMemItem: function(memberArr){
-
     var memHtml = template('memTpl', {memberArr: memberArr});
     var memList = document.querySelector('.mems-list');
     memList.innerHTML = memHtml;
@@ -112,19 +111,19 @@ UChat.prototype = {
     // 回车发送
     speakArea.addEventListener('keydown', function (e) {
       if (e.keyCode === 13 || e.code.toLowerCase() === 'enter') {
-        sendMsg();
+        sendMsg(e);
       }
     });
-    function sendMsg () {     
+    function sendMsg (e) {
       var speaking = speakArea.innerHTML;
       speaking = self.imgToCode(speaking);
       if (speaking.trim().length) {
         self.socket.send({msgType: 'text', data: speaking, username: self.name});
         // 把信息显示在对话区域
         self.addDialogItem({type: 'self', data: speaking, username: self.name});
-
         // 清空输入区
         speakArea.innerHTML = '';
+        e.preventDefault();//这句话可以阻止回车事件冒泡;如果注释掉这句话,那么会有空格残余;
       }
     }
   },
