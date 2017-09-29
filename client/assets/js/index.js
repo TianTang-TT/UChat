@@ -148,7 +148,6 @@ UChat.prototype = {
       reader = new FileReader();
       // 图片读取完毕之后马上显示
       reader.onload = function (e) {
-        debugger;
         self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img', username: self.name});
         self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result, username: self.name});
         imgInput.value = '';
