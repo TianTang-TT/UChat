@@ -6,14 +6,24 @@
         <img src="~assets/img/1.jpg" class="logo-img">
       </div>
       <input class="username" type="text" placeholder="请输入昵称" />
-      <button class="login-btn">Join</button>
+      <button class="login-btn" @click="login">Join</button>
       <p class="welcome">welcome to UChat~</p>
     </div>
   </section>
 </template>
 <script>
   export default {
-    name: 'login'
+    name: 'login',
+    data () {
+      return {
+        nickname: ''
+      }
+    },
+    methods: {
+      login () {
+        this.$router.push({path: '/'})
+      }
+    }
   }
 </script>
 <style lang="less" scoped>
@@ -52,7 +62,7 @@
         display: block;
         padding-left: 8px;
         margin: 0 auto;
-        border: 1px solid gray;
+        border: 1px solid #dfdfdf;
         border-radius: 2px;
       }
       .login-btn {
@@ -74,49 +84,5 @@
         margin-top: 40px;
       }
     }
-  }
-  #user {
-
-  }
-  #user .page-title {
-    text-align: left;
-  }
-  #user .logo {
-    margin: 45px 0;
-    text-align: center;
-  }
-  #user .logo .logo-img {
-    width: 90px;
-    height: 90px;
-  }
-  #user .username {
-    width: 210px;
-    height: 40px;
-    font-size: 16px;
-    box-sizing: border-box;
-    display: block;
-    padding-left: 8px;
-    margin: 0 auto;
-    border: 1px solid gray;
-    border-radius: 2px;
-  }
-
-  #user .btn-login {
-    display: block;
-    width: 210px;
-    height: 40px;
-    font-size: 14px;
-    color: #fff;
-    background: #3dce3d;
-    border: none;
-    border-radius: 1px;
-    margin: 20px auto;
-    outline: none;
-  }
-  #user .welcome {
-    text-align: center;
-    font-size: 14px;
-    color: #436895;
-    margin-top: 40px;
   }
 </style>
