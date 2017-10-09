@@ -16,37 +16,14 @@
       <!--菜单-->
       <div class="mem-item menu">
         <ul class="menu-ul clearfix">
-          <li class="menu-li active"><i class="iconfont icon-chat"></i></li>
-          <li class="menu-li"><i class="iconfont icon-publicnumber"></i></li>
-          <li class="menu-li"><i class="iconfont icon-list"></i></li>
+          <router-link tag="li" active-class="active" class="menu-li" to="/chatting"><i class="iconfont icon-chat"></i></router-link>
+          <router-link tag="li" active-class="active" class="menu-li" to="/contacts"><i class="iconfont icon-publicnumber"></i></router-link>
+          <router-link tag="li" active-class="active" class="menu-li" to="/foo"><i class="iconfont icon-list"></i></router-link>
         </ul>
       </div>
     </header>
 
-    <!--联系人列表-->
-    <div class="mems-list">
-      <div class="mem-item">
-        <img class="portrait" src="~assets/img/1.jpg">
-        <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
-        </div>
-      </div>
-      <div class="mem-item active">
-        <img class="portrait" src="~assets/img/1.jpg">
-        <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
-        </div>
-      </div>
-      <div class="mem-item">
-        <img class="portrait" src="~assets/img/1.jpg">
-        <div class="desc">
-          <p class="name">昵称</p>
-          <p class="speak">过去的信息</p>
-        </div>
-      </div>
-    </div>
+    <router-view></router-view>
   </section>
 </template>
 <script>

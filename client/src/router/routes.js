@@ -1,6 +1,9 @@
 import Login from 'view/login'
 import Main from 'view/main'
 
+import Chatting from 'view/main/manage/Chatting'
+import Contacts from 'view/main/manage/Contacts'
+
 const routes = [
   {
     path: '/login',
@@ -9,7 +12,17 @@ const routes = [
   },
   {
     path: '/',
-    component: Main
+    component: Main,
+    children: [
+      {
+        path: 'chatting',
+        component: Chatting
+      },
+      {
+        path: 'contacts',
+        component: Contacts
+      }
+    ]
   }
 ]
 
