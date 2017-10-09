@@ -6,10 +6,12 @@
         <div class="emoji-container">
           <div class="tab">
             <section class="emoji-list small" data-type="qq">
-
+              <img src="~assets/img/qq/1.gif" data-type="qq" data-num="1">
+              <img src="~assets/img/qq/1.gif" data-type="qq" data-num="1">
+              <img src="~assets/img/qq/1.gif" data-type="qq" data-num="1">
             </section>
             <section class="emoji-list common" data-type="tsj">
-
+              <img src="~assets/img/tsj/1.gif" data-type="tsj" data-num="1">
             </section>
           </div>
           <ul class="selector clearfix">
@@ -20,7 +22,6 @@
       </li>
       <li class="tool-item printscreen" style="display: none">
         <i class="iconfont icon-scissors"></i>
-
       </li>
       <li class="tool-item upload">
         <i class="iconfont icon-folder">
@@ -42,10 +43,8 @@
 </script>
 <style lang="less">
   .contentedit {
-    width: 100%;
     height: 170px;
-    position: absolute;
-    bottom: 0;
+    background-color: #fff;
     .tools {
       padding: 0 20px;
       .tool-item{
@@ -74,31 +73,38 @@
           border: 1px solid #dadada;
           border-radius: 2px;
           display: none;
-          .emoji-list {
-            padding: 10px;
-            position: absolute;
-            top: 0;
-            bottom: 40px;
-            overflow-y: scroll;
-            img:hover {
-              background-color: #dcdcdc;
+          .tab {
+            height: 250px;
+            .emoji-list {
+              width: 100%;
+              height: 250px;
+              box-sizing: border-box;
+              padding: 10px;
+              position: absolute;
+              top: 0;
+              bottom: 40px;
+              overflow: auto;
+              img:hover {
+                background-color: #dcdcdc;
+              }
+            }
+            .common {
+              display: none;
+              img {
+                width: 50px;
+                height: 50px;
+                margin: 0 4px;
+              }
+            }
+            .small {
+              img {
+                width: 24px;
+                height: 24px;
+                margin: 0 4px;
+              }
             }
           }
-          .common {
-            display: none;
-            img {
-              width: 50px;
-              height: 50px;
-              margin: 0 4px;
-            }
-          }
-          .small {
-            img {
-              width: 24px;
-              height: 24px;
-              margin: 0 4px;
-            }
-          }
+
           .selector {
             height: 40px;
             width: 100%;
@@ -157,7 +163,6 @@
         outline: none;
         box-sizing: border-box;
         font-size: 15px;
-        background-color: #eeeeee;
       }
       .btn-send {
         width: 70px;

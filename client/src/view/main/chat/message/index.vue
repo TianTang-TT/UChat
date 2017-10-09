@@ -1,5 +1,5 @@
 <template>
-  <section id="dialog">
+  <section class="message">
     <!--对方名称-->
     <div class="title">
       UChat～(当前在线人数：<span class="count">0</span>人）
@@ -8,10 +8,12 @@
     <div class="dialogs">
       <div class="speaking">
         <img src="~assets/img/1.jpg" class="speak-portrait">
+        <p class="speak-user">惊蛰</p>
         <p class="speak-content">this is content</p>
       </div>
       <div class="speaking">
         <img src="~assets/img/1.jpg" class="speak-portrait">
+        <p class="speak-user">惊蛰</p>
         <p class="speak-content">this is content，this is content，this is content</p>
       </div>
       <div class="speaking system">
@@ -19,18 +21,22 @@
       </div>
       <div class="speaking">
         <img src="~assets/img/1.jpg" class="speak-portrait">
+        <p class="speak-user">惊蛰</p>
         <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
       </div>
       <div class="speaking self">
         <img src="~assets/img/1.jpg" class="speak-portrait">
+        <p class="speak-user">惊蛰</p>
         <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
       </div>
       <div class="speaking self">
         <img src="~assets/img/1.jpg" class="speak-portrait">
+        <p class="speak-user">惊蛰</p>
         <p class="speak-content">this is content</p>
       </div>
       <div class="speaking self">
         <img src="~assets/img/1.jpg" class="speak-portrait">
+        <p class="speak-user">惊蛰</p>
         <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
       </div>
     </div>
@@ -39,32 +45,30 @@
 </template>
 <script>
   export default {
-    name: 'dialog'
+    name: 'message'
   }
 </script>
 <style lang="less">
-  .dialog {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 170px;
+  .message {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     border-bottom: 1px solid #d6d6d6;
     .title {
       height: 50px;
       line-height: 50px;
       font-size: 20px;
       text-align: center;
-      margin: 0 20px;
+      padding: 0 20px;
+      box-sizing: border-box;
       border-bottom: 1px solid #d6d6d6;
     }
     .dialogs {
-      width: 100%;
+      height: 100%;
       box-sizing: border-box;
       padding: 0 10px 0 20px;
-      position: absolute;
-      top: 50px;
-      bottom: 0;
-      overflow-y: scroll;
+      overflow: auto;
       .speaking {
         margin: 15px 0;
         position: relative;

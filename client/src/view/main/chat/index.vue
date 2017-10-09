@@ -1,27 +1,29 @@
 <template>
   <section class="chat">
     <!--对话部分-->
-    <dialogs></dialogs>
+    <message></message>
 
     <!--内容输入区-->
     <contentedit></contentedit>
   </section>
 </template>
 <script>
-  import Dialogs from './dialogs'
+  import Message from './message'
   import Contentedit from './contentedit'
   export default {
     name: 'chat',
     components: {
-      Dialogs,
+      Message,
       Contentedit
     }
   }
 </script>
 <style lang="less">
   .chat {
-    margin-left: 300px;
+    flex: 1;
+    height: 100%;
     background-color: #eeeeee;
-    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 </style>

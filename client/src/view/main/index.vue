@@ -18,7 +18,7 @@
 </script>
 <style lang="less">
   #main {
-    position: relative;
     height: 100%;
+    display: flex;
   }
 </style>

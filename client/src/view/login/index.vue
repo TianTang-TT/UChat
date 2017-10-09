@@ -1,5 +1,5 @@
 <template>
-  <section id="login">
+  <div id="login">
     <div class="login-form">
       <h6 class="page-title">UChat!</h6>
       <div class="logo">
@@ -9,7 +9,7 @@
       <button class="login-btn" @click="login">Join</button>
       <p class="welcome">welcome to UChat~</p>
     </div>
-  </section>
+  </div>
 </template>
 <script>
   export default {
@@ -28,7 +28,6 @@
 </script>
 <style lang="less" scoped>
   #login {
-    width: 100%;
     height: 100%;
     position: relative;
     background: url('~assets/img/loginbg.jpg') 50% 50% / cover no-repeat;

@@ -26,7 +26,7 @@
     <!--联系人列表-->
     <div class="mems-list">
       <div class="mem-item">
-        <img class="portrait" src="assets/imgs/1.jpg">
+        <img class="portrait" src="~assets/img/1.jpg">
         <div class="desc">
           <p class="name">昵称</p>
           <p class="speak">过去的信息</p>
@@ -57,39 +57,42 @@
 <style lang="less">
   .manage {
     width: 300px;
-    float: left;
     overflow: hidden;
     background-color: #2e3238;
     border-right: 1px solid #e0e0e0;
     header {
       height: 150px;
-      .mem-item {
-        height: 40px;
-        padding: 12.5px;
-        .portrait {
-          float: left;
-          width: 40px;
-          height: 40px;
-          border-radius: 3px;
-        }
+      .profile {
         .nick-name {
           font-size: 20px;
           line-height: 40px;
           font-weight: 100;
-        }
-        .desc {
-          margin-left: 50px;
+          color: #fff;
         }
       }
     }
 
-    .mems-list .active {
-      background-color: #3a3f45;
+    .mem-item {
+      height: 40px;
+      padding: 12.5px;
+      color: #fff;
       font-weight: 400;
       font-size: 13px;
-      color: #FFF;
       line-height: 20px;
+      .portrait {
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 3px;
+      }
+      .desc {
+        margin-left: 50px;
+      }
+      &.active {
+        background-color: #3a3f45;
+      }
     }
+
 
     .search {
       padding: 0 12.5px;
@@ -130,7 +133,9 @@
           border-right: 1px solid #24272c;
         }
         &.active {
-          color: #3caf36;
+          i {
+            color: #3caf36;
+          }
         }
         i {
           font-size: 30px;
