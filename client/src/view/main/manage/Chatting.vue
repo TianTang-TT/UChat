@@ -1,31 +1,20 @@
 <template>
   <!--当前聊天-->
   <div class="chatting">
-    <div class="mem-item">
-      <img class="portrait" src="~assets/img/1.jpg">
-      <div class="desc">
-        <p class="name">昵称</p>
-        <p class="speak">过去的信息</p>
-      </div>
-    </div>
-    <div class="mem-item active">
-      <img class="portrait" src="~assets/img/1.jpg">
-      <div class="desc">
-        <p class="name">昵称</p>
-        <p class="speak">过去的信息</p>
-      </div>
-    </div>
-    <div class="mem-item">
-      <img class="portrait" src="~assets/img/1.jpg">
-      <div class="desc">
-        <p class="name">昵称</p>
-        <p class="speak">过去的信息</p>
-      </div>
-    </div>
+    <contact contact-type="chatting" v-for="contact in contacts" key :contact-msg="contact"></contact>
   </div>
 </template>
 <script>
+  import Avatar from 'assets/img/1.jpg'
   export default {
-    name: 'chatting'
+    name: 'chatting',
+    data () {
+      return {
+        contacts: [
+          {name: '惊蛰', avatar: Avatar, text: '测试文字'},
+          {name: '天棠', avatar: Avatar, text: '说过一句话'}
+        ]
+      }
+    }
   }
 </script>

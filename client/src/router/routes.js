@@ -2,7 +2,8 @@ import Login from 'view/login'
 import Main from 'view/main'
 
 import Chatting from 'view/main/manage/Chatting'
-import Contacts from 'view/main/manage/Contacts'
+const Contacts = () => import('view/main/manage/Contacts')
+const Foo = () => import('view/main/manage/Foo')
 
 const routes = [
   {
@@ -13,6 +14,7 @@ const routes = [
   {
     path: '/',
     component: Main,
+    redirect: '/chatting',
     children: [
       {
         path: 'chatting',
@@ -21,6 +23,10 @@ const routes = [
       {
         path: 'contacts',
         component: Contacts
+      },
+      {
+        path: 'foo',
+        component: Foo
       }
     ]
   }

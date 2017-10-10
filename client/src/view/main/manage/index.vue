@@ -2,23 +2,23 @@
   <section class="manage">
     <header class="header">
       <!--个人资料-->
-      <div class="mem-item profile">
+      <div class="profile">
         <img class="portrait" src="~assets/img/1.jpg">
         <div class="desc">
           <p class="nick-name">天棠</p>
         </div>
       </div>
       <!--搜索框-->
-      <div class="mem-item search">
+      <div class="search">
         <i class="iconfont icon-search">搜索</i>
         <input type="text" class="search-input">
       </div>
       <!--菜单-->
-      <div class="mem-item menu">
+      <div class="menu">
         <ul class="menu-ul clearfix">
           <router-link tag="li" active-class="active" class="menu-li" to="/chatting"><i class="iconfont icon-chat"></i></router-link>
-          <router-link tag="li" active-class="active" class="menu-li" to="/contacts"><i class="iconfont icon-publicnumber"></i></router-link>
-          <router-link tag="li" active-class="active" class="menu-li" to="/foo"><i class="iconfont icon-list"></i></router-link>
+          <router-link tag="li" active-class="active" class="menu-li" to="/contacts"><i class="iconfont icon-list"></i></router-link>
+          <router-link tag="li" active-class="active" class="menu-li" to="/foo"><i class="iconfont icon-publicnumber"></i></router-link>
         </ul>
       </div>
     </header>
@@ -32,6 +32,15 @@
   }
 </script>
 <style lang="less">
+  .blank() {
+    height: 40px;
+    padding: 12.5px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
   .manage {
     width: 300px;
     overflow: hidden;
@@ -39,23 +48,9 @@
     border-right: 1px solid #e0e0e0;
     header {
       height: 150px;
-      .profile {
-        .nick-name {
-          font-size: 20px;
-          line-height: 40px;
-          font-weight: 100;
-          color: #fff;
-        }
-      }
     }
-
-    .mem-item {
-      height: 40px;
-      padding: 12.5px;
-      color: #fff;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 20px;
+    .profile {
+      .blank();
       .portrait {
         float: left;
         width: 40px;
@@ -64,14 +59,16 @@
       }
       .desc {
         margin-left: 50px;
-      }
-      &.active {
-        background-color: #3a3f45;
+        .nick-name {
+          font-size: 20px;
+          line-height: 40px;
+          font-weight: 100;
+          color: #fff;
+        }
       }
     }
-
-
     .search {
+      .blank();
       padding: 0 12.5px;
       position: relative;
       .icon-search {
@@ -97,6 +94,7 @@
     }
 
     .menu {
+      .blank();
       padding: 0 12.5px;
       margin: 0 -3px;
       .menu-li {

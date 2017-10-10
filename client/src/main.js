@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import 'components'
+
 import 'static/css/reset.css'
 import 'assets/css/iconfont.css'
 
