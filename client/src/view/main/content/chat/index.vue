@@ -11,7 +11,7 @@
   import Message from './message'
   import Contentedit from './contentedit'
   export default {
-    name: 'chat',
+    name: 'chat-detail',
     components: {
       Message,
       Contentedit
@@ -20,9 +20,7 @@
 </script>
 <style lang="less">
   .chat {
-    flex: 1;
     height: 100%;
-    background-color: #eeeeee;
     display: flex;
     flex-direction: column;
   }

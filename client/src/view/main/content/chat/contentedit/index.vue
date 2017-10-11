@@ -30,7 +30,7 @@
       </li>
     </ul>
     <!--输入框-->
-    <div class="content">
+    <div class="inputing">
       <p class="typeContent" contenteditable="true"></p>
       <button class="btn-send">发送(S)</button>
     </div>
@@ -41,7 +41,7 @@
     name: 'contentedit'
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .contentedit {
     height: 170px;
     background-color: #fff;
@@ -151,7 +151,7 @@
         }
       }
     }
-    .content {
+    .inputing {
       font-size: 0;
       text-align: right;
       .typeContent {

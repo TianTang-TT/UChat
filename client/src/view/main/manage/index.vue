@@ -23,7 +23,7 @@
       </div>
     </header>
 
-    <router-view></router-view>
+    <router-view name="manage"></router-view>
   </section>
 </template>
 <script>

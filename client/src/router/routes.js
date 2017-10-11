@@ -5,6 +5,9 @@ import Chatting from 'view/main/manage/Chatting'
 const Contacts = () => import('view/main/manage/Contacts')
 const Foo = () => import('view/main/manage/Foo')
 
+const Chat = () => import('view/main/content/chat')
+const Contact = () => import('view/main/content/contact')
+
 const routes = [
   {
     path: '/login',
@@ -18,11 +21,17 @@ const routes = [
     children: [
       {
         path: 'chatting',
-        component: Chatting
+        components: {
+          manage: Chatting,
+          content: Chat
+        }
       },
       {
         path: 'contacts',
-        component: Contacts
+        components: {
+          manage: Contacts,
+          content: Contact
+        }
       },
       {
         path: 'foo',

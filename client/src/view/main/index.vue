@@ -6,7 +6,7 @@
 </template>
 <script>
   import Manage from './manage'
-  import Chat from './content/chat'
+  import Chat from './content'
 
   export default {
     name: 'main',
