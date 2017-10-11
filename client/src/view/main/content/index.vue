@@ -4,12 +4,8 @@
   </div>
 </template>
 <script>
-  import Chat from './chat'
   export default {
-    name: 'content',
-    components: {
-      Chat
-    }
+    name: 'content'
   }
 </script>
 <style scoped>

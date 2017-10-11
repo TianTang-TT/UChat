@@ -1,18 +1,18 @@
 <template>
   <div id="main">
     <manage></manage>
-    <chat></chat>
+    <content-detail></content-detail>
   </div>
 </template>
 <script>
   import Manage from './manage'
-  import Chat from './content'
+  import Content from './content'
 
   export default {
     name: 'main',
     components: {
       Manage,
-      Chat
+      'content-detail': Content
     }
   }
 </script>

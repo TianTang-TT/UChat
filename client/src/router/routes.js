@@ -22,8 +22,19 @@ const routes = [
       {
         path: 'chatting',
         components: {
+          manage: Chatting
+        }
+      },
+      {
+        path: 'chatting/:userName',
+        name: 'chatting',
+        components: {
           manage: Chatting,
           content: Chat
+        },
+        props: {
+          manage: false,
+          content: true
         }
       },
       {
@@ -35,7 +46,9 @@ const routes = [
       },
       {
         path: 'foo',
-        component: Foo
+        components: {
+          manage: Foo
+        }
       }
     ]
   }

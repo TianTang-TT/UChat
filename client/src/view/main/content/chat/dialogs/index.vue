@@ -6,46 +6,32 @@
     </div>
     <!--已发送对话-->
     <div class="dialogs">
-      <div class="speaking">
-        <img src="~assets/img/1.jpg" class="speak-portrait">
-        <p class="speak-user">惊蛰</p>
-        <p class="speak-content">this is content</p>
-      </div>
-      <div class="speaking">
-        <img src="~assets/img/1.jpg" class="speak-portrait">
-        <p class="speak-user">惊蛰</p>
-        <p class="speak-content">this is content，this is content，this is content</p>
-      </div>
-      <div class="speaking system">
-        <span>这是一条系统消息</span>
-      </div>
-      <div class="speaking">
-        <img src="~assets/img/1.jpg" class="speak-portrait">
-        <p class="speak-user">惊蛰</p>
-        <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
-      </div>
-      <div class="speaking self">
-        <img src="~assets/img/1.jpg" class="speak-portrait">
-        <p class="speak-user">惊蛰</p>
-        <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
-      </div>
-      <div class="speaking self">
-        <img src="~assets/img/1.jpg" class="speak-portrait">
-        <p class="speak-user">惊蛰</p>
-        <p class="speak-content">this is content</p>
-      </div>
-      <div class="speaking self">
-        <img src="~assets/img/1.jpg" class="speak-portrait">
-        <p class="speak-user">惊蛰</p>
-        <p class="speak-content">this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，this is content，</p>
-      </div>
+      <message v-for="dialog in dialogs" key :messageContent="dialog"></message>
     </div>
-
   </section>
 </template>
 <script>
+  import Message from './Message'
   export default {
-    name: 'message'
+    name: 'dialog',
+    components: {
+      Message
+    },
+    data () {
+      return {
+        dialogs: [
+          {type: 'system', content: '开始聊天'},
+          {type: 'self', speaker: '惊蛰', content: 'this is content'},
+          {speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
+          {speaker: '天棠', content: 'this is content'},
+          {speaker: '天棠', content: 'this is content'},
+          {type: 'system', content: 'this is a message from system'},
+          {type: 'self', speaker: '惊蛰', content: 'this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content '},
+          {type: 'self', speaker: '惊蛰', content: 'this is content'},
+          {speaker: '天棠', content: 'this is content'}
+        ]
+      }
+    }
   }
 </script>
 <style lang="less">

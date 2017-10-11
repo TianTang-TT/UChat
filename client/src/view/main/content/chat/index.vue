@@ -1,19 +1,19 @@
 <template>
   <section class="chat">
     <!--对话部分-->
-    <message></message>
+    <dialogs></dialogs>
 
     <!--内容输入区-->
     <contentedit></contentedit>
   </section>
 </template>
 <script>
-  import Message from './message'
+  import Dialogs from './dialogs'
   import Contentedit from './contentedit'
   export default {
     name: 'chat-detail',
     components: {
-      Message,
+      Dialogs,
       Contentedit
     }
   }
