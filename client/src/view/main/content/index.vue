@@ -1,6 +1,8 @@
 <template>
   <div class="content">
-    <router-view name="content"></router-view>
+    <keep-alive>
+      <router-view name="content"></router-view>
+    </keep-alive>
   </div>
 </template>
 <script>

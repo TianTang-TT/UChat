@@ -5,7 +5,7 @@
       contact-type="contact"
       v-for="contact in contacts"
       key
-      @click.native="chooseContact"
+      @click.native="chooseContact(contact)"
       :contact-msg="contact"></contact>
   </div>
 </template>
@@ -16,13 +16,14 @@
     data () {
       return {
         contacts: [
-          {name: '惊蛰', avatar: Avatar, text: '测试文字'}
+          {id: 1, name: '惊蛰', avatar: Avatar},
+          {id: 2, name: '天棠', avatar: Avatar}
         ]
       }
     },
     methods: {
       chooseContact (contact) {
-        console.log(contact)
+        this.$router.push({name: 'contacts', params: {contactId: contact.id}})
       }
     }
   }

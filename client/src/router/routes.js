@@ -5,7 +5,7 @@ import Chatting from 'view/main/manage/Chatting'
 const Contacts = () => import('view/main/manage/Contacts')
 const Foo = () => import('view/main/manage/Foo')
 
-const Chat = () => import('view/main/content/chat')
+const Chats = () => import('view/main/content/chats')
 const Contact = () => import('view/main/content/contact')
 
 const routes = [
@@ -30,7 +30,7 @@ const routes = [
         name: 'chatting',
         components: {
           manage: Chatting,
-          content: Chat
+          content: Chats
         },
         props: {
           manage: false,
@@ -40,8 +40,19 @@ const routes = [
       {
         path: 'contacts',
         components: {
+          manage: Contacts
+        }
+      },
+      {
+        path: 'contacts/:contactId',
+        name: 'contacts',
+        components: {
           manage: Contacts,
           content: Contact
+        },
+        props: {
+          manage: false,
+          content: true
         }
       },
       {

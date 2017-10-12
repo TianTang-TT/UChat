@@ -1,7 +1,7 @@
 <template>
-  <section class="chat">
+  <section class="chat" v-if="chatInfo.chatName == '惊蛰'">
     <!--对话部分-->
-    <dialogs></dialogs>
+    <dialogs :chatInfo="chatInfo"></dialogs>
 
     <!--内容输入区-->
     <contentedit></contentedit>
@@ -11,10 +11,16 @@
   import Dialogs from './dialogs'
   import Contentedit from './contentedit'
   export default {
-    name: 'chat-detail',
+    name: 'chat',
     components: {
       Dialogs,
       Contentedit
+    },
+    props: {
+      chatInfo: {
+        type: Object,
+        required: true
+      }
     }
   }
 </script>
@@ -24,4 +30,5 @@
     display: flex;
     flex-direction: column;
   }
+
 </style>

@@ -5,7 +5,7 @@
       contact-type="chatting"
       v-for="contact in contacts"
       key
-      @click.native="chooseContact(contact)"
+      @click.native="chooseChatting(contact)"
       :contact-msg="contact">
     </contact>
   </div>
@@ -23,7 +23,7 @@
       }
     },
     methods: {
-      chooseContact (chatting) {
+      chooseChatting (chatting) {
         this.$router.push({name: 'chatting', params: {userName: chatting.name}})
       }
     }

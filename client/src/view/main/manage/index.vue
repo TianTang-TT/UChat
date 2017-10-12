@@ -22,8 +22,9 @@
         </ul>
       </div>
     </header>
-
-    <router-view name="manage"></router-view>
+    <keep-alive>
+      <router-view name="manage"></router-view>
+    </keep-alive>
   </section>
 </template>
 <script>
