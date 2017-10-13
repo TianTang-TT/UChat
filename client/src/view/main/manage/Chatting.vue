@@ -3,28 +3,35 @@
   <div class="chatting">
     <contact
       contact-type="chatting"
-      v-for="contact in contacts"
+      v-for="chatting in chattings"
       key
-      @click.native="chooseChatting(contact)"
-      :contact-msg="contact">
+      :isActive="chatting.chatName === currentChat"
+      @click.native="chooseChatting(chatting)"
+      :contact-msg="chatting">
     </contact>
   </div>
 </template>
 <script>
+  import { mapState, mapActions } from 'vuex'
   import Avatar from 'assets/img/1.jpg'
   export default {
     name: 'chatting',
     data () {
       return {
-        contacts: [
+        chattings: [
           {name: '惊蛰', avatar: Avatar, text: '测试文字'},
           {name: '天棠', avatar: Avatar, text: '说过一句话'}
         ]
       }
     },
+    computed: {
+      ...mapState('chatting', ['currentChat'])
+    },
     methods: {
+      ...mapActions('chatting', ['activeChat']),
       chooseChatting (chatting) {
         this.$router.push({name: 'chatting', params: {userName: chatting.name}})
+        this.activeChat(chatting.name)
       }
     }
   }

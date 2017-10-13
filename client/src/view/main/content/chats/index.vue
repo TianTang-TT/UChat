@@ -1,9 +1,10 @@
 <template>
   <div class="chats">
-    <chat v-for="chat in chats" :chatInfo="chat" key></chat>
+    <chat v-for="chatting in chattings" :chatInfo="chatting" key></chat>
   </div>
 </template>
 <script>
+  import { mapState } from 'vuex'
   import Chat from './Chat'
   export default {
     name: 'chats',
@@ -12,13 +13,11 @@
     },
     data () {
       return {
-        currentChatName: '惊蛰',
-        chats: [{
-          chatName: '惊蛰'
-        }, {
-          chatName: '天棠'
-        }]
+        currentChatName: '惊蛰'
       }
+    },
+    computed: {
+      ...mapState('chatting', ['chattings'])
     }
   }
 </script>
