@@ -1,7 +1,7 @@
 <template>
-  <div class="mem-item contact">
+  <div class="mem-item contact" :class="[isActive ? 'active' : '']">
     <img class="portrait" :src="contactMsg.avatar">
-    <div :class="['desc', contactType, isActive ? 'active' : '']">
+    <div :class="['desc', contactType]">
       <template v-if="contactType === 'chatting'">
         <p class="name">{{ contactMsg.name }}</p>
         <p class="speak">{{ contactMsg.text }}</p>

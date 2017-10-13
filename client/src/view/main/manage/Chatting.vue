@@ -19,8 +19,8 @@
     data () {
       return {
         chattings: [
-          {name: '惊蛰', avatar: Avatar, text: '测试文字'},
-          {name: '天棠', avatar: Avatar, text: '说过一句话'}
+          {name: '惊蛰', chatName: '惊蛰', avatar: Avatar, text: '测试文字d'},
+          {name: '天棠', chatName: '天棠', avatar: Avatar, text: '说过一句话'}
         ]
       }
     },
