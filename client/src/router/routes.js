@@ -1,5 +1,6 @@
 import Login from 'view/login'
 import Main from 'view/main'
+// import store from 'store'
 
 import Chatting from 'view/main/manage/Chatting'
 const Contacts = () => import('view/main/manage/Contacts')

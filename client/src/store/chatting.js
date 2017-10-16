@@ -6,7 +6,7 @@ export default {
     }, {
       chatName: '天棠'
     }],
-    currentChat: '惊蛰'
+    currentChat: ''
   },
   mutations: {
     addChatting (state, chatting) {
