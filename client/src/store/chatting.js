@@ -1,10 +1,48 @@
 export default {
   namespaced: true,
+  // type 1为单聊，2为群聊
   state: {
     chattings: [{
-      chatName: '惊蛰'
+      id: 'c_0',
+      name: '惊蛰',
+      type: '1',
+      numbers: 2,
+      participants: [{
+        id: 'u_0',
+        nickName: '天棠',
+        avatar: ''
+      }, {
+        id: 'u_1',
+        nickName: '惊蛰',
+        avatar: ''
+      }],
+      lastText: '111',
+      dialogs: [
+        {avatar: '', type: 'system', content: '开始聊天'},
+        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
+        {avatar: '', speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
+        {avatar: '', speaker: '天棠', content: 'this is content'},
+        {avatar: '', speaker: '天棠', content: 'this is content'},
+        {avatar: '', type: 'system', content: 'this is a message from system'},
+        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content '},
+        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
+        {avatar: '', speaker: '天棠', content: 'this is conten1t'}
+      ]
     }, {
-      chatName: '天棠'
+      id: 'c_1',
+      name: '天棠',
+      type: '1',
+      numbers: 2,
+      participants: [{
+        id: 'u_1',
+        nickName: '惊蛰',
+        avatar: ''
+      }, {
+        id: 'u_1',
+        nickName: '惊蛰',
+        avatar: ''
+      }],
+      dialogs: []
     }],
     currentChat: ''
   },

@@ -4,7 +4,7 @@
     <div :class="['desc', contactType]">
       <template v-if="contactType === 'chatting'">
         <p class="name">{{ contactMsg.name }}</p>
-        <p class="speak">{{ contactMsg.text }}</p>
+        <p class="speak">{{ lastText }}</p>
       </template>
       <template v-if="contactType === 'contact'">
         <p class="name">{{ contactMsg.name }}</p>
@@ -25,6 +25,14 @@
         required: true
       },
       isActive: Boolean
+    },
+    computed: {
+      lastText () {
+        return this.contactMsg.dialogs[0].content
+      }
+    },
+    mounted () {
+      console.log(this.contactMsg.dialogs[0].content)
     }
   }
 </script>
@@ -61,6 +69,9 @@
         .speak {
           margin-top: 8px;
           opacity: .5;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }

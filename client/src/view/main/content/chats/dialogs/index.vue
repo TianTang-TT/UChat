@@ -2,7 +2,7 @@
   <section class="dialogs-container">
     <!--对方名称-->
     <div class="title" @click="addDialog">
-      UChat～(与{{ chatInfo.chatName }}的聊天)
+      <span class="chatting-name">{{ chatInfo.chatName }}</span>
     </div>
     <!--已发送对话-->
     <div class="dialogs" ref="dialogs">
