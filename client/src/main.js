@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import 'components'
+import 'components'  // 引入全局组件
 
 import 'static/css/reset.css'
 import 'assets/css/iconfont.css'

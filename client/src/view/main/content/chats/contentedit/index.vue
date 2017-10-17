@@ -32,10 +32,9 @@
     <!--输入框-->
     <div class="inputing">
       <p class="typeContent"
-         contenteditable="true"
-         @keyup.enter="ennterHandler"
-         @keyup="changeData($event)">
-        {{ edittingMsg }}
+         ref="typeContent"
+         contenteditable
+         @keyup="contentEdit($event)">
       </p>
       <button class="btn-send" @click="sendMessage">发送(S)</button>
     </div>
@@ -61,12 +60,10 @@
     },
     methods: {
       ...mapActions('chatting', ['addDialog']),
-      changeData (event) {
-        this.edittingMsg = event.target.innerHTML
-      },
-      ennterHandler (event) {
-        if (event.shiftKey) return
-        this.sendMessage()
+      contentEdit (event) {
+        if (event.keyCode === 13 && !event.shiftKey) {
+          this.sendMessage()
+        }
       },
       sendMessage () {
         this.addDialog({
@@ -75,9 +72,10 @@
             id: Date.now(),
             type: 'dialog',
             speaker: this.userName,
-            content: this.edittingMsg
+            content: this.$refs['typeContent'].innerHTML
           }
         })
+        this.$refs['typeContent'].innerHTML = ''
       }
     }
   }
