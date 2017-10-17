@@ -16,15 +16,9 @@ export default {
         nickName: '惊蛰',
         avatar: ''
       }],
-      lastText: '111',
       dialogs: [
         {avatar: '', type: 'system', content: '开始聊天'},
         {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
-        {avatar: '', speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
-        {avatar: '', speaker: '天棠', content: 'this is content'},
-        {avatar: '', speaker: '天棠', content: 'this is content'},
-        {avatar: '', type: 'system', content: 'this is a message from system'},
-        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content '},
         {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
         {avatar: '', speaker: '天棠', content: 'this is conten1t'}
       ]
@@ -34,15 +28,23 @@ export default {
       type: '1',
       numbers: 2,
       participants: [{
-        id: 'u_1',
-        nickName: '惊蛰',
+        id: 'u_0',
+        nickName: '天棠',
         avatar: ''
       }, {
         id: 'u_1',
         nickName: '惊蛰',
         avatar: ''
       }],
-      dialogs: []
+      dialogs: [
+        {avatar: '', type: 'system', content: '开始聊天'},
+        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
+        {avatar: '', speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
+        {avatar: '', speaker: '天棠', content: 'this is content'},
+        {avatar: '', speaker: '天棠', content: 'this is content'},
+        {avatar: '', type: 'system', content: 'this is a message from system'},
+        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'}
+      ]
     }],
     currentChat: ''
   },

@@ -1,5 +1,5 @@
 <template>
-  <section class="chat" v-if="chatInfo.chatName === currentChat">
+  <section class="chat" v-if="chatInfo.id === currentChat">
     <!--对话部分-->
     <dialogs :chatInfo="chatInfo"></dialogs>
 

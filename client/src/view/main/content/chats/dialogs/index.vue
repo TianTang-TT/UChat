@@ -1,12 +1,12 @@
 <template>
   <section class="dialogs-container">
     <!--对方名称-->
-    <div class="title" @click="addDialog">
-      <span class="chatting-name">{{ chatInfo.chatName }}</span>
+    <div class="title">
+      <span class="chatting-name">{{ chatInfo.name }}</span>
     </div>
     <!--已发送对话-->
     <div class="dialogs" ref="dialogs">
-      <message v-for="dialog in dialogs" key :messageContent="dialog"></message>
+      <message v-for="dialog in chatInfo.dialogs" key :messageContent="dialog"></message>
     </div>
   </section>
 </template>
@@ -21,21 +21,6 @@
       chatInfo: {
         type: Object,
         required: true
-      }
-    },
-    data () {
-      return {
-        dialogs: [
-          {type: 'system', content: '开始聊天'},
-          {type: 'self', speaker: '惊蛰', content: 'this is content'},
-          {speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
-          {speaker: '天棠', content: 'this is content'},
-          {speaker: '天棠', content: 'this is content'},
-          {type: 'system', content: 'this is a message from system'},
-          {type: 'self', speaker: '惊蛰', content: 'this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content this is content '},
-          {type: 'self', speaker: '惊蛰', content: 'this is content'},
-          {speaker: '天棠', content: 'this is content'}
-        ]
       }
     },
     methods: {

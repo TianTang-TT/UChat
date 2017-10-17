@@ -28,11 +28,8 @@
     },
     computed: {
       lastText () {
-        return this.contactMsg.dialogs[0].content
+        return this.contactMsg.dialogs[this.contactMsg.dialogs.length - 1].content
       }
-    },
-    mounted () {
-      console.log(this.contactMsg.dialogs[0].content)
     }
   }
 </script>
@@ -51,6 +48,7 @@
     }
     .desc {
       flex: 1;
+      width: 1%;
       margin-left: 10px;
       height: 100%;
       &.contact {

@@ -11,11 +11,6 @@
     components: {
       Chat
     },
-    data () {
-      return {
-        currentChatName: '惊蛰'
-      }
-    },
     computed: {
       ...mapState('chatting', ['chattings'])
     }
