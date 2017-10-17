@@ -54,14 +54,23 @@ export default {
     },
     activeChat (state, chattingId) {
       state.currentChat = chattingId
+    },
+    addDialog (state, condition) {
+      state.chattings
+        .find(chatting => chatting.id === condition.chattingId)
+        .dialogs.push(condition.dialog)
     }
   },
   actions: {
     addChatting ({ commit, chatting }) {
       commit('addChatting', chatting)
     },
-    activeChat ({ commit }, name) {
-      commit('activeChat', name)
+    activeChat ({ commit }, chattingId) {
+      commit('activeChat', chattingId)
+    },
+    addDialog ({ commit }, condition) {
+      commit('addDialog', condition)
+      console.log(condition)
     }
   }
 }

@@ -31,24 +31,53 @@
     </ul>
     <!--输入框-->
     <div class="inputing">
-      <p class="typeContent" contenteditable>
-
+      <p class="typeContent"
+         contenteditable="true"
+         @keyup.enter="ennterHandler"
+         @keyup="changeData($event)">
+        {{ edittingMsg }}
       </p>
       <button class="btn-send" @click="sendMessage">发送(S)</button>
     </div>
   </section>
 </template>
 <script>
+  import { mapActions, mapState } from 'vuex'
   export default {
     name: 'contentedit',
+    props: {
+      chatInfo: {
+        type: Object,
+        required: true
+      }
+    },
     data () {
       return {
         edittingMsg: ''
       }
     },
+    computed: {
+      ...mapState(['userName'])
+    },
     methods: {
+      ...mapActions('chatting', ['addDialog']),
+      changeData (event) {
+        this.edittingMsg = event.target.innerHTML
+      },
+      ennterHandler (event) {
+        if (event.shiftKey) return
+        this.sendMessage()
+      },
       sendMessage () {
-        console.log('...')
+        this.addDialog({
+          chattingId: this.chatInfo.id,
+          dialog: {
+            id: Date.now(),
+            type: 'dialog',
+            speaker: this.userName,
+            content: this.edittingMsg
+          }
+        })
       }
     }
   }
@@ -175,6 +204,7 @@
         outline: none;
         box-sizing: border-box;
         font-size: 15px;
+        overflow: auto;
       }
       .btn-send {
         width: 70px;

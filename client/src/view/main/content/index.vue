@@ -13,6 +13,7 @@
 <style scoped>
   .content {
     flex: 1;
+    width: 1%;
     height: 100%;
     background-color: #eeeeee;
   }

@@ -4,7 +4,7 @@
     <dialogs :chatInfo="chatInfo"></dialogs>
 
     <!--内容输入区-->
-    <contentedit></contentedit>
+    <contentedit :chatInfo="chatInfo"></contentedit>
   </section>
 </template>
 <script>
