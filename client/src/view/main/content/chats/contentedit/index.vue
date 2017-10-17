@@ -185,8 +185,11 @@
           margin: 10px 0;
           position: absolute;
           top: 0;
+          left: 0;
+          z-index: 1;
           opacity: 0;
-          cursor: pointer
+          cursor: pointer;
+
         }
       }
     }
