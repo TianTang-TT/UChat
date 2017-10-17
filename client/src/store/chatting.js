@@ -18,9 +18,9 @@ export default {
       }],
       dialogs: [
         {avatar: '', type: 'system', content: '开始聊天'},
-        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
-        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
-        {avatar: '', speaker: '天棠', content: 'this is conten1t'}
+        {avatar: '', type: 'dialog', speaker: '惊蛰', content: 'this is content'},
+        {avatar: '', type: 'dialog', speaker: '惊蛰', content: 'this is content'},
+        {avatar: '', type: 'dialog', speaker: '天棠', content: 'this is conten1t'}
       ]
     }, {
       id: 'c_1',
@@ -38,12 +38,12 @@ export default {
       }],
       dialogs: [
         {avatar: '', type: 'system', content: '开始聊天'},
-        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'},
-        {avatar: '', speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
-        {avatar: '', speaker: '天棠', content: 'this is content'},
-        {avatar: '', speaker: '天棠', content: 'this is content'},
+        {avatar: '', type: 'dialog', speaker: '惊蛰', content: 'this is content'},
+        {avatar: '', type: 'dialog', speaker: '天棠', content: 'this is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is contentthis is content'},
+        {avatar: '', type: 'dialog', speaker: '天棠', content: 'this is content'},
+        {avatar: '', type: 'dialog', speaker: '天棠', content: 'this is content'},
         {avatar: '', type: 'system', content: 'this is a message from system'},
-        {avatar: '', type: 'self', speaker: '惊蛰', content: 'this is content'}
+        {avatar: '', type: 'dialog', speaker: '惊蛰', content: 'this is content'}
       ]
     }],
     currentChat: ''

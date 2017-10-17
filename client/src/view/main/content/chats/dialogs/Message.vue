@@ -1,5 +1,5 @@
 <template>
-  <div :class="['speaking', messageContent.type]">
+  <div :class="['speaking', messageType]">
     <span v-if="messageContent.type==='system'">
       {{ messageContent.content }}
     </span>
@@ -11,12 +11,24 @@
   </div>
 </template>
 <script>
+  import { mapState } from 'vuex'
   export default {
     name: 'message',
     props: {
       messageContent: {
         type: Object,
         required: true
+      }
+    },
+    computed: {
+      ...mapState({
+        userName: 'userName'
+      }),
+      messageType () {
+        if (this.messageContent.speaker === this.userName) {
+          return 'self'
+        }
+        return this.messageContent.type
       }
     }
   }

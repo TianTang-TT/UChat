@@ -28,7 +28,11 @@
     },
     computed: {
       lastText () {
-        return this.contactMsg.dialogs[this.contactMsg.dialogs.length - 1].content
+        let len = this.contactMsg.dialogs.length
+        if (len > 0) {
+          return this.contactMsg.dialogs[len - 1].content
+        }
+        return ''
       }
     }
   }

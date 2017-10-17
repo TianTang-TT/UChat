@@ -31,14 +31,26 @@
     </ul>
     <!--输入框-->
     <div class="inputing">
-      <p class="typeContent" contenteditable="true"></p>
-      <button class="btn-send">发送(S)</button>
+      <p class="typeContent" contenteditable>
+
+      </p>
+      <button class="btn-send" @click="sendMessage">发送(S)</button>
     </div>
   </section>
 </template>
 <script>
   export default {
-    name: 'contentedit'
+    name: 'contentedit',
+    data () {
+      return {
+        edittingMsg: ''
+      }
+    },
+    methods: {
+      sendMessage () {
+        console.log('...')
+      }
+    }
   }
 </script>
 <style lang="less" scoped>
