@@ -16,10 +16,10 @@
       <!--菜单-->
       <div class="menu">
         <ul class="menu-ul clearfix">
-          <router-link tag="li" active-class="active" class="menu-li" :to="{name: 'chatting', params: {userName: currentChat}}">
+          <router-link tag="li" active-class="active" class="menu-li" :to="{path: `/chatting${currentChat ? '/' + currentChat : ''}`}">
             <i class="iconfont icon-chat"></i>
           </router-link>
-          <router-link tag="li" active-class="active" class="menu-li" to="/contacts">
+          <router-link tag="li" active-class="active" class="menu-li" :to="{path: `/contacts${currentContact ? '/' + currentContact : ''}`}">
             <i class="iconfont icon-list"></i>
           </router-link>
           <router-link tag="li" active-class="active" class="menu-li" to="/foo">
@@ -38,7 +38,8 @@
   export default {
     name: 'manage',
     computed: {
-      ...mapState('chatting', ['currentChat'])
+      ...mapState('chatting', ['currentChat']),
+      ...mapState('contacts', ['currentContact'])
     }
   }
 </script>

@@ -27,7 +27,7 @@ const routes = [
         }
       },
       {
-        path: 'chatting/:id',
+        path: 'chatting/:chattingId',
         name: 'chatting',
         components: {
           manage: Chatting,
@@ -45,7 +45,7 @@ const routes = [
         }
       },
       {
-        path: 'contacts/:id',
+        path: 'contacts/:contactId',
         name: 'contacts',
         components: {
           manage: Contacts,

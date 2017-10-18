@@ -5,25 +5,24 @@
       contact-type="contact"
       v-for="contact in contacts"
       key
+      :isActive="contact.id === currentContact"
       @click.native="chooseContact(contact)"
       :contact-msg="contact"></contact>
   </div>
 </template>
 <script>
-  import Avatar from 'assets/img/1.jpg'
+  import { mapState, mapActions } from 'vuex'
+
   export default {
     name: 'contacts',
-    data () {
-      return {
-        contacts: [
-          {id: 1, name: '惊蛰', avatar: Avatar},
-          {id: 2, name: '天棠', avatar: Avatar}
-        ]
-      }
+    computed: {
+      ...mapState('contacts', ['contacts', 'currentContact'])
     },
     methods: {
+      ...mapActions('contacts', ['activeContact']),
       chooseContact (contact) {
         this.$router.push({name: 'contacts', params: {contactId: contact.id}})
+        this.activeContact(contact.id)
       }
     }
   }

@@ -22,7 +22,7 @@
     methods: {
       ...mapActions('chatting', ['activeChat']),
       chooseChatting (chatting) {
-        this.$router.push({name: 'chatting', params: {id: chatting.id}})
+        this.$router.push({name: 'chatting', params: {chattingId: chatting.id}})
         this.activeChat(chatting.id)
       }
     }

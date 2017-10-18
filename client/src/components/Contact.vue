@@ -1,6 +1,6 @@
 <template>
   <div class="mem-item contact" :class="[isActive ? 'active' : '']">
-    <img class="portrait" :src="contactMsg.avatar">
+    <img class="portrait" :src="avatar">
     <div :class="['desc', contactType]">
       <template v-if="contactType === 'chatting'">
         <p class="name">{{ contactMsg.name }}</p>
@@ -13,8 +13,14 @@
   </div>
 </template>
 <script>
+  import Avatar from 'assets/img/1.jpg'
   export default {
     name: 'contact',
+    data () {
+      return {
+        avatar: Avatar
+      }
+    },
     props: {
       contactType: {
         type: String,
