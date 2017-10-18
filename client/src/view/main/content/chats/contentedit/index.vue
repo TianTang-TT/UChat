@@ -20,7 +20,7 @@
       <p class="typeContent"
          ref="typeContent"
          contenteditable
-         @keyup="contentEdit($event)">
+         @keydown="contentEdit($event)">
       </p>
       <button class="btn-send" @click="sendMessage">发送(S)</button>
     </div>
@@ -52,17 +52,20 @@
       ...mapActions('chatting', ['addDialog']),
       contentEdit (event) {
         if (event.keyCode === 13 && !event.shiftKey) {
+          event.preventDefault()
           this.sendMessage()
         }
       },
       sendMessage () {
+        let messages = this.$refs['typeContent'].innerHTML
+        if (!messages.trim().length) return
         this.addDialog({
           chattingId: this.chatInfo.id,
           dialog: {
             id: Date.now(),
             type: 'dialog',
             speaker: this.userName,
-            content: this.$refs['typeContent'].innerHTML
+            content: messages
           }
         })
         this.$refs['typeContent'].innerHTML = ''
