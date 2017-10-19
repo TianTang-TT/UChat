@@ -70,7 +70,6 @@ export default {
     },
     addDialog ({ commit }, condition) {
       commit('addDialog', condition)
-      console.log(condition)
     }
   }
 }

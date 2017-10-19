@@ -60,7 +60,7 @@
       },
       chooseEmoji (type, name) {
         // 构造img标签并插入到当前的输入区
-        let img = `<img src=${require('assets/img/' + type + '/' + name + '.gif')}>`
+        let img = `<img src=${require('assets/img/' + type + '/' + name + '.gif')} type="emoji">`
 
         this.hideHandler(img)
       }

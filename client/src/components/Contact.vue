@@ -4,7 +4,7 @@
     <div :class="['desc', contactType]">
       <template v-if="contactType === 'chatting'">
         <p class="name">{{ contactMsg.name }}</p>
-        <p class="speak">{{ lastText }}</p>
+        <p class="speak" v-html="lastText"></p>
       </template>
       <template v-if="contactType === 'contact'">
         <p class="name">{{ contactMsg.name }}</p>
@@ -80,6 +80,10 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          [type=emoji] {
+            width: 17px;
+            height: 17px;
+          }
         }
       }
     }
