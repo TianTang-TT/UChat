@@ -1,25 +1,22 @@
 <template>
   <div class="emoji-container">
     <div class="tab">
-      <section class="emoji-list small" data-type="qq">
-        <img src="~assets/img/qq/1.gif" data-type="qq" data-num="1">
-        <img src="~assets/img/qq/1.gif" data-type="qq" data-num="1">
-        <img src="~assets/img/qq/1.gif" data-type="qq" data-num="1">
-      </section>
-      <section class="emoji-list common" data-type="tsj">
-        <img src="~assets/img/tsj/1.gif" data-type="tsj" data-num="1">
+      <section :class="['emoji-list', currentEmoji.size]" :data-type="currentEmoji.type">
+        <img v-for="i in currentEmoji.total"
+             @click="chooseEmoji(currentEmoji.type, i)"
+             :src="require(`assets/img/${currentEmoji.type}/${i}.gif`)"
+             :data-type="currentEmoji.type"
+             :data-num="i">
       </section>
     </div>
     <ul class="selector clearfix">
       <li class="selector-li" v-for="emoji in emojis" :data-type="emoji.type">
-        <img :src="emoji.icon">
+        <img :src="emoji.icon" @click="switchEmojiTab(emoji)">
       </li>
     </ul>
   </div>
 </template>
 <script>
-  import TSJ from 'assets/img/tsj/1.gif'
-  import QQ from 'assets/img/qq/1.gif'
   export default {
     name: 'emoji',
     props: {
@@ -30,16 +27,26 @@
     },
     data () {
       return {
-        emojiTabs: [{
-          type: 'qq',
-          size: 'small',
-          icon: QQ
-        }, {
-          type: 'tsj',
-          size: 'common',
-          icon: TSJ
-        }],
-        currentEmoji: 'qq'
+        emojis: {
+          qq: {
+            type: 'qq',
+            size: 'small',
+            icon: require('assets/img/qq/1.gif'),
+            total: 75
+          },
+          tsj: {
+            type: 'tsj',
+            size: 'common',
+            icon: require('assets/img/tsj/1.gif'),
+            total: 18
+          }
+        },
+        currentEmojiType: 'qq'
+      }
+    },
+    computed: {
+      currentEmoji () {
+        return this.emojis[this.currentEmojiType]
       }
     },
     methods: {
@@ -47,6 +54,15 @@
         if (!this.$el.contains(e.target)) {
           this.hideHandler()
         }
+      },
+      switchEmojiTab (emoji) {
+        this.currentEmojiType = emoji.type
+      },
+      chooseEmoji (type, name) {
+        // 构造img标签并插入到当前的输入区
+        let img = `<img src=${require('assets/img/' + type + '/' + name + '.gif')}>`
+
+        this.hideHandler(img)
       }
     },
     created () {
@@ -84,7 +100,6 @@
         }
       }
       .common {
-        display: none;
         img {
           width: 50px;
           height: 50px;

@@ -73,7 +73,10 @@
       showEmojiTab () {
         this.emojiVisible = !this.emojiVisible
       },
-      hideEmojiTab () {
+      hideEmojiTab (img) {
+        if (img) {
+          this.$refs['typeContent'].innerHTML += img
+        }
         this.emojiVisible = false
       }
     }
