@@ -13,13 +13,12 @@
   </div>
 </template>
 <script>
-  import Avatar from 'assets/img/1.jpg'
   import { codeToImg } from 'util'
   export default {
     name: 'contact',
     data () {
       return {
-        avatar: Avatar
+        avatar: require('assets/img/1.jpg')
       }
     },
     props: {

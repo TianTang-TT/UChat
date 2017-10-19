@@ -23,12 +23,16 @@
         required: true
       }
     },
+    watch: {
+      chatInfo () {
+        debugger
+        this.$nextTick(() => {
+          this.$refs['dialogs'].scrollTop = this.$refs['dialogs'].scrollHeight
+        })
+      }
+    },
     methods: {
       addDialog () {
-        this.dialogs.push({
-          type: Date.now(),
-          content: '测试对话'
-        })
         this.$nextTick(() => {
           this.$refs['dialogs'].scrollTop = this.$refs['dialogs'].scrollHeight
         })
