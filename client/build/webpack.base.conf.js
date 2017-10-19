@@ -28,7 +28,8 @@ module.exports = {
       'components': resolve('src/components'),
       'router': resolve('src/router'),
       'store': resolve('src/store'),
-      'view': resolve('src/view')
+      'view': resolve('src/view'),
+      'util': resolve('src/util')
     }
   },
   module: {

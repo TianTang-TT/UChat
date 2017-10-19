@@ -28,6 +28,7 @@
 </template>
 <script>
   import { mapActions, mapState } from 'vuex'
+  import { imgToCode } from 'util'
   import Emoji from './Emoji'
   export default {
     name: 'contentedit',
@@ -65,7 +66,7 @@
             id: Date.now(),
             type: 'dialog',
             speaker: this.userName,
-            content: messages
+            content: imgToCode(messages)
           }
         })
         this.$refs['typeContent'].innerHTML = ''

@@ -14,6 +14,7 @@
 </template>
 <script>
   import Avatar from 'assets/img/1.jpg'
+  import { codeToImg } from 'util'
   export default {
     name: 'contact',
     data () {
@@ -36,7 +37,7 @@
       lastText () {
         let len = this.contactMsg.dialogs.length
         if (len > 0) {
-          return this.contactMsg.dialogs[len - 1].content
+          return codeToImg(this.contactMsg.dialogs[len - 1].content)
         }
         return ''
       }

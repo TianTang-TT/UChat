@@ -6,12 +6,13 @@
     <template v-else>
       <img src="~assets/img/1.jpg" class="speak-portrait">
       <p class="speak-user">{{ messageContent.speaker }}</p>
-      <p class="speak-content" v-html="messageContent.content"></p>
+      <p class="speak-content" v-html="messageDetail"></p>
     </template>
   </div>
 </template>
 <script>
   import { mapState } from 'vuex'
+  import { codeToImg } from 'util'
   export default {
     name: 'message',
     props: {
@@ -29,6 +30,9 @@
           return 'self'
         }
         return this.messageContent.type
+      },
+      messageDetail () {
+        return codeToImg(this.messageContent.content)
       }
     }
   }
