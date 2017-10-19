@@ -2,8 +2,8 @@
   <section class="contentedit">
     <!--聊天工具-->
     <ul class="tools clearfix">
-      <li class="tool-item emoji active" @click.stop="showEmojiTab">
-        <i class="iconfont icon-face"></i>
+      <li class="tool-item emoji active" >
+        <i class="iconfont icon-face" @click.stop="showEmojiTab"></i>
         <emoji v-if="emojiVisible" :hideHandler="hideEmojiTab"></emoji>
       </li>
       <li class="tool-item printscreen">
@@ -71,7 +71,7 @@
         this.$refs['typeContent'].innerHTML = ''
       },
       showEmojiTab () {
-        this.emojiVisible = true
+        this.emojiVisible = !this.emojiVisible
       },
       hideEmojiTab () {
         this.emojiVisible = false

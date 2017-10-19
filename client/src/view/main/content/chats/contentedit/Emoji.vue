@@ -11,18 +11,35 @@
       </section>
     </div>
     <ul class="selector clearfix">
-      <li class="selector-li" data-type="qq"><img src="~assets/img/qq/1.gif"></li>
-      <li class="selector-li" data-type="tsj"><img src="~assets/img/tsj/1.gif"></li>
+      <li class="selector-li" v-for="emoji in emojis" :data-type="emoji.type">
+        <img :src="emoji.icon">
+      </li>
     </ul>
   </div>
 </template>
 <script>
+  import TSJ from 'assets/img/tsj/1.gif'
+  import QQ from 'assets/img/qq/1.gif'
   export default {
     name: 'emoji',
     props: {
       hideHandler: {
         type: Function,
         required: true
+      }
+    },
+    data () {
+      return {
+        emojiTabs: [{
+          type: 'qq',
+          size: 'small',
+          icon: QQ
+        }, {
+          type: 'tsj',
+          size: 'common',
+          icon: TSJ
+        }],
+        currentEmoji: 'qq'
       }
     },
     methods: {
