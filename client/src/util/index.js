@@ -18,3 +18,7 @@ export function codeToImg (str) {
     return `<img src="${require('assets/img/' + s1 + '/' + s2 + '.gif')}" type="emoji">`
   })
 }
+
+export function filterContent (str) {
+  return str.replace(/&nbsp;/g, '').replace(/<br><br>/g, '')
+}

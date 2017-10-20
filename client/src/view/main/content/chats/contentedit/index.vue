@@ -28,7 +28,7 @@
 </template>
 <script>
   import { mapActions, mapState } from 'vuex'
-  import { imgToCode } from 'util'
+  import { imgToCode, filterContent } from 'util'
   import Emoji from './Emoji'
   export default {
     name: 'contentedit',
@@ -59,7 +59,7 @@
       },
       sendMessage () {
         let messages = this.$refs['typeContent'].innerHTML
-        if (!messages.trim().length) return
+        if (!(filterContent(messages).trim()).length) return
         this.addDialog({
           chattingId: this.chatInfo.id,
           dialog: {
