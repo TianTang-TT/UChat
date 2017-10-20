@@ -11,7 +11,12 @@
       </li>
       <li class="tool-item upload">
         <i class="iconfont icon-folder">
-          <input type="file" class="uploadImg">
+          <input
+            type="file"
+            class="uploadImg"
+            @change="sendImg"
+            accept=".png, .jpg, .jpeg, gif"
+            ref="uploadImg">
         </i>
       </li>
     </ul>
@@ -70,6 +75,13 @@
           }
         })
         this.$refs['typeContent'].innerHTML = ''
+      },
+      sendImg () {
+        let img = this.$refs['uploadImg'].files[0]
+        if (!img) return
+        if (!/(png|jpg|jpeg|gif)$/.test(img.type)) {
+          alert('只能发送图片')
+        }
       },
       showEmojiTab () {
         this.emojiVisible = !this.emojiVisible
