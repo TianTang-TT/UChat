@@ -24,8 +24,7 @@
       }
     },
     watch: {
-      chatInfo () {
-        debugger
+      'chatInfo.dialogs.length' () {
         this.$nextTick(() => {
           this.$refs['dialogs'].scrollTop = this.$refs['dialogs'].scrollHeight
         })
