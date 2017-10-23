@@ -15,7 +15,7 @@ export function codeToImg (str) {
   if (!str) return ''
   let codeReg = /\[emoji:(\w+?)_(\d+?)\]/g
   return str.replace(codeReg, (target, s1, s2) => {
-    return `<img src="${require('assets/img/' + s1 + '/' + s2 + '.gif')}" type="emoji">`
+    return `<img  src="${require('assets/img/' + s1 + '/' + s2 + '.gif')}" >`
   })
 }
 
