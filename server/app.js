@@ -1,13 +1,14 @@
 const Koa = require('koa')
 const app = new Koa()
+const mount = require('koa-mount')
 const views = require('koa-views')
+const statics = require('koa-static')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-// 自定义中间件
-const response_formatter = require('./middlewares/response_formatter')
+const responseFormatter = require('./middlewares/response_formatter')
 
 // 路由文件处理
 const index = require('./routes/index')
@@ -22,7 +23,7 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(mount('/static', statics(__dirname + '/public')))
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'
@@ -37,7 +38,7 @@ app.use(async (ctx, next) => {
 })
 
 // format response
-app.use(response_formatter)
+app.use(responseFormatter(/\/user/))
 
 // routes
 app.use(index.routes(), index.allowedMethods())
