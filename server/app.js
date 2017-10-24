@@ -38,7 +38,7 @@ app.use(async (ctx, next) => {
 })
 
 // format response
-app.use(responseFormatter(/\/user/))
+app.use(responseFormatter(/\/uchat/))
 
 // routes
 app.use(index.routes(), index.allowedMethods())
