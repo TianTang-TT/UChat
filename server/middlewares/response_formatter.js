@@ -2,7 +2,7 @@
  *  format response
  */
 
-module.export.formatResponse = async (ctx, next) => {
+module.exports = async (ctx, next) => {
   // 先执行路由，等回溯的时候对结果进行格式化
   await next()
 

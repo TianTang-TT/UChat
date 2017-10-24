@@ -6,6 +6,10 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
+// 自定义中间件
+const response_formatter = require('./middlewares/response_formatter')
+
+// 路由文件处理
 const index = require('./routes/index')
 const users = require('./routes/users')
 
@@ -31,6 +35,9 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+
+// format response
+app.use(response_formatter)
 
 // routes
 app.use(index.routes(), index.allowedMethods())
