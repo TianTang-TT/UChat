@@ -16,4 +16,8 @@ router.get('/json', async (ctx, next) => {
   }
 })
 
+router.get('/uchat', async (ctx, next) => {
+  ctx.body = 'uchat route test'
+})
+
 module.exports = router

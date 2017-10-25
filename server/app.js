@@ -9,10 +9,7 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
 const responseFormatter = require('./middlewares/response_formatter')
-
-// 路由文件处理
-const index = require('./routes/index')
-const users = require('./routes/users')
+const router = require('./routes/index')
 
 // error handler
 onerror(app)
@@ -34,15 +31,12 @@ app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms -- ${start}`)
 })
 
-// format response
-app.use(responseFormatter(/\/uchat/))
-
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+router.use('/uchat', responseFormatter)
+app.use(router.routes())
 
 // error-handling
 app.on('error', (err, ctx) => {
