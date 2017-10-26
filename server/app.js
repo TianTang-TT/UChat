@@ -33,10 +33,6 @@ app.use(views(__dirname + '/views', {
 app.use(requestLogger)
 
 // routes
-router.use((ctx, next) => {
-  console.log('----------------------all----------')
-  next()
-})
 router.use('/uchat', responseFormatter, uchatRouter.routes())
 router.use(userRouter.routes())
 app.use(router.routes(), router.allowedMethods())
