@@ -3,14 +3,16 @@ const app = new Koa()
 const mount = require('koa-mount')
 const views = require('koa-views')
 const statics = require('koa-static')
+const router = require('koa-router')()
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const requestLogger = require('./middlewares/request_logger')
-const responseFormatter = require('./middlewares/response_formatter')
-const router = require('./routes/index')
+const requestLogger = require('./middlewares/requestLogger')
+const responseFormatter = require('./middlewares/responseFormatter')
+const uchatRouter = require('./routes/uchatRouter')
+const userRouter = require('./routes/userRouter')
 
 // error handler
 onerror(app)
@@ -31,10 +33,13 @@ app.use(views(__dirname + '/views', {
 app.use(requestLogger)
 
 // routes
-router.use('/uchat', responseFormatter)
-app
-  .use(router.routes())
-  .use(router.allowedMethods())
+router.use((ctx, next) => {
+  console.log('----------------------all----------')
+  next()
+})
+router.use('/uchat', responseFormatter, uchatRouter.routes())
+router.use(userRouter.routes())
+app.use(router.routes(), router.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
