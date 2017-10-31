@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
   dev: {
     port: 3001
   },

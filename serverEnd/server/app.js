@@ -1,3 +1,4 @@
+const path = require('path')
 const Koa = require('koa')
 const app = new Koa()
 const mount = require('koa-mount')
@@ -23,9 +24,9 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(mount('/static', statics(__dirname + '/public')))
+app.use(mount('/static', statics(path.resolve(__dirname, '../public'))))
 
-app.use(views(__dirname + '/views', {
+app.use(views(path.resolve(__dirname, '../views'), {
   extension: 'pug'
 }))
 
