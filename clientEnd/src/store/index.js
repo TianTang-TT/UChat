@@ -8,16 +8,23 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     userName: '天棠',
-    avatar: ''
+    avatar: '',
+    socket: null
   },
   mutations: {
     setUserName (state, name) {
       state.userName = name
+    },
+    initSocket (state, socket) {
+      state.socket = socket
     }
   },
   actions: {
     setUserName ({ commit, name }) {
       commit('setUserName', name)
+    },
+    initSocket ({ commit }, socket) {
+      commit('initSocket', socket)
     }
   },
   modules: {

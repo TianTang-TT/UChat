@@ -10,6 +10,7 @@ const chatGroup = {}
 
 module.exports = socketIO => {
   socketIO.on('connection', socket => {
+    console.log('有人加入了群聊')
     socket.on('login', user => onlineNumbers.push(user))
   })
 }

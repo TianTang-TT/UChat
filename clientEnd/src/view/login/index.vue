@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+  import io from 'socket.io-client'
   export default {
     name: 'login',
     data () {
@@ -21,7 +22,10 @@
     },
     methods: {
       login () {
-        this.$router.push({path: '/'})
+        let socket = io.connect('localhost:3000')
+        socket.emit('login')
+        this.$store.dispatch('initSocket', socket)
+        // this.$router.push({path: '/'})
       }
     }
   }
