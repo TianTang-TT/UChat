@@ -12,15 +12,33 @@ const chatGroup = new Map()
 module.exports = socketIO => {
   socketIO.on('connection', socket => {
 
-    socket.on('login', (userName, callback) => {
-      // 上线之后生成16位的id，并将其加入到在线列表
-      let userId = util.genRandomId(16)
-      let isLogin = onlineNumbers.has(userId)
-      if (!isLogin) {
-        onlineNumbers.set(userId, {userId, userName})
-        callback([...onlineNumbers.values()])
-        io.sockets.emit('onlineChange', [...onlineNumbers.values()])
+    socket.on('login', (userInfo, callback) => {
+      let id = userInfo.id
+      if (onlineNumbers.has(id)) {
+        return callback({
+          code: 0,
+          message: '该用户已登录',
+          data: null
+        })
       }
+      onlineNumbers.set(id, {id, name: userInfo.name})
+      callback({
+        code: 1,
+        message: '登录成功',
+        data: [...onlineNumbers.values()]
+      })
+      socketIO.sockets.emit('onlineChange', [...onlineNumbers.values()])
     })
+
+    // 接受消息事件
+    socket.on('message', msg => {
+
+    })
+
+    // 从在线列表中删除断连用户
+    socket.on('disconnect', () => {
+      socket.broadcast.emit('offline', onlineNumbers.get(socket.id))
+      onlineNumbers.delete(socket.id)
+    });
   })
 }
