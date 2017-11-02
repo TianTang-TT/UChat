@@ -16,11 +16,13 @@
       <!--菜单-->
       <div class="menu">
         <ul class="menu-ul clearfix">
-          <router-link tag="li" active-class="active" class="menu-li" :to="{path: `/chatting${currentChat ? '/' + currentChat : ''}`}">
-            <i class="iconfont icon-chat"></i>
+          <router-link tag="li" active-class="active" class="menu-li"
+                       :to="{path: `/chatting${currentChat ? '/' + currentChat : ''}`}">
+            <i class="iconfont icon-chat"><span class="total">[{{ chattings.length }}]</span></i>
           </router-link>
-          <router-link tag="li" active-class="active" class="menu-li" :to="{path: `/contacts${currentContact ? '/' + currentContact : ''}`}">
-            <i class="iconfont icon-list"></i>
+          <router-link tag="li" active-class="active" class="menu-li"
+                       :to="{path: `/contacts${currentContact ? '/' + currentContact : ''}`}">
+            <i class="iconfont icon-list"><span class="total">[{{ contacts.length }}]</span></i>
           </router-link>
           <router-link tag="li" active-class="active" class="menu-li" to="/foo">
             <i class="iconfont icon-publicnumber"></i>
@@ -38,8 +40,8 @@
   export default {
     name: 'manage',
     computed: {
-      ...mapState('chatting', ['currentChat']),
-      ...mapState('contacts', ['currentContact'])
+      ...mapState('chatting', ['chattings', 'currentChat']),
+      ...mapState('contacts', ['contacts', 'currentContact'])
     }
   }
 </script>
@@ -127,6 +129,12 @@
         i {
           font-size: 30px;
           color: #fff;
+          .total {
+            font-weight: 200;
+            margin-left: 5px;
+            font-size: 16px;
+            color: #fff;
+          }
         }
       }
     }
