@@ -27,8 +27,8 @@ export default {
     initContacts ({ commit }, contacts) {
       commit('initContacts', contacts)
     },
-    addContact ({ commit }, cond) {
-      commit('addContact', cond.contact)
+    addContact ({ commit }, contact) {
+      commit('addContact', contact)
     },
     removeContact ({ commit }, id) {
       commit('removeContact', id)

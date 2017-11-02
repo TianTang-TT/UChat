@@ -21,13 +21,14 @@ module.exports = socketIO => {
           data: null
         })
       }
+      // 加入在线用户列表
       onlineNumbers.set(id, {id, name: userInfo.name})
       callback({
         code: 1,
         message: '登录成功',
         data: [...onlineNumbers.values()]
       })
-      socketIO.sockets.emit('onlineChange', [...onlineNumbers.values()])
+      socket.broadcast.emit('online', {id, name: userInfo.name})
     })
 
     // 接受消息事件

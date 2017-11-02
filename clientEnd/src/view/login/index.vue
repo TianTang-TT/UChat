@@ -26,7 +26,7 @@
       }
     },
     methods: {
-      ...mapActions('contacts', ['initContacts', 'removeContact']),
+      ...mapActions('contacts', ['initContacts', 'addContact', 'removeContact']),
       login () {
         if (!this.nickname.length) {
           alert('请输入一个帅气的昵称')
@@ -41,6 +41,7 @@
           }, result => {
             if (result.code === 0) {
               alert('用户已登录')
+              this.$router.push({path: '/'})
             } else if (result.code === 1) {
               alert('登录成功')
               console.log(result.data)
@@ -51,6 +52,9 @@
               this.$router.push({path: '/'})
             }
           })
+        })
+        socket.on('online', contact => {
+          this.addContact(contact)
         })
         socket.on('offline', contact => {
           this.removeContact(contact.id)
