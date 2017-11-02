@@ -23,9 +23,14 @@
     methods: {
       login () {
         let socket = io.connect('localhost:3000')
-        socket.emit('login')
-        this.$store.dispatch('initSocket', socket)
-        // this.$router.push({path: '/'})
+        // 登录时发送用户信息
+        socket.emit('login', this.nickName, onlineNumbers => {
+          // 登录成功之后获得回执的在线人员列表
+          this.$store.dispatch('onlineChange', onlineNumbers)
+          // 将socket加入vuex的状态中方便后续的调用
+          this.$store.dispatch('initSocket', socket)
+          // this.$router.push({path: '/'})
+        })
       }
     }
   }
