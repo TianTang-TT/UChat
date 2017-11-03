@@ -1,7 +1,9 @@
+/*
 import Vue from 'vue'
 
 import Contact from './Contact.vue'
 Vue.component('contact', Contact)
+*/
 
 /*
 function registerGlobalComp (require) {
