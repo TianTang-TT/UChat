@@ -5,3 +5,7 @@ exports.genRandomId =  (len = 8) => {
   }
   return result.substr(0, len)
 }
+
+exports.genRandomInt = (m, n) => {
+  return parseInt(Math.random() * (n - m + 1) + m, 10)
+}

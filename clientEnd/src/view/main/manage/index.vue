@@ -3,9 +3,9 @@
     <header class="header">
       <!--个人资料-->
       <div class="profile">
-        <img class="portrait" :src="avatar">
+        <img class="portrait" :src="userInfo.avatar">
         <div class="desc">
-          <p class="nick-name">{{ userName }}</p>
+          <p class="nick-name">{{ userInfo.userName }}</p>
         </div>
       </div>
       <!--搜索框-->
@@ -40,7 +40,7 @@
   export default {
     name: 'manage',
     computed: {
-      ...mapState(['userName', 'avatar']),
+      ...mapState(['userInfo']),
       ...mapState('chatting', ['chattings', 'currentChat']),
       ...mapState('contacts', ['contacts', 'currentContact'])
     }

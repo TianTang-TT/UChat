@@ -19,18 +19,22 @@ module.exports = socketIO => {
           code: 0,
           message: '该用户已登录',
           data: {
-            user: {id, name: userInfo.name},
+            user: onlineNumbers.get(id),
             users: [...onlineNumbers.values()]
           }
         })
       }
       // 加入在线用户列表
-      onlineNumbers.set(id, {id, name: userInfo.name})
+      onlineNumbers.set(id, {
+        id,
+        name: userInfo.name,
+        avatar: `http://localhost:3000/static/images/avatars/avatar_${util.genRandomInt(1, 16)}.jpg`
+      })
       callback({
         code: 1,
         message: '登录成功',
         data: {
-          user: {id, name: userInfo.name},
+          user: onlineNumbers.get(id),
           users: [...onlineNumbers.values()]
         }
       })
