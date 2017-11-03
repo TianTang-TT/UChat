@@ -20,7 +20,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setUserName ({ commit, name }) {
+    setUserName ({ commit }, name) {
       commit('setUserName', name)
     },
     initSocket ({ commit }, socket) {

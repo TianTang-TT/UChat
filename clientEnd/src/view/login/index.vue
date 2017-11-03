@@ -26,6 +26,7 @@
       }
     },
     methods: {
+      ...mapActions(['setUserName', 'initSocket']),
       ...mapActions('contacts', ['initContacts', 'addContact', 'removeContact']),
       login () {
         if (!this.nickname.length) {
@@ -44,11 +45,12 @@
               this.$router.push({path: '/'})
             } else if (result.code === 1) {
               alert('登录成功')
-              console.log(result.data)
+              console.log(result)
+              this.setUserName(result.data.user.name)
               // 登录成功之后获得回执的在线人员列表
-              this.initContacts(result.data)
+              this.initContacts(result.data.users)
               // 将socket加入vuex的状态中方便后续的调用
-              this.$store.dispatch('initSocket', socket)
+              this.initSocket(socket)
               this.$router.push({path: '/'})
             }
           })
