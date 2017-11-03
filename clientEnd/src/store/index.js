@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     userName: '天棠',
-    avatar: '',
+    avatar: 'http://localhost:3000/static/images/avatars/v.jpg',
     socket: null
   },
   mutations: {

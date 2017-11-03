@@ -18,7 +18,10 @@ module.exports = socketIO => {
         return callback({
           code: 0,
           message: '该用户已登录',
-          data: null
+          data: {
+            user: {id, name: userInfo.name},
+            users: [...onlineNumbers.values()]
+          }
         })
       }
       // 加入在线用户列表
@@ -26,7 +29,10 @@ module.exports = socketIO => {
       callback({
         code: 1,
         message: '登录成功',
-        data: [...onlineNumbers.values()]
+        data: {
+          user: {id, name: userInfo.name},
+          users: [...onlineNumbers.values()]
+        }
       })
       socket.broadcast.emit('online', {id, name: userInfo.name})
     })
