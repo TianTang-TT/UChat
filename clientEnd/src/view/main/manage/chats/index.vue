@@ -9,7 +9,7 @@
       <img class="portrait" src="http://localhost:3000/static/images/avatars/v.jpg">
       <div class="desc chatting">
         <p class="name">{{ chatting.name }}</p>
-        <p class="speak" v-html="chatting.dialogs[0] || ''"></p>
+        <p class="speak" v-html="chatting.dialogs[0].content || ''"></p>
       </div>
     </div>
   </div>
