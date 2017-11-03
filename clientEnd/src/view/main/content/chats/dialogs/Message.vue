@@ -23,10 +23,10 @@
     },
     computed: {
       ...mapState({
-        userName: 'userName'
+        userId: state => state.userInfo.id
       }),
       messageType () {
-        if (this.messageContent.speaker === this.userName) {
+        if (this.userId && (this.messageContent.speakerId === this.userId)) {
           return 'self'
         }
         return this.messageContent.type
