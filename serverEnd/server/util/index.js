@@ -9,3 +9,7 @@ exports.genRandomId =  (len = 8) => {
 exports.genRandomInt = (m, n) => {
   return parseInt(Math.random() * (n - m + 1) + m, 10)
 }
+
+exports.genRandomImg = () => {
+  return `http://localhost:3000/static/images/avatars/avatar_${this.genRandomInt(1, 16)}.jpg`
+}
