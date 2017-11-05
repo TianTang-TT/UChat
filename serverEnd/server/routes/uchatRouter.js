@@ -1,4 +1,5 @@
 const router = require('koa-router')()
+const util = require('../util')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -6,9 +7,8 @@ router.get('/', async (ctx, next) => {
   })
 })
 
-router.get('/string', async (ctx, next) => {
-  console.log(ctx.req)
-  ctx.body = 'koa2 string'
+router.get('/getRandomImg', async (ctx, next) => {
+  ctx.body = util.genRandomImg()
 })
 
 router.get('/json', async (ctx, next) => {
