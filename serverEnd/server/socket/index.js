@@ -28,7 +28,7 @@ module.exports = socketIO => {
       onlineNumbers.set(id, {
         id,
         name: userInfo.name,
-        avatar: `http://localhost:3000/static/images/avatars/avatar_${util.genRandomInt(1, 16)}.jpg`
+        avatar: userInfo.avatar
       })
       callback({
         code: 1,

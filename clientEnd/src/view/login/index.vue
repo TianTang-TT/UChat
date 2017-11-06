@@ -3,7 +3,11 @@
     <div class="login-form">
       <h6 class="page-title">UChat!</h6>
       <div class="logo">
-        <img src="~assets/img/1.jpg" class="logo-img">
+        <img
+          title="双击更换头像"
+          :src="avatar"
+          @click="changeAvatar"
+          class="logo-img">
       </div>
       <input
         class="username"
@@ -17,17 +21,24 @@
 </template>
 <script>
   import io from 'socket.io-client'
+  import { getRandomImg } from 'api/login'
   import { mapActions } from 'vuex'
   export default {
     name: 'login',
     data () {
       return {
-        nickname: ''
+        nickname: '',
+        avatar: 'http://localhost:3000/static/images/avatars/v.jpg'
       }
     },
     methods: {
       ...mapActions(['initUserInfo', 'initSocket']),
       ...mapActions('contacts', ['initContacts', 'addContact', 'removeContact']),
+      changeAvatar () {
+        getRandomImg().then(res => {
+          console.log(res)
+        })
+      },
       login () {
         if (!this.nickname.length) {
           alert('请输入一个帅气的昵称')
@@ -38,7 +49,8 @@
           // 登录时发送用户信息
           socket.emit('login', {
             id: socket.id,
-            name: this.nickname
+            name: this.nickname,
+            avatar: this.avatar
           }, result => {
             if (result.code === 0) {
               alert('用户已登录')

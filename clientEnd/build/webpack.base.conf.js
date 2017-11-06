@@ -25,6 +25,7 @@ module.exports = {
       'static': resolve('static'),
       'src': resolve('src'),
       'assets': resolve('src/assets'),
+      'api': resolve('src/api'),
       'components': resolve('src/components'),
       'router': resolve('src/router'),
       'store': resolve('src/store'),
