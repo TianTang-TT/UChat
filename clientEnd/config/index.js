@@ -28,8 +28,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      'uchat': {
-        target: 'localhost:3000',
+      '/uchat': {
+        target: 'http://localhost:3000',
         changeOrigin: true
       }
     },
