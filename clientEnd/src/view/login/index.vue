@@ -13,6 +13,7 @@
         class="username"
         type="text"
         v-model="nickname"
+        @keyup.enter="login"
         placeholder="请输入昵称" />
       <button class="login-btn" @click="login">Join</button>
       <p class="welcome">welcome to UChat~</p>
