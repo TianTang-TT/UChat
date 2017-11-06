@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
+    "element-ui": "^2.0.3",
     "socket.io-client": "^2.0.4",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
