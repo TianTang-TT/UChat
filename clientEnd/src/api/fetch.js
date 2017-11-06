@@ -13,7 +13,7 @@ service.interceptors.request.use(config => {
 // 拦截响应
 service.interceptors.response.use(
   response => {
-    return response
+    return response.data
   }
   ,
   error => {

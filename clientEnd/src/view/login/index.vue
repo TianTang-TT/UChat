@@ -6,7 +6,7 @@
         <img
           title="双击更换头像"
           :src="avatar"
-          @click="changeAvatar"
+          @dblclick="changeAvatar"
           class="logo-img">
       </div>
       <input
@@ -36,7 +36,9 @@
       ...mapActions('contacts', ['initContacts', 'addContact', 'removeContact']),
       changeAvatar () {
         getRandomImg().then(res => {
-          console.log(res)
+          if (res.code === 1) {
+            this.avatar = res.data
+          }
         })
       },
       login () {
