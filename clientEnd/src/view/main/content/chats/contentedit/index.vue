@@ -52,7 +52,7 @@
       }
     },
     computed: {
-      ...mapState(['userName'])
+      ...mapState(['userInfo'])
     },
     methods: {
       ...mapActions('chatting', ['addDialog']),
@@ -70,7 +70,7 @@
           dialog: {
             id: Date.now(),
             type: 'dialog',
-            speaker: this.userName,
+            speaker: this.userInfo.userName,
             content: imgToCode(messages)
           }
         })
