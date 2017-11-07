@@ -4,9 +4,13 @@
       <img :src="contactInfo.avatar" class="avatar-detail">
     </div>
     <div class="contact-msg">
-      <p class="msg-item" v-for="(item, key) in contactInfo" v-if="key !== 'avatar'">
-        <span class="label">{{ key + ':' }}</span>
-        <span class="value">{{ item }}</span>
+      <p class="msg-item">
+        <span class="label">微信号</span>
+        <span class="value">{{ contactInfo.id }} </span>
+      </p>
+      <p class="msg-item">
+        <span class="label">昵称</span>
+        <span class="value">{{ contactInfo.name }} </span>
       </p>
     </div>
   </section>
@@ -42,13 +46,24 @@
       margin-top: 20px;
       .msg-item {
         display: flex;
-        margin: 20px;
+        margin: 5px;
+        line-height: 1.2;
         .label {
-          width: 100px;
+          color: dimgray;
+          width: 50px;
+          height: 24px;
+          overflow: hidden;
           text-align: justify;
+          &:after {
+            content: '';
+            width: 100%;
+            display: inline-block;
+            position: relative;
+          }
         }
         .value {
           flex: 1;
+          margin-left: 50px;
           white-space: nowrap;
           textoverflow: ellipsis;
           overflow: hidden;
