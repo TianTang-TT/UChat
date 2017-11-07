@@ -44,7 +44,7 @@
       },
       login () {
         if (!this.nickname.length) {
-          this.$message.warning('请输入一个帅气的昵称')
+          this.$message.warning('请取一个帅气的昵称')
           return
         }
         let socket = io.connect('localhost:3000')
