@@ -38,7 +38,7 @@ module.exports = socketIO => {
           users: [...onlineNumbers.values()]
         }
       })
-      socket.broadcast.emit('online', {id, name: userInfo.name})
+      socket.broadcast.emit('online', onlineNumbers.get(id))
     })
 
     // 接受消息事件
