@@ -56,8 +56,9 @@
             avatar: this.avatar
           }, result => {
             if (result.code === 0) {
-              this.$router.push({path: '/'})
+              this.$message.warning('登录失败，请稍后重试')
             } else if (result.code === 1) {
+              sessionStorage.setItem('u_token', Date.now())
               this.initUserInfo(result.data.user)
               // 登录成功之后获得回执的在线人员列表
               this.initContacts(result.data.users)

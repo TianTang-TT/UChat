@@ -12,7 +12,7 @@ const Contact = () => import('view/main/content/contact')
 const routes = [
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: Login
   },
   {
