@@ -74,6 +74,9 @@
         socket.on('offline', contact => {
           this.removeContact(contact.id)
         })
+        socket.on('logout', () => {
+          this.$message.warning('登录失效')
+        })
       }
     }
   }
