@@ -9,9 +9,10 @@ import 'static/css/reset.css'
 import 'assets/css/iconfont.css'
 
 Vue.config.productionTip = false
-Vue.component(Message.name, Message)
-Vue.component(MessageBox.name, MessageBox)
-Vue.component(Notification.name, Notification)
+
+Vue.prototype.$message = Message
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$notify = Notification
 
 /* eslint-disable no-new */
 new Vue({
