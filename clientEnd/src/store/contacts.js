@@ -4,6 +4,9 @@ export default {
     contacts: [],
     currentContact: ''
   },
+  getters: {
+    contactInfo: state => state.contacts.find(item => item.id === state.currentContact)
+  },
   mutations: {
     initContacts (state, contacts) {
       state.contacts = contacts
