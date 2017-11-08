@@ -30,7 +30,11 @@
         this.$message.warning('登录失效')
       })
       this.socket.on('requestChat', requester => {
-        this.$message.success(`${requester.name}想跟你聊天`)
+        this.$notify({
+          title: '系统消息',
+          message: '有人想与你聊天',
+          duration: 0
+        })
       })
     }
   }
