@@ -66,8 +66,12 @@ module.exports = socketIO => {
       }
     })
 
-    socket.on('agreeChat')
-    socket.on('denyChat')
+    socket.on('agreeChat', (requester, callback) => {
+
+    })
+    socket.on('denyChat', (requester, callback) => {
+
+    })
     // 接受消息事件
     socket.on('message', msg => {
 

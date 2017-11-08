@@ -16,7 +16,9 @@
       'content-detail': Content
     },
     computed: {
-      ...mapState(['userInfo', 'socket']),
+      ...mapState(['userInfo', 'socket'])
+    },
+    methods: {
       ...mapActions('contacts', ['addContact', 'removeContact'])
     },
     mounted () {
@@ -41,6 +43,11 @@
               type: 'info'
             }).then(() => {
               this.$message.success('已同意该请求')
+              this.socket.emit('agreeChat', this.userInfo.id, res => {
+                if (res.code === 0) {
+                  this.$.message.error(res.message)
+                }
+              })
             }).catch(() => {
               this.$message.error('已拒绝该请求')
             })
