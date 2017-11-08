@@ -56,8 +56,7 @@
             avatar: this.avatar
           }, result => {
             if (result.code === 0) {
-              // TODO 登陆失败需要做处理
-              this.$message.warning('登录失败，请稍后重试')
+              this.$message.error('登录失败，请稍后重试')
             } else if (result.code === 1) {
               sessionStorage.setItem('u_token', Date.now())
               this.initUserInfo(result.data.user)
