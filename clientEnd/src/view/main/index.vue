@@ -33,7 +33,18 @@
         this.$notify({
           title: '系统消息',
           message: '有人想与你聊天',
-          duration: 0
+          duration: 0,
+          onClick: () => {
+            this.$msgbox.confirm({
+              confirmButtonText: '同意',
+              cancelButtonText: '拒绝',
+              type: 'info'
+            }).then(() => {
+              this.$message.success('已同意该请求')
+            }).catch(() => {
+              this.$message.error('已拒绝该请求')
+            })
+          }
         })
       })
     }

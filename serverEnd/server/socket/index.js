@@ -43,7 +43,7 @@ module.exports = socketIO => {
     })
 
     // 发起聊天
-    socket.on('startChat', (contact, callback) => {
+    socket.on('requestChat', (contact, callback) => {
       const self = onlineNumbers.get(socket.id)
       // 检查contact是否在线，并且不是自己跟自己聊天
       if (self.id === contact.id) {
@@ -66,6 +66,8 @@ module.exports = socketIO => {
       }
     })
 
+    socket.on('agreeChat')
+    socket.on('denyChat')
     // 接受消息事件
     socket.on('message', msg => {
 

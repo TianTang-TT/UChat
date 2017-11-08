@@ -35,7 +35,7 @@
           this.$message.warning('你是有多寂寞啊想跟自己聊天！')
           return
         }
-        this.socket.emit('startChat', contact, res => {
+        this.socket.emit('requestChat', contact, res => {
           if (res.code === 0) {
             this.$message.error(res.message)
           } else if (res.code === 1) {
