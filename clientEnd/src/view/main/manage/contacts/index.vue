@@ -39,7 +39,7 @@
           if (res.code === 0) {
             this.$message.error(res.message)
           } else if (res.code === 1) {
-            this.$message.success('已成功发起聊天')
+            this.$message.success(res.message)
           }
         })
       }
