@@ -5,6 +5,7 @@
          v-for="contact in contacts"
          key
          @click="chooseContact(contact)"
+         @dblclick="startChart(contact)"
          :class="[contact.id === currentContact ? 'active' : '']">
       <img class="portrait" :src="contact.avatar">
       <div class="desc contact">
@@ -19,6 +20,7 @@
   export default {
     name: 'contacts',
     computed: {
+      ...mapState(['socket', 'userInfo']),
       ...mapState('contacts', ['contacts', 'currentContact'])
     },
     methods: {
@@ -26,6 +28,20 @@
       chooseContact (contact) {
         this.$router.push({name: 'contacts', params: {contactId: contact.id}})
         this.activeContact(contact.id)
+      },
+      startChart (contact) {
+        // 不能跟自己聊天
+        if (contact.id === this.userInfo.id) {
+          this.$message.warning('你是有多寂寞啊想跟自己聊天！')
+          return
+        }
+        this.socket.emit('startChat', contact, res => {
+          if (res.code === 0) {
+            this.$message.error(res.message)
+          } else if (res.code === 1) {
+            this.$message.success('已成功发起聊天')
+          }
+        })
       }
     }
   }
