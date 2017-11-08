@@ -34,7 +34,7 @@
     },
     methods: {
       ...mapActions(['initUserInfo', 'initSocket']),
-      ...mapActions('contacts', ['initContacts', 'addContact', 'removeContact']),
+      ...mapActions('contacts', ['initContacts']),
       changeAvatar () {
         getRandomImg().then(res => {
           if (res.code === 1) {

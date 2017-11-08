@@ -7,7 +7,7 @@
 <script>
   import Manage from './manage'
   import Content from './content'
-  import { mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
 
   export default {
     name: 'main',
@@ -16,7 +16,8 @@
       'content-detail': Content
     },
     computed: {
-      ...mapState(['userInfo', 'socket'])
+      ...mapState(['userInfo', 'socket']),
+      ...mapActions('contacts', ['addContact', 'removeContact'])
     },
     mounted () {
       this.socket.on('online', contact => {
