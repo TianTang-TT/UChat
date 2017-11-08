@@ -29,7 +29,7 @@
     data () {
       return {
         nickname: '',
-        avatar: 'http://localhost:3000/static/images/avatars/v.jpg'
+        avatar: this.changeAvatar()
       }
     },
     methods: {
