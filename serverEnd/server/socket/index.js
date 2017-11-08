@@ -3,6 +3,7 @@
  * @param socket
  */
 const util = require('../util')
+
 // 当前在线人员
 const onlineNumbers = new Map()
 

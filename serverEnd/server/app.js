@@ -13,7 +13,6 @@ const logger = require('koa-logger')
 const requestLogger = require('./middlewares/requestLogger')
 const responseFormatter = require('./middlewares/responseFormatter')
 const uchatRouter = require('./routes/uchatRouter')
-const userRouter = require('./routes/userRouter')
 
 // error handler
 onerror(app)
@@ -35,7 +34,6 @@ app.use(requestLogger)
 
 // routes
 router.use('/uchat', responseFormatter, uchatRouter.routes())
-router.use(userRouter.routes())
 app.use(router.routes(), router.allowedMethods())
 
 // error-handling
