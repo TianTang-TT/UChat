@@ -44,8 +44,9 @@ module.exports = socketIO => {
 
     // 发起聊天
     socket.on('startChat', (contact, callback) => {
+      const self = onlineNumbers.get(socket.id)
       // 检查contact是否在线，并且不是自己跟自己聊天
-      if (socket.id === contact.id) {
+      if (self.id === contact.id) {
         callback({
           code: 0,
           message: '再自恋也不能跟自己聊天啊'
@@ -57,6 +58,7 @@ module.exports = socketIO => {
         })
       } else {
         // 创建房间，开始对话
+        socketIO.to(contact.id).emit('requestChat', self)
         callback({
           code: 1,
           message: '好的，准备发起聊天'
