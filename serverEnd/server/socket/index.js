@@ -9,6 +9,14 @@ const onlineNumbers = new Map()
 
 // 群聊，包括私聊和群聊
 const chatGroup = new Map()
+const wordChannelId = '999999999'
+chatGroup.set(wordChannelId, {
+  id: wordChannelId,
+  name: '世界频道',
+  type: 2,
+  participants: [],
+  dialogs: []
+})
 
 module.exports = socketIO => {
   socketIO.on('connection', socket => {
@@ -43,7 +51,7 @@ module.exports = socketIO => {
           users: util.getUsersArray(onlineNumbers)
         }
       })
-      console.error(util.getUsersArray(onlineNumbers))
+      socket.join(wordChannelId)
       socket.broadcast.emit('online', onlineNumbers.get(id).info)
     })
 
@@ -81,7 +89,7 @@ module.exports = socketIO => {
         })
       }
     })
-
+    // 同意请求，准备创建房间进行聊天
     socket.on('agreeChat', requesterId => {
 
     })
