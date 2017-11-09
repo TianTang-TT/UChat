@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   // type 1为单聊，2为群聊
   state: {
+    worldChannel: null,
     chattings: [{
       id: 'c_0',
       name: '惊蛰',

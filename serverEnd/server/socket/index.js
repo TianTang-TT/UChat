@@ -59,6 +59,7 @@ module.exports = socketIO => {
         nickName: userInfo.name,
         avatar: userInfo.avatar
       })
+      // 通知别人有人上线了
       socket.broadcast.emit('online', onlineNumbers.get(id).info)
     })
 
