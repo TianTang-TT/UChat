@@ -9,18 +9,19 @@ const onlineNumbers = new Map()
 
 // 群聊，包括私聊和群聊
 const chatGroup = new Map()
-const wordChannelId = '999999999'
-chatGroup.set(wordChannelId, {
-  id: wordChannelId,
+const worldChannelId = '999999999'
+const wordChannel = {
+  id: worldChannelId,
   name: '世界频道',
   type: 2,
   participants: [],
   dialogs: []
-})
+}
+chatGroup.set(worldChannelId, wordChannel)
 
 module.exports = socketIO => {
   socketIO.on('connection', socket => {
-
+     const worldChannel = chatGroup.get(worldChannelId)
     socket.on('login', (userInfo, callback) => {
       let id = userInfo.id
       if (onlineNumbers.has(id)) {
@@ -51,7 +52,13 @@ module.exports = socketIO => {
           users: util.getUsersArray(onlineNumbers)
         }
       })
-      socket.join(wordChannelId)
+      // 加入世界频道
+      socket.join(worldChannelId)
+      wordChannel.participants.push({
+        id,
+        nickName: userInfo.name,
+        avatar: userInfo.avatar
+      })
       socket.broadcast.emit('online', onlineNumbers.get(id).info)
     })
 
@@ -100,6 +107,12 @@ module.exports = socketIO => {
 
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
+      const userInfo = onlineNumbers.get(socket.id)
+      const indexInWorld = worldChannel.participants.findIndex(item => {
+        return item.id === userInfo.id
+      })
+      worldChannel.participants.splice(indexInWorld, 1)
+      socket.to(worldChannelId).emit('worldMessage', '有人退出')
       socket.broadcast.emit('offline', socket.id)
       onlineNumbers.delete(socket.id)
     });
