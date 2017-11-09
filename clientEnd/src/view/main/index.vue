@@ -25,8 +25,8 @@
       this.socket.on('online', contact => {
         this.addContact(contact)
       })
-      this.socket.on('offline', contact => {
-        this.removeContact(contact.id)
+      this.socket.on('offline', id => {
+        this.removeContact(id)
       })
       this.socket.on('logout', () => {
         this.$message.warning('登录失效')

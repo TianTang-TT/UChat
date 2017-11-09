@@ -13,5 +13,9 @@ exports.genRandomInt = (m, n) => {
 }
 
 exports.genRandomImg = () => {
-  return `${config.domain}:${config.port}static/images/avatars/avatar_${this.genRandomInt(1, 16)}.jpg`
+  return `${config.domain}:${config.port}/static/images/avatars/avatar_${this.genRandomInt(1, 16)}.jpg`
+}
+
+exports.getUsersArray = users => {
+  return [...users.values()].map(item => item.info)
 }

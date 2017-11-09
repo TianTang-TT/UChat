@@ -21,25 +21,30 @@ module.exports = socketIO => {
           message: '该用户已登录',
           data: {
             user: onlineNumbers.get(id),
-            users: [...onlineNumbers.values()]
+            users: util.getUsersArray(onlineNumbers)
           }
         })
       }
       // 加入在线用户列表
       onlineNumbers.set(id, {
-        id,
-        name: userInfo.name,
-        avatar: userInfo.avatar
+        info: {
+          id,
+          name: userInfo.name,
+          avatar: userInfo.avatar
+        },
+        id: id,
+        socket: socket
       })
       callback({
         code: 1,
         message: '登录成功',
         data: {
-          user: onlineNumbers.get(id),
-          users: [...onlineNumbers.values()]
+          user: onlineNumbers.get(id).info,
+          users: util.getUsersArray(onlineNumbers)
         }
       })
-      socket.broadcast.emit('online', onlineNumbers.get(id))
+      console.error(util.getUsersArray(onlineNumbers))
+      socket.broadcast.emit('online', onlineNumbers.get(id).info)
     })
 
     // 发起聊天
@@ -58,7 +63,7 @@ module.exports = socketIO => {
         })
       } else {
         // 创建房间，开始对话
-        socketIO.to(contact.id).emit('requestChat', self)
+        socketIO.to(contact.id).emit('requestChat', self.info)
         callback({
           code: 1,
           message: '好的，准备发起聊天'
@@ -79,7 +84,7 @@ module.exports = socketIO => {
 
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
-      socket.broadcast.emit('offline', onlineNumbers.get(socket.id))
+      socket.broadcast.emit('offline', socket.id)
       onlineNumbers.delete(socket.id)
     });
   })
