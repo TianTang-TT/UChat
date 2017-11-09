@@ -10,7 +10,7 @@ export default {
       numbers: 2,
       participants: [{
         id: 'u_0',
-        nickName: '天棠',
+        name: '天棠',
         avatar: ''
       }, {
         id: 'u_1',

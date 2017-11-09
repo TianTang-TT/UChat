@@ -56,7 +56,7 @@ module.exports = socketIO => {
       socket.join(worldChannelId)
       wordChannel.participants.push({
         id,
-        nickName: userInfo.name,
+        name: userInfo.name,
         avatar: userInfo.avatar
       })
       // 通知别人有人上线了
