@@ -41,20 +41,37 @@
             this.$msgbox.confirm(`${requester.name}想与您进行聊天`, '会话请求', {
               confirmButtonText: '同意',
               cancelButtonText: '拒绝',
+              cancelButtonClass: 'error',
               type: 'info'
             }).then(() => {
               this.$message.success('已同意该请求')
-              this.socket.emit('agreeChat', this.userInfo.id, res => {
+              this.socket.emit('agreeChat', requester.id, res => {
                 if (res.code === 0) {
                   this.$.message.error(res.message)
                 }
               })
             }).catch(() => {
               this.$message.error('已拒绝该请求')
-              this.socket.emit('denyChat', this.userInfo.id)
+              this.socket.emit('denyChat', requester.id)
             })
           }
         })
+      })
+      // 自己发的聊天请求被人拒绝
+      this.socket.on('denyChat', res => {
+        if (res.code !== 0) {
+          this.$message.error(res)
+          return
+        }
+        this.$notify({
+          title: '系统消息',
+          message: res.message,
+          type: 'error'
+        })
+      })
+      // 聊天请求同意，准备进行会话
+      this.socket.on('startChat', target => {
+        // TODO
       })
     }
   }
