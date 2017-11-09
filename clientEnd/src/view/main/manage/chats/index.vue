@@ -2,6 +2,16 @@
   <!--当前聊天-->
   <div class="chatting">
     <div class="mem-item contact"
+         :class="[worldChannel.id === currentChat ? 'active' : '']"
+         @click="chooseChatting(worldChannel)"
+         key>
+      <img class="portrait" src="http://localhost:3000/static/images/avatars/v.jpg">
+      <div class="desc chatting">
+        <p class="name">{{ worldChannel.name }}</p>
+        <p class="speak" v-html="worldChannel.dialogs[0].content || ''"></p>
+      </div>
+    </div>
+    <div class="mem-item contact"
          :class="[chatting.id === currentChat ? 'active' : '']"
          v-for="chatting in chattings"
          @click="chooseChatting(chatting)"
@@ -20,7 +30,7 @@
   export default {
     name: 'chatting',
     computed: {
-      ...mapState('chatting', ['chattings', 'currentChat'])
+      ...mapState('chatting', ['worldChannel', 'chattings', 'currentChat'])
     },
     methods: {
       ...mapActions('chatting', ['activeChat']),

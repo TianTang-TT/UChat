@@ -59,6 +59,12 @@ export default {
   mutations: {
     initWorldChannel (state, participants) {
       state.worldChannel.participants = participants
+      state.worldChannel.dialogs.push({
+        avatar: '',
+        type: 'system',
+        content: '开始聊天',
+        speakerId: ''
+      })
     },
     addChatting (state, chatting) {
       state.chattings.push(chatting)
