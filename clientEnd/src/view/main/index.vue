@@ -32,12 +32,13 @@
         this.$message.warning('登录失效')
       })
       this.socket.on('requestChat', requester => {
-        this.$notify({
+        let notify = this.$notify({
           title: '系统消息',
           message: '有人想与你聊天',
           duration: 0,
           onClick: () => {
-            this.$msgbox.confirm({
+            notify.close()
+            this.$msgbox.confirm(`${requester.name}想与您进行聊天`, '会话请求', {
               confirmButtonText: '同意',
               cancelButtonText: '拒绝',
               type: 'info'
@@ -50,6 +51,7 @@
               })
             }).catch(() => {
               this.$message.error('已拒绝该请求')
+              this.socket.emit('denyChat', this.userInfo.id)
             })
           }
         })
