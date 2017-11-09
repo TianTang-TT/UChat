@@ -66,14 +66,11 @@ module.exports = socketIO => {
         socketIO.to(contact.id).emit('requestChat', self.info)
         callback({
           code: 1,
-          message: '好的，准备发起聊天'
+          message: '对方已收到您的请求'
         })
       }
     })
 
-    socket.on('agreeChat', requesterId => {
-
-    })
     socket.on('denyChat', requesterId => {
       let requester = onlineNumbers.get(requesterId)
       if (requester) {
@@ -83,6 +80,10 @@ module.exports = socketIO => {
           message: `${requester.info.name}拒绝了您的聊天请求`
         })
       }
+    })
+
+    socket.on('agreeChat', requesterId => {
+
     })
     // 接受消息事件
     socket.on('message', msg => {
