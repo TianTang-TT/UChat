@@ -6,6 +6,7 @@
 
 const http = require('http');
 const socketIO = require('socket.io')
+const config = require('../config')
 const initSocket = require('../server/socket')
 const app = require('../server/app.js');
 const debug = require('debug')('demo:server');
@@ -15,7 +16,7 @@ const debug = require('debug')('demo:server');
  * Get port from environment and store in Express.
  */
 
-let port = normalizePort(process.env.PORT || '3000');
+let port = normalizePort(process.env.PORT || config.port || 3000);
 // app.set('port', port);
 
 /**

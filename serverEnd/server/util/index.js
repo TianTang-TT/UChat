@@ -1,3 +1,5 @@
+const config = require('../../config')
+
 exports.genRandomId =  (len = 8) => {
   let result = ''
   while (result.length < len) {
@@ -11,5 +13,5 @@ exports.genRandomInt = (m, n) => {
 }
 
 exports.genRandomImg = () => {
-  return `http://172.31.225.28:3000/static/images/avatars/avatar_${this.genRandomInt(1, 16)}.jpg`
+  return `${config.domain}:${config.port}static/images/avatars/avatar_${this.genRandomInt(1, 16)}.jpg`
 }

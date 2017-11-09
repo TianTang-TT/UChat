@@ -1,8 +1,4 @@
 module.exports = {
-  dev: {
-    port: 3001
-  },
-  prod: {
-    port: 3002
-  }
+  domain: 'http://172.31.225.28',
+  port: 3000
 }
