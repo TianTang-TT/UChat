@@ -35,6 +35,7 @@
     methods: {
       ...mapActions(['initUserInfo', 'initSocket']),
       ...mapActions('contacts', ['initContacts']),
+      ...mapActions('chatting', ['initWorldChannel']),
       changeAvatar () {
         getRandomImg().then(res => {
           if (res.code === 1) {
@@ -62,6 +63,7 @@
               this.initUserInfo(result.data.user)
               // 登录成功之后获得回执的在线人员列表
               this.initContacts(result.data.users)
+              this.initWorldChannel(result.data.users)
               // 将socket加入vuex的状态中方便后续的调用
               this.initSocket(socket)
               this.$router.push({path: '/'})

@@ -2,7 +2,14 @@ export default {
   namespaced: true,
   // type 1为单聊，2为群聊
   state: {
-    worldChannel: null,
+    worldChannel: {
+      id: '999999999',
+      name: '世界频道',
+      type: '2',
+      numbers: 0,
+      participants: [],
+      dialogs: []
+    },
     chattings: [{
       id: 'c_0',
       name: '惊蛰',
@@ -50,6 +57,9 @@ export default {
     currentChat: ''
   },
   mutations: {
+    initWorldChannel (state, participants) {
+      state.worldChannel.participants = participants
+    },
     addChatting (state, chatting) {
       state.chattings.push(chatting)
     },
@@ -63,7 +73,10 @@ export default {
     }
   },
   actions: {
-    addChatting ({ commit, chatting }) {
+    initWorldChannel ({ commit }, participants) {
+      commit('initWorldChannel', participants)
+    },
+    addChatting ({ commit }, chatting) {
       commit('addChatting', chatting)
     },
     activeChat ({ commit }, chattingId) {
