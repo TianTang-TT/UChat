@@ -54,7 +54,7 @@ module.exports = socketIO => {
       if (self.id === contact.id) {
         callback({
           code: 0,
-          message: '再自恋也不能跟自己聊天啊'
+          message: '你太自恋了，居然想和自己聊天'
         })
       } else if (!onlineNumbers.get(contact.id)) {
         callback({
@@ -71,11 +71,18 @@ module.exports = socketIO => {
       }
     })
 
-    socket.on('agreeChat', (requester, callback) => {
+    socket.on('agreeChat', requesterId => {
 
     })
-    socket.on('denyChat', (requester, callback) => {
-
+    socket.on('denyChat', requesterId => {
+      let requester = onlineNumbers.get(requesterId)
+      if (requester) {
+        socketIO.to(requesterId).emit('denyChat', {
+          code: 0,
+          data: requester.info,
+          message: `${requester.info.name}拒绝了您的聊天请求`
+        })
+      }
     })
     // 接受消息事件
     socket.on('message', msg => {
