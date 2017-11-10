@@ -117,8 +117,7 @@ module.exports = socketIO => {
         return item.id === userInfo.id
       })
       worldChannel.participants.splice(indexInWorld, 1)
-      socket.to(worldChannelId).emit('worldMessage', '有人退出')
-      socket.broadcast.emit('offline', socket.id)
+      socket.broadcast.emit('offline', userInfo.info)
       onlineNumbers.delete(socket.id)
     });
   })
