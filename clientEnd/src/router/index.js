@@ -11,7 +11,8 @@ const router = new Router({
 
 // 路由切换之前做校验
 router.beforeEach((to, from, next) => {
-  let token = sessionStorage.getItem('u_token')
+  // let token = sessionStorage.getItem('u_token')
+  let token = window.token
   if (!token) {
     if (to.path === '/login') {
       next()

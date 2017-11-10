@@ -59,7 +59,8 @@
             if (result.code === 0) {
               this.$message.error('登录失败，请稍后重试')
             } else if (result.code === 1) {
-              sessionStorage.setItem('u_token', Date.now())
+              // sessionStorage.setItem('u_token', Date.now())
+              window.token = Date.now()
               this.initUserInfo(result.data.user)
               // 登录成功之后获得回执的在线人员列表
               this.initContacts(result.data.users)
