@@ -52,13 +52,14 @@ module.exports = socketIO => {
           users: util.getUsersArray(onlineNumbers)
         }
       })
-      // 加入世界频道
-      socket.join(worldChannelId)
+
       wordChannel.participants.push({
         id,
         name: userInfo.name,
         avatar: userInfo.avatar
       })
+      // 加入世界频道
+      socket.join(worldChannelId)
       // 通知别人有人上线了
       socket.broadcast.emit('online', onlineNumbers.get(id).info)
     })
