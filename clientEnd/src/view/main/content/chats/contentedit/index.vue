@@ -52,7 +52,7 @@
       }
     },
     computed: {
-      ...mapState(['userInfo'])
+      ...mapState(['socket', 'userInfo'])
     },
     methods: {
       ...mapActions('chatting', ['addDialog']),
@@ -65,7 +65,7 @@
       sendMessage () {
         let messages = this.$refs['typeContent'].innerHTML
         if (!(filterContent(messages).trim()).length) return
-        this.addDialog({
+        const dialog = {
           chattingId: this.chatInfo.id,
           dialog: {
             id: Date.now(),
@@ -73,7 +73,9 @@
             speaker: this.userInfo.userName,
             content: imgToCode(messages)
           }
-        })
+        }
+        this.socket.send(dialog)
+        this.addDialog(dialog)
         this.$refs['typeContent'].innerHTML = ''
       },
       sendImg () {
