@@ -65,16 +65,17 @@
       sendMessage () {
         let messages = this.$refs['typeContent'].innerHTML
         if (!(filterContent(messages).trim()).length) return
-        const dialog = {
+        const msg = {
           chattingId: this.chatInfo.id,
           dialog: {
             id: Date.now(),
             type: 'dialog',
-            speaker: this.userInfo.id,
+            speakerId: this.userInfo.id,
+            speaker: this.userInfo.userName,
             content: imgToCode(messages)
           }
         }
-        this.socket.send(dialog)
+        this.socket.send(msg)
         this.$refs['typeContent'].innerHTML = ''
       },
       sendImg () {
