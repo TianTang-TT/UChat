@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    worldChannelId: '999999999',
     userInfo: {
       id: '',
       userName: '未命名',

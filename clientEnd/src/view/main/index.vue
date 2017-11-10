@@ -16,7 +16,7 @@
       'content-detail': Content
     },
     computed: {
-      ...mapState(['userInfo', 'socket'])
+      ...mapState(['worldChannelId', 'userInfo', 'socket'])
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
@@ -26,7 +26,7 @@
       this.socket.on('online', contact => {
         this.addContact(contact)
         this.addDialog({
-          chattingId: '999999999',
+          chattingId: this.worldChannelId,
           dialog: {
             id: Date.now(),
             type: 'system',
