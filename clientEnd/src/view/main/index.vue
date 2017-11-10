@@ -19,11 +19,21 @@
       ...mapState(['userInfo', 'socket'])
     },
     methods: {
-      ...mapActions('contacts', ['addContact', 'removeContact'])
+      ...mapActions('contacts', ['addContact', 'removeContact']),
+      ...mapActions('chatting', ['addDialog'])
     },
     mounted () {
       this.socket.on('online', contact => {
         this.addContact(contact)
+        this.addDialog({
+          chattingId: '999999999',
+          dialog: {
+            id: Date.now(),
+            type: 'system',
+            speaker: '',
+            content: `${contact.name}加入了群聊`
+          }
+        })
       })
       this.socket.on('offline', id => {
         this.removeContact(id)
