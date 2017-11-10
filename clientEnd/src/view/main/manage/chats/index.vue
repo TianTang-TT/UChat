@@ -6,7 +6,7 @@
          v-for="chatting in chattings"
          @click="chooseChatting(chatting)"
          key>
-      <img class="portrait" src="http://localhost:3000/static/images/avatars/v.jpg">
+      <img class="portrait" :src="defaultAvatar">
       <div class="desc chatting">
         <p class="name">{{ chatting.name }}</p>
         <p class="speak" v-html="chatting.dialogs[0].content || ''"></p>
@@ -20,7 +20,7 @@
   export default {
     name: 'chatting',
     computed: {
-      ...mapState('chatting', ['total', 'chattings', 'currentChat'])
+      ...mapState('chatting', ['total', 'defaultAvatar', 'chattings', 'currentChat'])
     },
     methods: {
       ...mapActions('chatting', ['activeChat']),
