@@ -1,6 +1,6 @@
 <template>
   <div class="chats">
-    <chat v-for="chatting in chattings" :chatInfo="chatting" key></chat>
+    <chat v-for="chatting in chattings" v-if="chatting.id === currentChat" :chatInfo="chatting" key></chat>
   </div>
 </template>
 <script>
@@ -12,7 +12,7 @@
       Chat
     },
     computed: {
-      ...mapState('chatting', ['chattings'])
+      ...mapState('chatting', ['currentChat', 'chattings'])
     }
   }
 </script>

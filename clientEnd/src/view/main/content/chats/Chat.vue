@@ -1,5 +1,5 @@
 <template>
-  <section class="chat" v-if="chatInfo.id === currentChat">
+  <section class="chat">
     <!--对话部分-->
     <dialogs :chatInfo="chatInfo"></dialogs>
 
@@ -8,7 +8,6 @@
   </section>
 </template>
 <script>
-  import { mapState } from 'vuex'
   import Dialogs from './dialogs'
   import Contentedit from './contentedit'
   export default {
@@ -22,9 +21,6 @@
         type: Object,
         required: true
       }
-    },
-    computed: {
-      ...mapState('chatting', ['currentChat'])
     }
   }
 </script>

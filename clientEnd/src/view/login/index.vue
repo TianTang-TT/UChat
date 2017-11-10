@@ -23,7 +23,7 @@
 <script>
   import io from 'socket.io-client'
   import { getRandomImg } from 'api/login'
-  import { mapActions } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   export default {
     name: 'login',
     data () {
@@ -31,6 +31,9 @@
         nickname: '',
         avatar: this.changeAvatar()
       }
+    },
+    computed: {
+      ...mapState(['worldChannelId'])
     },
     methods: {
       ...mapActions(['initUserInfo', 'initSocket']),
@@ -67,7 +70,7 @@
               this.initWorldChannel(result.data.users)
               // 将socket加入vuex的状态中方便后续的调用
               this.initSocket(socket)
-              this.$router.push({path: '/'})
+              this.$router.push({name: 'chatting', params: {chattingId: this.worldChannelId}})
             }
           })
         })

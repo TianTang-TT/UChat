@@ -4,6 +4,7 @@ export default {
   // type 1为单聊，2为群聊
   state: {
     total: 1,
+    currentChat: wordChannelId,
     chattings: {
       [wordChannelId]: {
         id: wordChannelId,
@@ -58,8 +59,8 @@ export default {
           {avatar: '', type: 'dialog', speakerId: '1111', speaker: '惊蛰', content: 'this is content'}
         ]
       }
-    },
-    currentChat: ''
+    }
+
   },
   mutations: {
     initWorldChannel (state, participants) {
