@@ -103,8 +103,11 @@ module.exports = socketIO => {
 
     })
     // 接受消息事件
-    socket.on('message', msg => {
-
+    socket.on('message', ({chattingId, dialog}) => {
+      socketIO.to(chattingId).send({
+        chattingId,
+        dialog
+      })
     })
 
     // 从在线列表中删除断连用户

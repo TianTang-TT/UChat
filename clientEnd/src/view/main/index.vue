@@ -83,6 +83,9 @@
       this.socket.on('startChat', target => {
         // TODO
       })
+      this.socket.on('message', dialog => {
+        this.addDialog(dialog)
+      })
     }
   }
 </script>

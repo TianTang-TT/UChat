@@ -70,12 +70,11 @@
           dialog: {
             id: Date.now(),
             type: 'dialog',
-            speaker: this.userInfo.userName,
+            speaker: this.userInfo.id,
             content: imgToCode(messages)
           }
         }
         this.socket.send(dialog)
-        this.addDialog(dialog)
         this.$refs['typeContent'].innerHTML = ''
       },
       sendImg () {
