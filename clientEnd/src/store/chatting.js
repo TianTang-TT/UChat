@@ -5,7 +5,7 @@ export default {
   state: {
     total: 1,
     currentChat: wordChannelId,
-    defaultAvatar: 'http://172.31.225.28:3000/static/images/avatars/v.jpg',
+    defaultAvatar: 'http://localhost:3000/static/images/avatars/v.jpg',
     chattings: {
       [wordChannelId]: {
         id: wordChannelId,
