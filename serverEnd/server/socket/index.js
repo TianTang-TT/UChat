@@ -110,6 +110,11 @@ module.exports = socketIO => {
       })
     })
 
+    // 用户主动从群聊中退出
+    socket.on('quit', (chattingId, user) => {
+      // 从响应的群聊信息中退出该用户
+    })
+
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
       const userInfo = onlineNumbers.get(socket.id)
@@ -117,6 +122,7 @@ module.exports = socketIO => {
         return item.id === userInfo.id
       })
       worldChannel.participants.splice(indexInWorld, 1)
+      // 从所有的群聊中退出
       socket.broadcast.emit('offline', userInfo.info)
       onlineNumbers.delete(socket.id)
     });
