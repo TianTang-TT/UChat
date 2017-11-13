@@ -112,12 +112,13 @@ module.exports = socketIO => {
 
     // 用户主动从群聊中退出
     socket.on('quit', (chattingId, user) => {
-      // 从响应的群聊信息中退出该用户
+      // 从相应的群聊信息中退出该用户
     })
 
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
       const userInfo = onlineNumbers.get(socket.id)
+      // 从世界频道中退出
       const indexInWorld = worldChannel.participants.findIndex(item => {
         return item.id === userInfo.id
       })
