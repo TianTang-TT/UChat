@@ -35,9 +35,9 @@
           }
         })
       })
-      this.socket.on('offline', id => {
-        this.removeContact(id)
-        // 世界频道发消息，并从各个聊天的参与人中删除
+      this.socket.on('offline', user => {
+        this.removeContact(user.id)
+        // 并且从各个群聊中删除
       })
       this.socket.on('logout', () => {
         this.$message.warning('登录失效')
