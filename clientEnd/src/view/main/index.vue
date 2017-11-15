@@ -20,7 +20,7 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chatting', ['addDialog'])
+      ...mapActions('chatting', ['addDialog', 'cleanChattings'])
     },
     mounted () {
       this.socket.on('online', contact => {
@@ -38,6 +38,7 @@
       this.socket.on('offline', user => {
         this.removeContact(user.id)
         // 并且从各个群聊中删除
+        this.cleanChattings(user.id)
       })
       this.socket.on('logout', () => {
         this.$message.warning('登录失效')

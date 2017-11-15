@@ -96,6 +96,13 @@ export default {
     },
     addDialog ({ commit }, condition) {
       commit('addDialog', condition)
+    },
+    cleanChattings ({ commit, state }, userId) {
+      // 从各个聊天中删除联系人信息
+      state.chattings.forEach(chat => {
+        let index = chat.participants.findIndex(user => user.id === userId)
+        index >= 0 && chat.participants.splice(index, 1)
+      })
     }
   }
 }
