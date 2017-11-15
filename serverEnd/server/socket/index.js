@@ -39,7 +39,7 @@ module.exports = socketIO => {
       }
 
       // 加入在线用户列表
-      handle.addUserToOnline(userInfo, socket, onlineNumbers, worldChannel)
+      handle.addUserToOnline(userInfo, socket, onlineNumbers, chatGroup)
       callback({
         code: 1,
         message: '登录成功',
@@ -110,17 +110,7 @@ module.exports = socketIO => {
     socket.on('disconnect', () => {
       const userInfo = onlineNumbers.get(socket.id)
 
-      handle.removeFromOnline(onlineNumbers, chatGroup)
-      // 从世界频道中退出
-      const indexInWorld = worldChannel.participants.findIndex(item => {
-        return item.id === userInfo.id
-      })
-      worldChannel.participants.splice(indexInWorld, 1)
-
-      // 从在线人员中删除
-      onlineNumbers.delete(socket.id)
-      // 从各个群聊中删除
-      // TODO
+      handle.removeFromOnline(socket, onlineNumbers, chatGroup)
 
       // 发送offline消息给客户端，客户端从本地做处理
       socket.broadcast.emit('offline', userInfo.info)

@@ -1,3 +1,4 @@
+const config = require('../../config')
 /**
  *
  * @param onlineNumbers
@@ -10,9 +11,9 @@ const getUsersArray = users => {
 }
 
 // 将用户信息加入在线列表,并自动加入世界频道
-const addUserToOnline = (userInfo, socket, onlineNumbers, worldChannel) => {
-  let id = userInfo.id
-
+const addUserToOnline = (userInfo, socket, onlineNumbers, chatGroup) => {
+  const id = userInfo.id
+  const worldChannel = chatGroup.get(config.worldChannelId)
   onlineNumbers.set(id, {
     info: {
       id,
@@ -30,9 +31,22 @@ const addUserToOnline = (userInfo, socket, onlineNumbers, worldChannel) => {
   })
 }
 
+const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
+  // 从所有的聊天中退出
+  for (let chat of chatGroup.values()) {
+    let index = chat.participants.findIndex(item => {
+      return item.id === socket.id
+    })
+    index && chat.participants.splice(index, 1)
+  }
+  // 从在线人员中删除
+  onlineNumbers.delete(socket.id)
+}
+
 module.exports = {
   getUsersArray,
-  addUserToOnline
+  addUserToOnline,
+  removeFromOnline
 }
 
 
