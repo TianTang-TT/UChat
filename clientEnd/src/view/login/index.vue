@@ -66,6 +66,8 @@
               window.token = Date.now()
               this.initUserInfo(result.data.user)
               // 登录成功之后获得回执的在线人员列表
+              // 此处将回执数组分别赋值给vuex中的contacts和世界频道的participants，
+              // 两者实际指向了同一个数组，所以对其中某一个的操作会影响到另外一个
               this.initContacts(result.data.users)
               this.initWorldChannel(result.data.users)
               // 将socket加入vuex的状态中方便后续的调用
