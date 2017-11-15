@@ -38,7 +38,7 @@
       this.socket.on('offline', user => {
         this.removeContact(user.id)
         // 并且从各个群聊中删除
-        this.cleanChattings(user.id)
+        this.cleanChattings(user)
       })
       this.socket.on('logout', () => {
         this.$message.warning('登录失效')

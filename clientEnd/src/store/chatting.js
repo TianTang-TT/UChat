@@ -79,9 +79,9 @@ export default {
     activeChat (state, chattingId) {
       state.currentChat = chattingId
     },
-    addDialog (state, condition) {
-      state.chattings[condition.chattingId]
-        .dialogs.push(condition.dialog)
+    addDialog (state, msg) {
+      state.chattings[msg.chattingId]
+        .dialogs.push(msg.dialog)
     }
   },
   actions: {
@@ -94,15 +94,28 @@ export default {
     activeChat ({ commit }, chattingId) {
       commit('activeChat', chattingId)
     },
-    addDialog ({ commit }, condition) {
-      commit('addDialog', condition)
+    addDialog ({ commit }, dialog) {
+      commit('addDialog', dialog)
     },
-    cleanChattings ({ commit, state }, userId) {
+    cleanChattings ({ commit, state }, userInfo) {
       // 从各个聊天中删除联系人信息
-      state.chattings.forEach(chat => {
-        let index = chat.participants.findIndex(user => user.id === userId)
-        index >= 0 && chat.participants.splice(index, 1)
-      })
+      for (let chat of Object.values(state.chattings)) {
+        let index = chat.participants.findIndex(user => user.id === userInfo.id)
+        console.log(index)
+        if (index < 0) return
+        chat.participants.splice(index, 1)
+        // 退出之后在群聊中发送一条系统消息
+        commit('addDialog', {
+          chattingId: chat.id,
+          dialog: {
+            id: Date.now(),
+            type: 'system',
+            speakerId: '',
+            speaker: '',
+            content: `${userInfo.name}退出了聊天`
+          }
+        })
+      }
     }
   }
 }
