@@ -37,7 +37,7 @@ const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
     let index = chat.participants.findIndex(item => {
       return item.id === socket.id
     })
-    index && chat.participants.splice(index, 1)
+    index >= 0 && chat.participants.splice(index, 1)
   }
   // 从在线人员中删除
   onlineNumbers.delete(socket.id)
