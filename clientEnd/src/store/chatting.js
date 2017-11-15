@@ -99,6 +99,8 @@ export default {
     },
     cleanChattings ({ commit, state }, userInfo) {
       // 从各个聊天中删除联系人信息
+      // 由于contacts和世界频道的participants世纪指向的是同一个数组，所以只需要处理其中一个就可以。
+      // 这里选择在清理聊天信息时顺便清理世界平岛的participants信息
       for (let chat of Object.values(state.chattings)) {
         let index = chat.participants.findIndex(user => user.id === userInfo.id)
         console.log(index)
