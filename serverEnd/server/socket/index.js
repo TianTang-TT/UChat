@@ -2,7 +2,7 @@
  * 初始化socket
  * @param socket
  */
-const util = require('../util')
+const handle = require('./handle')
 
 // 当前在线人员
 const onlineNumbers = new Map()
@@ -31,7 +31,7 @@ module.exports = socketIO => {
           message: '该用户已登录',
           data: {
             user: onlineNumbers.get(id),
-            users: util.getUsersArray(onlineNumbers)
+            users: handle.getUsersArray(onlineNumbers)
           }
         })
       }
@@ -50,7 +50,7 @@ module.exports = socketIO => {
         message: '登录成功',
         data: {
           user: onlineNumbers.get(id).info,
-          users: util.getUsersArray(onlineNumbers)
+          users: handle.getUsersArray(onlineNumbers)
         }
       })
 
