@@ -36,7 +36,7 @@
         })
       })
       this.socket.on('offline', user => {
-        this.removeContact(user.id)
+        // this.removeContact(user.id)
         // 并且从各个群聊中删除
         this.cleanChattings(user)
       })
