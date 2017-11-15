@@ -9,6 +9,7 @@ const onlineNumbers = new Map()
 
 // 群聊，包括私聊和群聊
 const chatGroup = new Map()
+
 const worldChannelId = '999999999'
 const wordChannel = {
   id: worldChannelId,
@@ -118,14 +119,21 @@ module.exports = socketIO => {
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
       const userInfo = onlineNumbers.get(socket.id)
+
       // 从世界频道中退出
       const indexInWorld = worldChannel.participants.findIndex(item => {
         return item.id === userInfo.id
       })
       worldChannel.participants.splice(indexInWorld, 1)
-      // 从所有的群聊中退出
-      socket.broadcast.emit('offline', userInfo.info)
+
+      // 从在线人员中删除
       onlineNumbers.delete(socket.id)
+      // 从各个群聊中删除
+      // TODO
+
+      // 发送offline消息给客户端，客户端从本地做处理
+      socket.broadcast.emit('offline', userInfo.info)
+
     });
   })
 }
