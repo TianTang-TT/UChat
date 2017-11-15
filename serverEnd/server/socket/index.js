@@ -2,6 +2,7 @@
  * 初始化socket
  * @param socket
  */
+// 处理聊天和在线人员的工具函数集合
 const handle = require('./handle')
 
 // 当前在线人员
@@ -22,9 +23,10 @@ chatGroup.set(worldChannelId, wordChannel)
 
 module.exports = socketIO => {
   socketIO.on('connection', socket => {
-     const worldChannel = chatGroup.get(worldChannelId)
+    const worldChannel = chatGroup.get(worldChannelId)
     socket.on('login', (userInfo, callback) => {
       let id = userInfo.id
+
       if (onlineNumbers.has(id)) {
         return callback({
           code: 0,
@@ -35,16 +37,9 @@ module.exports = socketIO => {
           }
         })
       }
+
       // 加入在线用户列表
-      onlineNumbers.set(id, {
-        info: {
-          id,
-          name: userInfo.name,
-          avatar: userInfo.avatar
-        },
-        id: id,
-        socket: socket
-      })
+      handle.addUserToOnline(userInfo, socket, onlineNumbers, worldChannel)
       callback({
         code: 1,
         message: '登录成功',
@@ -54,11 +49,6 @@ module.exports = socketIO => {
         }
       })
 
-      wordChannel.participants.push({
-        id,
-        name: userInfo.name,
-        avatar: userInfo.avatar
-      })
       // 加入世界频道
       socket.join(worldChannelId)
       // 通知别人有人上线了
@@ -120,6 +110,7 @@ module.exports = socketIO => {
     socket.on('disconnect', () => {
       const userInfo = onlineNumbers.get(socket.id)
 
+      handle.removeFromOnline(onlineNumbers, chatGroup)
       // 从世界频道中退出
       const indexInWorld = worldChannel.participants.findIndex(item => {
         return item.id === userInfo.id
