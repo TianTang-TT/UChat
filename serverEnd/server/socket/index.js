@@ -91,6 +91,9 @@ module.exports = socketIO => {
     })
     // 同意请求，准备创建房间进行聊天
     socket.on('agreeChat', requesterId => {
+      // 将请求者与被请求这加入聊天群组，并分配一个聊天id
+      handle.initChat(requestId, socket, onlineNumbers, chatGroup, )
+      // 将两者加入聊天
 
     })
     // 接受消息事件
