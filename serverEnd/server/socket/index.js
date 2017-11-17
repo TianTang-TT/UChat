@@ -90,10 +90,19 @@ module.exports = socketIO => {
       }
     })
     // 同意请求，准备创建房间进行聊天
-    socket.on('agreeChat', requesterId => {
+    socket.on('agreeChat', (requesterId, callback) => {
+      const requester = onlineNumbers.get(requesterId)
+      if (!requester) {
+        return callback({
+          code: 0,
+          message: '对方已下线',
+          data: null
+        })
+      }
       // 将请求者与被请求这加入聊天群组，并分配一个聊天id
       handle.initChat(requestId, socket, onlineNumbers, chatGroup, )
       // 将两者加入聊天
+      socket.join()
 
     })
     // 接受消息事件
