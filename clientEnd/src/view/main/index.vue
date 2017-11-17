@@ -58,7 +58,7 @@
               this.$message.success('已同意该请求')
               this.socket.emit('agreeChat', requester.id, res => {
                 if (res.code === 0) {
-                  this.$.message.error(res.message)
+                  this.$message.error(res.message)
                 }
               })
             }).catch(() => {
@@ -83,6 +83,7 @@
       // 聊天请求同意，准备进行会话
       this.socket.on('startChat', chatInfo => {
         // TODO
+        console.log('...........................')
         console.log(chatInfo)
       })
       this.socket.on('message', dialog => {
