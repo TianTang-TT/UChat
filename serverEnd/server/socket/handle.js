@@ -1,4 +1,5 @@
 const config = require('../../config')
+const util = require('../util')
 /**
  *
  * @param onlineNumbers
@@ -41,7 +42,16 @@ const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
 }
 
 const initChat = (requester, socket, onlineNumbers, chatGroup) => {
-  let target = onlineNumbers.get(socket.id)
+  const chattingId = util.genRandomId()
+  const target = onlineNumbers.get(socket.id)
+  chatGroup.set(chattingId, {
+    id: chattingId,
+    name: `${requester.name}、${target.name}`.substr(0, 12),
+    type: 2,
+    participants: new Map([[requester.id, requester], [target.id, target]]),
+    dialogs: []
+  })
+  return chattingId
 }
 
 module.exports = {
