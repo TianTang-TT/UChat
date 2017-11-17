@@ -24,7 +24,7 @@ const addUserToOnline = (userInfo, socket, onlineNumbers, chatGroup) => {
     socket: socket
   })
 
-  worldChannel.participants.push({
+  worldChannel.participants.set(id, {
     id,
     name: userInfo.name,
     avatar: userInfo.avatar
@@ -34,13 +34,14 @@ const addUserToOnline = (userInfo, socket, onlineNumbers, chatGroup) => {
 const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
   // 从所有的聊天中退出
   for (let chat of chatGroup.values()) {
-    let index = chat.participants.findIndex(item => {
-      return item.id === socket.id
-    })
-    index >= 0 && chat.participants.splice(index, 1)
+    chat.participants.has(socket.id) && chat.participants.delete(socket.id)
   }
   // 从在线人员中删除
   onlineNumbers.delete(socket.id)
+}
+
+const initChat = (requester, socket, onlineNumbers, chatGroup) => {
+  let target = onlineNumbers.get(socket.id)
 }
 
 module.exports = {
