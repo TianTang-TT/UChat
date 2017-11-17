@@ -81,8 +81,9 @@
         })
       })
       // 聊天请求同意，准备进行会话
-      this.socket.on('startChat', target => {
+      this.socket.on('startChat', chatInfo => {
         // TODO
+        console.log(chatInfo)
       })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
