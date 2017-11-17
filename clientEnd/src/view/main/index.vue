@@ -56,6 +56,7 @@
               type: 'info'
             }).then(() => {
               this.$message.success('已同意该请求')
+              // TODO 同意请求之后表现有异常，待修复
               this.socket.emit('agreeChat', requester.id, res => {
                 if (res.code === 0) {
                   this.$message.error(res.message)
