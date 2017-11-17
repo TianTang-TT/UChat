@@ -105,7 +105,7 @@ module.exports = socketIO => {
       socket.join(chat.id)
       requester.socket.join(chat.id)
       // 向客户端发消息准备新建一个聊天
-      socketIO.to(chattingId).emit('startChat', chat)
+      socketIO.to(chat.id).emit('startChat', chat)
 
     })
     // 接受消息事件
