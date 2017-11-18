@@ -42,7 +42,7 @@ const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
 }
 
 const initChat = (requester, socket, onlineNumbers, chatGroup) => {
-  const chatId = util.genRandomId()
+  const chatId = util.genRandomId(16)
   const target = onlineNumbers.get(socket.id)
   const chat = {
     id: chatId,
