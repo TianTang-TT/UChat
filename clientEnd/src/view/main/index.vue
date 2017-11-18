@@ -20,7 +20,7 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chatting', ['addDialog', 'cleanChattings'])
+      ...mapActions('chatting', ['addChat', 'addDialog', 'cleanChattings'])
     },
     mounted () {
       this.socket.on('online', contact => {
@@ -82,8 +82,7 @@
       })
       // 聊天请求同意，准备进行会话
       this.socket.on('startChat', chatInfo => {
-        console.log('...........................')
-        console.log(chatInfo)
+        this.addChat(chatInfo)
       })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)

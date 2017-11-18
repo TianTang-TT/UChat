@@ -73,8 +73,8 @@ export default {
         speakerId: ''
       })
     },
-    addChatting (state, chatting) {
-      state.chattings[chatting] = chatting
+    addChat (state, chatting) {
+      state.chattings = Object.assign({}, state.chattings, {[chatting.id]: chatting})
     },
     activeChat (state, chattingId) {
       state.currentChat = chattingId
@@ -88,8 +88,8 @@ export default {
     initWorldChannel ({ commit }, participants) {
       commit('initWorldChannel', participants)
     },
-    addChatting ({ commit }, chatting) {
-      commit('addChatting', chatting)
+    addChat ({ commit }, chatting) {
+      commit('addChat', chatting)
     },
     activeChat ({ commit }, chattingId) {
       commit('activeChat', chattingId)

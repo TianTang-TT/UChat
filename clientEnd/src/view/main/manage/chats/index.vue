@@ -9,7 +9,7 @@
       <img class="portrait" :src="defaultAvatar">
       <div class="desc chatting">
         <p class="name">{{ chatting.name }}</p>
-        <p class="speak" v-html="chatting.dialogs[0].content || ''"></p>
+        <p class="speak" v-html="lastWord(chatting)"></p>
       </div>
     </div>
   </div>
@@ -24,6 +24,10 @@
     },
     methods: {
       ...mapActions('chatting', ['activeChat']),
+      lastWord (chatInfo) {
+        let dialogLen = chatInfo.dialogs.length
+        return dialogLen === 0 ? '' : chatInfo.dialogs[dialogLen - 1].content
+      },
       chooseChatting (chatting) {
         this.$router.push({name: 'chatting', params: {chattingId: chatting.id}})
         this.activeChat(chatting.id)
