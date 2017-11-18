@@ -51,7 +51,7 @@
           this.$message.warning('请取一个帅气的昵称')
           return
         }
-        let socket = io.connect('http://172.31.225.28:3000')
+        let socket = io.connect('http://localhost:3000')
         socket.on('connect', () => {
           // 登录时发送用户信息
           socket.emit('login', {
