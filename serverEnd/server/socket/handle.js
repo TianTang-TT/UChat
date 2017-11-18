@@ -58,7 +58,8 @@ const initChat = (requester, socket, onlineNumbers, chatGroup) => {
 module.exports = {
   getUsersArray,
   addUserToOnline,
-  removeFromOnline
+  removeFromOnline,
+  initChat
 }
 
 
