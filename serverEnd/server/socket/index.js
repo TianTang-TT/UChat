@@ -100,7 +100,7 @@ module.exports = socketIO => {
         })
       }
       // 将请求者与被请求这加入聊天群组，并分配一个聊天id
-      const chat = handle.initChat(requester, socket, onlineNumbers, chatGroup)
+      const chat = handle.initChat(requester.info, socket, onlineNumbers, chatGroup)
       // 将两者加入聊天
       socket.join(chat.id)
       requester.socket.join(chat.id)

@@ -43,16 +43,23 @@ const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
 
 const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   const chatId = util.genRandomId(16)
-  const target = onlineNumbers.get(socket.id)
-  const chat = {
+  const target = onlineNumbers.get(socket.id).info
+  const baseChat = {
     id: chatId,
     name: `${requester.name}、${target.name}`.substr(0, 12),
     type: 2,
-    participants: new Map([[requester.id, requester], [target.id, target]]),
     dialogs: []
   }
-  chatGroup.set(chatId, chat)
-  return chat
+  const serverChat = Object.assign({}, baseChat, {
+    participants: new Map([[requester.id, requester], [target.id, target]])
+  })
+  const clientChat = Object.assign({}, baseChat, {participants: {
+    [requester.id]: requester,
+    [target.id]: target
+  }})
+
+  chatGroup.set(chatId, serverChat)
+  return clientChat
 }
 
 module.exports = {
