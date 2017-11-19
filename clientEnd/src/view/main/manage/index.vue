@@ -17,7 +17,7 @@
       <div class="menu">
         <ul class="menu-ul clearfix">
           <router-link tag="li" active-class="active" class="menu-li"
-                       :to="{path: `/chatting${currentChat ? '/' + currentChat : ''}`}">
+                       :to="{path: `/chats${currentChat ? '/' + currentChat : ''}`}">
             <i class="iconfont icon-chat"><span class="total">[{{ total }}]</span></i>
           </router-link>
           <router-link tag="li" active-class="active" class="menu-li"
@@ -41,7 +41,7 @@
     name: 'manage',
     computed: {
       ...mapState(['userInfo']),
-      ...mapState('chatting', ['total', 'chattings', 'currentChat']),
+      ...mapState('chats', ['total', 'chats', 'currentChat']),
       ...mapState('contacts', ['contacts', 'currentContact'])
     }
   }

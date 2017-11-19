@@ -6,7 +6,7 @@ export default {
     total: 1,
     currentChat: wordChannelId,
     defaultAvatar: 'http://localhost:3000/static/images/avatars/v.jpg',
-    chattings: {
+    chats: {
       [wordChannelId]: {
         id: wordChannelId,
         name: '世界频道',
@@ -65,22 +65,22 @@ export default {
   },
   mutations: {
     initWorldChannel (state, participants) {
-      state.chattings[wordChannelId].participants = participants
-      state.chattings[wordChannelId].dialogs.push({
+      state.chats[wordChannelId].participants = participants
+      state.chats[wordChannelId].dialogs.push({
         avatar: '',
         type: 'system',
         content: '开始聊天',
         speakerId: ''
       })
     },
-    addChat (state, chatting) {
-      state.chattings = Object.assign({}, state.chattings, {[chatting.id]: chatting})
+    addChat (state, chat) {
+      state.chats = Object.assign({}, state.chats, {[chat.id]: chat})
     },
-    activeChat (state, chattingId) {
-      state.currentChat = chattingId
+    activeChat (state, chatId) {
+      state.currentChat = chatId
     },
     addDialog (state, msg) {
-      state.chattings[msg.chattingId]
+      state.chats[msg.chatId]
         .dialogs.push(msg.dialog)
     }
   },
@@ -88,27 +88,26 @@ export default {
     initWorldChannel ({ commit }, participants) {
       commit('initWorldChannel', participants)
     },
-    addChat ({ commit }, chatting) {
-      commit('addChat', chatting)
+    addChat ({ commit }, chat) {
+      commit('addChat', chat)
     },
-    activeChat ({ commit }, chattingId) {
-      commit('activeChat', chattingId)
+    activeChat ({ commit }, chatId) {
+      commit('activeChat', chatId)
     },
     addDialog ({ commit }, dialog) {
       commit('addDialog', dialog)
     },
-    cleanChattings ({ commit, state }, userInfo) {
+    cleanChats ({ commit, state }, userInfo) {
       // 从各个聊天中删除联系人信息
       // 由于contacts和世界频道的participants世纪指向的是同一个数组，所以只需要处理其中一个就可以。
       // 这里选择在清理聊天信息时顺便清理世界平岛的participants信息
-      for (let chat of Object.values(state.chattings)) {
+      for (let chat of Object.values(state.chats)) {
         let index = chat.participants.findIndex(user => user.id === userInfo.id)
-        console.log(index)
         if (index < 0) return
         chat.participants.splice(index, 1)
         // 退出之后在群聊中发送一条系统消息
         commit('addDialog', {
-          chattingId: chat.id,
+          chatId: chat.id,
           dialog: {
             id: Date.now(),
             type: 'system',

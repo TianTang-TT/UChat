@@ -109,9 +109,9 @@ module.exports = socketIO => {
 
     })
     // 接受消息事件
-    socket.on('message', ({chattingId, dialog}) => {
-      socketIO.to(chattingId).send({
-        chattingId,
+    socket.on('message', ({chatId, dialog}) => {
+      socketIO.to(chatId).send({
+        chatId,
         dialog
       })
     })

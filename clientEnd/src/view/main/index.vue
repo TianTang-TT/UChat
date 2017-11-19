@@ -20,13 +20,13 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chatting', ['addChat', 'addDialog', 'cleanChattings'])
+      ...mapActions('chats', ['addChat', 'addDialog', 'cleanChats'])
     },
     mounted () {
       this.socket.on('online', contact => {
         this.addContact(contact)
         this.addDialog({
-          chattingId: this.worldChannelId,
+          chatId: this.worldChannelId,
           dialog: {
             id: Date.now(),
             type: 'system',
@@ -37,7 +37,7 @@
       })
       this.socket.on('offline', user => {
         // 并且从各个群聊中删除
-        this.cleanChattings(user)
+        this.cleanChats(user)
       })
       this.socket.on('logout', () => {
         this.$message.warning('登录失效')

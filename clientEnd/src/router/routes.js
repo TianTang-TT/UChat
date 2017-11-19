@@ -2,11 +2,11 @@ import Login from 'view/login'
 import Main from 'view/main'
 // import store from 'store'
 
-import Chatting from 'view/main/manage/chats'
+import Chats from 'view/main/manage/chats'
 const Contacts = () => import('view/main/manage/contacts')
 const Foo = () => import('view/main/manage/Foo')
 
-const Chats = () => import('view/main/content/chats')
+const Chat = () => import('view/main/content/chat')
 const Contact = () => import('view/main/content/contact')
 
 const routes = [
@@ -18,20 +18,20 @@ const routes = [
   {
     path: '/',
     component: Main,
-    redirect: '/chatting',
+    redirect: '/chats',
     children: [
       {
-        path: 'chatting',
+        path: 'chats',
         components: {
-          manage: Chatting
+          manage: Chats
         }
       },
       {
-        path: 'chatting/:chattingId',
-        name: 'chatting',
+        path: 'chats/:chatId',
+        name: 'chat',
         components: {
-          manage: Chatting,
-          content: Chats
+          manage: Chats,
+          content: Chat
         },
         props: {
           manage: false,

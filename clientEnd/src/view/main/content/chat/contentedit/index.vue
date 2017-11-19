@@ -55,7 +55,7 @@
       ...mapState(['socket', 'userInfo'])
     },
     methods: {
-      ...mapActions('chatting', ['addDialog']),
+      ...mapActions('chats', ['addDialog']),
       contentEdit (event) {
         if (event.keyCode === 13 && !event.shiftKey) {
           event.preventDefault()
@@ -66,7 +66,7 @@
         let messages = this.$refs['typeContent'].innerHTML
         if (!(filterContent(messages).trim()).length) return
         const msg = {
-          chattingId: this.chatInfo.id,
+          chatId: this.chatInfo.id,
           dialog: {
             id: Date.now(),
             type: 'dialog',

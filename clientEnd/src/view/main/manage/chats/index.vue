@@ -1,15 +1,15 @@
 <template>
   <!--当前聊天-->
-  <div class="chatting">
+  <div class="chat">
     <div class="mem-item contact"
-         :class="[chatting.id === currentChat ? 'active' : '']"
-         v-for="chatting in chattings"
-         @click="chooseChatting(chatting)"
+         :class="[chat.id === currentChat ? 'active' : '']"
+         v-for="chat in chats"
+         @click="chooseChat(chat)"
          key>
       <img class="portrait" :src="defaultAvatar">
-      <div class="desc chatting">
-        <p class="name">{{ chatting.name }}</p>
-        <p class="speak" v-html="lastWord(chatting)"></p>
+      <div class="desc chat">
+        <p class="name">{{ chat.name }}</p>
+        <p class="speak" v-html="lastWord(chat)"></p>
       </div>
     </div>
   </div>
@@ -18,19 +18,19 @@
   import { mapState, mapActions } from 'vuex'
 
   export default {
-    name: 'chatting',
+    name: 'chat',
     computed: {
-      ...mapState('chatting', ['total', 'defaultAvatar', 'chattings', 'currentChat'])
+      ...mapState('chats', ['total', 'defaultAvatar', 'chats', 'currentChat'])
     },
     methods: {
-      ...mapActions('chatting', ['activeChat']),
+      ...mapActions('chats', ['activeChat']),
       lastWord (chatInfo) {
         let dialogLen = chatInfo.dialogs.length
         return dialogLen === 0 ? '' : chatInfo.dialogs[dialogLen - 1].content
       },
-      chooseChatting (chatting) {
-        this.$router.push({name: 'chatting', params: {chattingId: chatting.id}})
-        this.activeChat(chatting.id)
+      chooseChat (chat) {
+        this.$router.push({name: 'chat', params: {chatId: chat.id}})
+        this.activeChat(chat.id)
       }
     }
   }
@@ -53,7 +53,7 @@
       width: 1%;
       margin-left: 10px;
       height: 100%;
-      &.chatting {
+      &.chat {
         .name {
           margin-top: 2px;
         }
