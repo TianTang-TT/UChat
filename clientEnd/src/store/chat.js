@@ -14,7 +14,9 @@ export default {
         numbers: 0,
         participants: [],
         dialogs: []
-      },
+      }
+      /*
+      ,
       'c_1': {
         id: 'c_0',
         name: '惊蛰',
@@ -60,6 +62,7 @@ export default {
           {avatar: '', type: 'dialog', speakerId: '1111', speaker: '惊蛰', content: 'this is content'}
         ]
       }
+      */
     }
 
   },
