@@ -106,7 +106,12 @@ module.exports = socketIO => {
       requester.socket.join(chat.id)
       // 向客户端发消息准备新建一个聊天
       socketIO.to(chat.id).emit('startChat', chat)
-
+      // 向客户端返回chatId
+      callback({
+        code: 1,
+        message: '对方同意了您的聊天请求',
+        data: chat.id
+      })
     })
     // 接受消息事件
     socket.on('message', ({chatId, dialog}) => {
