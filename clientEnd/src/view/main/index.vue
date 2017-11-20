@@ -20,7 +20,7 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chats', ['addChat', 'addDialog', 'cleanChats'])
+      ...mapActions('chats', ['addChat', 'activeChat', 'addDialog', 'cleanChats'])
     },
     mounted () {
       this.socket.on('online', contact => {
@@ -58,8 +58,9 @@
               this.$message.success('已同意该请求')
               this.socket.emit('agreeChat', requester.id, res => {
                 if (res.code === 0) {
-                  this.$message.error(res.message)
+                  return this.$message.error(res.message)
                 }
+                this.activeChat(res.data)
               })
             }).catch(() => {
               this.$message.error('已拒绝该请求')
