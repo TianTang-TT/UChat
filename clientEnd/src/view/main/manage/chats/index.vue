@@ -1,11 +1,13 @@
 <template>
   <!--当前聊天-->
   <div class="chat">
+    <badge ></badge>
     <div class="mem-item contact"
          :class="[chat.id === currentChat ? 'active' : '']"
          v-for="chat in chats"
          @click="chooseChat(chat)"
          key>
+      <badge :value="12"></badge>
       <img class="portrait" :src="defaultAvatar">
       <div class="desc chat">
         <p class="name">{{ chat.name }}</p>
@@ -36,9 +38,14 @@
   }
 </script>
 <style lang="less" scoped="">
+  .chat {
+    margin: 0 12.5px;
+    position: relative;
+  }
   .mem-item {
     height: 40px;
     padding: 12.5px;
+    margin: 0 -12.5px;
     color: #fff;
     font-weight: 400;
     font-size: 13px;
