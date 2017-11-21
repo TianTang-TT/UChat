@@ -67,7 +67,7 @@ export default {
 
   },
   mutations: {
-    initWorldChannel (state, participants) {
+    INIT_WORLD_CHANNEL (state, participants) {
       state.chats[wordChannelId].participants = participants
       state.chats[wordChannelId].dialogs.push({
         avatar: '',
@@ -76,29 +76,29 @@ export default {
         speakerId: ''
       })
     },
-    addChat (state, chat) {
+    ADD_CHAT (state, chat) {
       state.chats = Object.assign({}, state.chats, {[chat.id]: chat})
     },
-    activeChat (state, chatId) {
+    ACTIVE_CHAT (state, chatId) {
       state.currentChat = chatId
     },
-    addDialog (state, msg) {
+    ADD_DIALOG (state, msg) {
       state.chats[msg.chatId]
         .dialogs.push(msg.dialog)
     }
   },
   actions: {
     initWorldChannel ({ commit }, participants) {
-      commit('initWorldChannel', participants)
+      commit('INIT_WORLD_CHANNEL', participants)
     },
     addChat ({ commit }, chat) {
-      commit('addChat', chat)
+      commit('ADD_CHAT', chat)
     },
     activeChat ({ commit }, chatId) {
-      commit('activeChat', chatId)
+      commit('ACTIVE_CHAT', chatId)
     },
     addDialog ({ commit }, dialog) {
-      commit('addDialog', dialog)
+      commit('ADD_DIALOG', dialog)
     },
     cleanChats ({ commit, state }, userInfo) {
       // 从各个聊天中删除联系人信息
@@ -109,7 +109,7 @@ export default {
         if (index < 0) return
         chat.participants.splice(index, 1)
         // 退出之后在群聊中发送一条系统消息
-        commit('addDialog', {
+        commit('ADD_DIALOG', {
           chatId: chat.id,
           dialog: {
             id: Date.now(),

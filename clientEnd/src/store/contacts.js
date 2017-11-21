@@ -8,13 +8,13 @@ export default {
     contactInfo: state => state.contacts.find(item => item.id === state.currentContact)
   },
   mutations: {
-    initContacts (state, contacts) {
+    INIT_CONTACTS (state, contacts) {
       state.contacts = contacts
     },
-    addContact (state, contact) {
+    ADD_CONTACT (state, contact) {
       state.contacts.push(contact)
     },
-    removeContact (state, id) {
+    REMOVE_CONTACT (state, id) {
       let index = state.contacts.findIndex(contact => {
         return contact.id === id
       })
@@ -22,24 +22,24 @@ export default {
         state.contacts.splice(index, 1)
       }
     },
-    activeContact (state, contactId) {
+    ACTIVE_CONTACT (state, contactId) {
       state.currentContact = contactId
     }
   },
   actions: {
     initContacts ({ commit }, contacts) {
-      commit('initContacts', contacts)
+      commit('INIT_CONTACTS', contacts)
     },
     addContact ({ commit }, contact) {
-      commit('addContact', contact)
+      commit('ADD_CONTACT', contact)
     },
     removeContact ({ commit }, id) {
-      commit('removeContact', id)
+      commit('REMOVE_CONTACT', id)
     },
     activeContact ({ commit, state }, contactId) {
       let index = state.contacts.find(contact => contact.id === contactId)
       if (index) {
-        commit('activeContact', contactId)
+        commit('ACTIVE_CONTACT', contactId)
       }
     }
   }

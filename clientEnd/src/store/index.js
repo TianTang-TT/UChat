@@ -16,33 +16,33 @@ export default new Vuex.Store({
     socket: null
   },
   mutations: {
-    initUserInfo (state, userInfo) {
+    INIT_USER_INFO (state, userInfo) {
       state.userInfo.id = userInfo.id
       state.userInfo.userName = userInfo.name
       state.userInfo.avatar = userInfo.avatar
     },
-    setUserName (state, name) {
+    SET_USER_NAME (state, name) {
       state.userInfo.userName = name
     },
-    setUserAvatar (state, avatar) {
+    SET_USER_AVATAR (state, avatar) {
       state.userInfo.avatar = avatar
     },
-    initSocket (state, socket) {
+    INIT_SOCKET (state, socket) {
       state.socket = socket
     }
   },
   actions: {
     initUserInfo ({ commit }, userInfo) {
-      commit('initUserInfo', userInfo)
+      commit('INIT_USER_INFO', userInfo)
     },
     setUserName ({ commit }, name) {
-      commit('setUserName', name)
+      commit('SET_USER_NAME', name)
     },
     setUserAvatar ({ commit }, avatar) {
-      commit('setUserAvatar', avatar)
+      commit('SET_USER_AVATAR', avatar)
     },
     initSocket ({ commit }, socket) {
-      commit('initSocket', socket)
+      commit('INIT_SOCKET', socket)
     }
   },
   modules: {
