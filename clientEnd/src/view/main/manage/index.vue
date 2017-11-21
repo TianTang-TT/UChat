@@ -18,11 +18,17 @@
         <ul class="menu-ul clearfix">
           <router-link tag="li" active-class="active" class="menu-li"
                        :to="{path: `/chats${currentChat ? '/' + currentChat : ''}`}">
-            <i class="iconfont icon-chat"><span class="total">[{{ total }}]</span></i>
+            <i class="iconfont icon-chat">
+              <badge></badge>
+              <span class="total">[{{ total }}]</span>
+            </i>
           </router-link>
           <router-link tag="li" active-class="active" class="menu-li"
                        :to="{path: `/contacts${currentContact ? '/' + currentContact : ''}`}">
-            <i class="iconfont icon-list"><span class="total">[{{ contacts.length }}]</span></i>
+            <i class="iconfont icon-list">
+              <badge></badge>
+              <span class="total">[{{ contacts.length }}]</span>
+            </i>
           </router-link>
           <router-link tag="li" active-class="active" class="menu-li" to="/foo">
             <i class="iconfont icon-publicnumber"></i>
@@ -130,6 +136,7 @@
         i {
           font-size: 30px;
           color: #fff;
+          position: relative;
           .total {
             font-weight: 200;
             margin-left: 5px;

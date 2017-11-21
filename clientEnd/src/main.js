@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import Badge from 'components/Badge'
 import { Message, MessageBox, Notification } from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
@@ -10,6 +11,7 @@ import 'assets/css/iconfont.css'
 
 Vue.config.productionTip = false
 
+Vue.component('badge', Badge)
 Vue.prototype.$message = Message
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$notify = Notification
