@@ -19,7 +19,7 @@
           <router-link tag="li" active-class="active" class="menu-li"
                        :to="{path: `/chats${currentChat ? '/' + currentChat : ''}`}">
             <i class="iconfont icon-chat">
-              <badge></badge>
+              <badge :value="1"></badge>
               <span class="total">[{{ total }}]</span>
             </i>
           </router-link>
