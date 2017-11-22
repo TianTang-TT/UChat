@@ -1,17 +1,19 @@
 <template>
   <!--当前聊天-->
   <div class="chat">
-    <badge ></badge>
-    <div class="mem-item contact"
-         :class="[chat.id === currentChat ? 'active' : '']"
+    <div class="chat-item-wrap"
+         key
          v-for="chat in chats"
          @click="chooseChat(chat)"
-         key>
-      <badge :value="12"></badge>
-      <img class="portrait" :src="defaultAvatar">
-      <div class="desc chat">
-        <p class="name">{{ chat.name }}</p>
-        <p class="speak" v-html="lastWord(chat)"></p>
+         :class="[chat.id === currentChat ? 'active' : '']">
+      <badge ></badge>
+      <div class="chat-item contact">
+        <badge :value="12"></badge>
+        <img class="portrait" :src="defaultAvatar">
+        <div class="desc chat">
+          <p class="name">{{ chat.name }}</p>
+          <p class="speak" v-html="lastWord(chat)"></p>
+        </div>
       </div>
     </div>
   </div>
@@ -39,46 +41,48 @@
 </script>
 <style lang="less" scoped="">
   .chat {
-    margin: 0 12.5px;
-    position: relative;
-  }
-  .mem-item {
-    height: 40px;
-    padding: 12.5px;
-    margin: 0 -12.5px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 13px;
-    display: flex;
-    .portrait {
-      width: 40px;
-      height: 40px;
-      border-radius: 3px;
-    }
-    .desc {
-      flex: 1;
-      width: 1%;
-      margin-left: 10px;
-      height: 100%;
-      &.chat {
-        .name {
-          margin-top: 2px;
+    .chat-item-wrap {
+      position: relative;
+      margin: 12.5px;
+      &.active .chat-item {
+        background-color: #3a3f45;
+      }
+      .chat-item {
+        padding: 12.5px;
+        margin: -12.5px;
+        height: 40px;
+        color: #fff;
+        font-weight: 400;
+        font-size: 13px;
+        display: flex;
+        .portrait {
+          width: 40px;
+          height: 40px;
+          border-radius: 3px;
         }
-        .speak {
-          margin-top: 8px;
-          opacity: .5;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          [type=emoji] {
-            width: 17px;
-            height: 17px;
+        .desc {
+          flex: 1;
+          width: 1%;
+          margin-left: 10px;
+          height: 100%;
+          &.chat {
+            .name {
+              margin-top: 2px;
+            }
+            .speak {
+              margin-top: 8px;
+              opacity: .5;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              [type=emoji] {
+                width: 17px;
+                height: 17px;
+              }
+            }
           }
         }
       }
-    }
-    &.active {
-      background-color: #3a3f45;
     }
   }
 </style>
