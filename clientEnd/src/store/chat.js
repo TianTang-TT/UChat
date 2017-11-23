@@ -3,7 +3,6 @@ export default {
   namespaced: true,
   // type 1为单聊，2为群聊
   state: {
-    total: 1,
     currentChat: wordChannelId,
     defaultAvatar: 'http://localhost:3000/static/images/avatars/v.jpg',
     chats: {
