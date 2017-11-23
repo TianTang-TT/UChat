@@ -20,7 +20,7 @@
                        :to="{path: `/chats${currentChat ? '/' + currentChat : ''}`}">
             <i class="iconfont icon-chat">
               <badge :value="1"></badge>
-              <span class="total">[{{ chats.length }}]</span>
+              <span class="total">[{{ total }}]</span>
             </i>
           </router-link>
           <router-link tag="li" active-class="active" class="menu-li"
@@ -47,7 +47,7 @@
     name: 'manage',
     computed: {
       ...mapState(['userInfo']),
-      ...mapState('chats', ['chats', 'currentChat']),
+      ...mapState('chats', ['total', 'chats', 'currentChat']),
       ...mapState('contacts', ['contacts', 'currentContact'])
     }
   }

@@ -3,6 +3,7 @@ export default {
   namespaced: true,
   // type 1为单聊，2为群聊
   state: {
+    total: 1,
     currentChat: wordChannelId,
     defaultAvatar: 'http://localhost:3000/static/images/avatars/v.jpg',
     chats: {
@@ -77,6 +78,7 @@ export default {
     },
     ADD_CHAT (state, chat) {
       state.chats = Object.assign({}, state.chats, {[chat.id]: chat})
+      state.total++
     },
     ACTIVE_CHAT (state, chatId) {
       state.currentChat = chatId
