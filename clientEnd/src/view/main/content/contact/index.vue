@@ -12,6 +12,7 @@
         <span class="label">昵称</span>
         <span class="value">{{ contactInfo.name }} </span>
       </p>
+      <button class="contcat-detail_request">发起聊天</button>
     </div>
   </section>
 </template>
@@ -68,6 +69,17 @@
           textoverflow: ellipsis;
           overflow: hidden;
         }
+      }
+      .contcat-detail_request {
+        width: 260px;
+        margin: 20px 100px;
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #3dce3d;
       }
     }
   }
