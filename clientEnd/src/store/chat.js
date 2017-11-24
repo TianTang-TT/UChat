@@ -82,7 +82,7 @@ export default {
       state.total++
     },
     ACTIVE_CHAT (state, chatId) {
-      // 当chat 被激活是，消除此聊天的unRead信息，并将其从总数中减去
+      // 当chat 被激活时，消除此聊天的unRead信息，并将其从总数中减去
       state.unRead -= state.chats[chatId].unRead
       state.chats[chatId].unRead = 0
       state.currentChat = chatId
