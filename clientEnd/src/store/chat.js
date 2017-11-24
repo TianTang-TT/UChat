@@ -1,15 +1,15 @@
-const wordChannelId = '999999999'
+const worldChannelId = '999999999'
 export default {
   namespaced: true,
   // type 1为单聊，2为群聊
   state: {
     total: 1,
     unRead: 0,
-    currentChat: wordChannelId,
+    currentChat: worldChannelId,
     defaultAvatar: 'http://localhost:3000/static/images/avatars/v.jpg',
     chats: {
-      [wordChannelId]: {
-        id: wordChannelId,
+      [worldChannelId]: {
+        id: worldChannelId,
         name: '世界频道',
         type: '2',
         numbers: 0,
@@ -69,8 +69,8 @@ export default {
   },
   mutations: {
     INIT_WORLD_CHANNEL (state, participants) {
-      state.chats[wordChannelId].participants = participants
-      state.chats[wordChannelId].dialogs.push({
+      state.chats[worldChannelId].participants = participants
+      state.chats[worldChannelId].dialogs.push({
         avatar: '',
         type: 'system',
         content: '开始聊天',
@@ -88,6 +88,11 @@ export default {
       state.currentChat = chatId
     },
     ADD_DIALOG (state, msg) {
+      // 收到消息之后如果不是世界频道，或者当前active的频道，则unread++
+      if (msg.chatId !== state.currentChat && msg.chatId !== worldChannelId) {
+        state.chats[msg.chatId].unRead++
+        state.unRead++
+      }
       state.chats[msg.chatId]
         .dialogs.push(msg.dialog)
     }
