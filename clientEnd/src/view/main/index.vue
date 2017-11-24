@@ -60,6 +60,7 @@
                 if (res.code === 0) {
                   return this.$message.error(res.message)
                 }
+                this.$router.push({name: 'chat', params: {chatId: res.data}})
                 this.activeChat(res.data)
               })
             }).catch(() => {
