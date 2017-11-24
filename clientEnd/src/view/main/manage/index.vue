@@ -19,7 +19,7 @@
           <router-link tag="li" active-class="active" class="menu-li"
                        :to="{path: `/chats${currentChat ? '/' + currentChat : ''}`}">
             <i class="iconfont icon-chat">
-              <badge :value="1"></badge>
+              <badge :value="unRead"></badge>
               <span class="total">[{{ total }}]</span>
             </i>
           </router-link>
@@ -47,7 +47,7 @@
     name: 'manage',
     computed: {
       ...mapState(['userInfo']),
-      ...mapState('chats', ['total', 'chats', 'currentChat']),
+      ...mapState('chats', ['total', 'unRead', 'chats', 'currentChat']),
       ...mapState('contacts', ['contacts', 'currentContact'])
     }
   }

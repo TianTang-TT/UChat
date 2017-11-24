@@ -6,9 +6,8 @@
          v-for="chat in chats"
          @click="chooseChat(chat)"
          :class="[chat.id === currentChat ? 'active' : '']">
-      <badge :value="chat.unRead"></badge>
       <div class="chat-item contact">
-        <badge :value="123"></badge>
+        <badge :value="chat.unRead"></badge>
         <img class="portrait" :src="defaultAvatar">
         <div class="desc chat">
           <p class="name">{{ chat.name }}</p>
