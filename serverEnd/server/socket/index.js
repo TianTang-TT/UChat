@@ -123,7 +123,10 @@ module.exports = socketIO => {
 
     // 用户主动从群聊中退出
     socket.on('quit', (chattingId, user) => {
+      // TODO 
       // 从相应的群聊信息中退出该用户
+      handle.quitChat(chattingId, chatGroup)
+      // socketIO.to(chattingId).send()
     })
 
     // 从在线列表中删除断连用户
