@@ -12,7 +12,7 @@
         <span class="label">昵称</span>
         <span class="value">{{ contactInfo.name }} </span>
       </p>
-      <button class="contcat-detail_request">发起聊天</button>
+      <button type="button" class="contcat-detail_request">发起聊天</button>
     </div>
   </section>
 </template>
@@ -71,6 +71,7 @@
         }
       }
       .contcat-detail_request {
+        font-size: 16px;
         width: 260px;
         margin: 20px 100px;
         height: 40px;
@@ -79,7 +80,11 @@
         outline: none;
         border-radius: 5px;
         color: #fff;
+        opacity: 0.7;
         background-color: #3dce3d;
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
