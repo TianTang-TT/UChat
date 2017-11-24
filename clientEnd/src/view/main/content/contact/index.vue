@@ -12,12 +12,17 @@
         <span class="label">昵称</span>
         <span class="value">{{ contactInfo.name }} </span>
       </p>
-      <button type="button" class="contcat-detail_request">发起聊天</button>
+      <button
+        type="button"
+        class="contcat-detail_request"
+        @click="requestChat">
+        发起聊天
+      </button>
     </div>
   </section>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapState, mapGetters } from 'vuex'
   export default {
     name: 'contact-detail',
     props: {
@@ -26,7 +31,24 @@
       }
     },
     computed: {
+      ...mapState(['socket', 'userInfo']),
       ...mapGetters('contacts', ['contactInfo'])
+    },
+    methods: {
+      requestChat () {
+        // 不能跟自己聊天
+        if (this.contactId === this.userInfo.id) {
+          this.$message.warning('你是有多寂寞啊想跟自己聊天！')
+          return
+        }
+        this.socket.emit('requestChat', this.contactInfo, res => {
+          if (res.code === 0) {
+            this.$message.error(res.message)
+          } else if (res.code === 1) {
+            this.$message.success(res.message)
+          }
+        })
+      }
     }
   }
 </script>
