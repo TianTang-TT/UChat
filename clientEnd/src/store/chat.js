@@ -4,6 +4,7 @@ export default {
   // type 1为单聊，2为群聊
   state: {
     total: 1,
+    unRead: 0,
     currentChat: wordChannelId,
     defaultAvatar: 'http://localhost:3000/static/images/avatars/v.jpg',
     chats: {
@@ -81,6 +82,9 @@ export default {
       state.total++
     },
     ACTIVE_CHAT (state, chatId) {
+      // 当chat 被激活是，消除此聊天的unRead信息，并将其从总数中减去
+      state.unRead -= state.chats[chatId].unRead
+      state.chats[chatId].unRead = 0
       state.currentChat = chatId
     },
     ADD_DIALOG (state, msg) {
