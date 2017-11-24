@@ -93,6 +93,8 @@ export default {
       commit('INIT_WORLD_CHANNEL', participants)
     },
     addChat ({ commit }, chat) {
+      // 新增加一个聊天时为其设置unRead属性
+      chat.unRead = 0
       commit('ADD_CHAT', chat)
     },
     activeChat ({ commit }, chatId) {
