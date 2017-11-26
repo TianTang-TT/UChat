@@ -53,9 +53,19 @@ export default {
       commit('INIT_WORLD_CHANNEL', participants)
     },
     addChat ({ commit }, chat) {
-      // 新增加一个聊天时为其设置unRead属性
+      // 新增加一个聊天时为其设置unRead属性，并发送一条'开始聊天'的系统消息
       chat.unRead = 0
       commit('ADD_CHAT', chat)
+      commit('ADD_DIALOG', {
+        chatId: chat.id,
+        dialog: {
+          id: Date.now(),
+          type: 'system',
+          speakerId: '',
+          speaker: '',
+          content: '开始聊天'
+        }
+      })
     },
     activeChat ({ commit }, chatId) {
       commit('ACTIVE_CHAT', chatId)

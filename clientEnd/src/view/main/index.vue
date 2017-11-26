@@ -70,7 +70,7 @@
           }
         })
       })
-      // 自己发的聊天请求被人拒绝
+      // 聊天请求被拒绝
       this.socket.on('denyChat', res => {
         if (res.code !== 0) {
           this.$message.error(res)
