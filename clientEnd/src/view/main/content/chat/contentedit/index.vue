@@ -70,8 +70,7 @@
           dialog: {
             id: Date.now(),
             type: 'dialog',
-            speakerId: this.userInfo.id,
-            speaker: this.userInfo.userName,
+            speaker: this.userInfo,
             content: imgToCode(messages)
           }
         }

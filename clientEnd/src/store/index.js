@@ -10,7 +10,7 @@ export default new Vuex.Store({
     worldChannelId: '999999999',
     userInfo: {
       id: '',
-      userName: '未命名',
+      name: '未命名',
       avatar: 'http://localhost:3000/static/images/avatars/v.jpg'
     },
     socket: null

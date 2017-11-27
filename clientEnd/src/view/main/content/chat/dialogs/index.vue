@@ -29,13 +29,6 @@
           this.$refs['dialogs'].scrollTop = this.$refs['dialogs'].scrollHeight
         })
       }
-    },
-    methods: {
-      addDialog () {
-        this.$nextTick(() => {
-          this.$refs['dialogs'].scrollTop = this.$refs['dialogs'].scrollHeight
-        })
-      }
     }
   }
 </script>

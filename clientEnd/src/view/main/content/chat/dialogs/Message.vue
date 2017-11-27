@@ -4,8 +4,8 @@
       {{ messageContent.content }}
     </span>
     <template v-else>
-      <img src="~assets/img/1.jpg" class="speak-portrait">
-      <p class="speak-user">{{ messageContent.speaker }}</p>
+      <img :src="messageContent.speaker.avatar" class="speak-portrait">
+      <p class="speak-user">{{ messageContent.speaker.name }}</p>
       <p class="speak-content" v-html="messageDetail"></p>
     </template>
   </div>
@@ -24,7 +24,7 @@
     computed: {
       ...mapState(['userInfo']),
       messageType () {
-        if (this.userInfo.id && (this.messageContent.speakerId === this.userInfo.id)) {
+        if (this.userInfo.id && (this.messageContent.speaker.id === this.userInfo.id)) {
           return 'self'
         }
         return this.messageContent.type
