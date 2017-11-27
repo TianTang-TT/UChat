@@ -61,8 +61,6 @@ export default {
         dialog: {
           id: Date.now(),
           type: 'system',
-          speakerId: '',
-          speaker: '',
           content: '开始聊天'
         }
       })
@@ -87,8 +85,6 @@ export default {
           dialog: {
             id: Date.now(),
             type: 'system',
-            speakerId: '',
-            speaker: '',
             content: `${userInfo.name}退出了聊天`
           }
         })

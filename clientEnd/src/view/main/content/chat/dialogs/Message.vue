@@ -24,7 +24,9 @@
     computed: {
       ...mapState(['userInfo']),
       messageType () {
-        if (this.userInfo.id && (this.messageContent.speaker.id === this.userInfo.id)) {
+        if (this.userInfo.id &&
+          this.messageContent.speaker &&
+          (this.messageContent.speaker.id === this.userInfo.id)) {
           return 'self'
         }
         return this.messageContent.type
