@@ -72,7 +72,7 @@ const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   const baseChat = {
     id: chatId,
     name: `${requester.info.name}、${target.info.name}`.substr(0, 12),
-    type: 2,
+    type: 1,
     dialogs: []
   }
   const serverChat = Object.assign({}, baseChat, {
