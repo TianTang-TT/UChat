@@ -5,7 +5,6 @@
          v-for="contact in contacts"
          key
          @click="chooseContact(contact)"
-         @dblclick="startChart(contact)"
          :class="[contact.id === currentContact ? 'active' : '']">
       <img class="portrait" :src="contact.avatar">
       <div class="desc contact">
