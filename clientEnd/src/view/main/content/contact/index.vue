@@ -44,7 +44,6 @@
           return
         }
         this.socket.emit('requestChat', this.contactInfo, res => {
-          console.log(res)
           if (res.code === 0) {
             this.$message.error(res.message)
           } else if (res.code === 1) {

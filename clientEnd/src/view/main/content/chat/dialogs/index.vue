@@ -4,8 +4,16 @@
     <div class="title">
       <span class="chatting-name">{{ chatInfo.name }}</span>
       <div class="toolbar">
-        <span class="tool add"></span>
-        <span class="tool minus"></span>
+        <span
+          v-if="chatInfo.type!==0"
+          @click="inviteOthers"
+          class="tool add">
+        </span>
+        <span
+          v-if="chatInfo.type!==0"
+          @click="signOutChat"
+          class="tool minus">
+        </span>
       </div>
     </div>
     <!--已发送对话-->
@@ -31,6 +39,24 @@
       'chatInfo.dialogs.length' () {
         this.$nextTick(() => {
           this.$refs['dialogs'].scrollTop = this.$refs['dialogs'].scrollHeight
+        })
+      }
+    },
+    methods: {
+      inviteOthers () {
+        console.log(this.chatInfo)
+      },
+      signOutChat () {
+        this.$msgbox.confirm('确定退出此聊天?', '操作提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.socket.emit('quitChat', this.chatInfo.id, res => {
+            console.log(res)
+          })
+        }).catch(err => {
+          console.log(err)
         })
       }
     }
