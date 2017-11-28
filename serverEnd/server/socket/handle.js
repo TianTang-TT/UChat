@@ -78,10 +78,7 @@ const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   const serverChat = Object.assign({}, baseChat, {
     participants: new Map([[requester.id, requester.info], [target.id, target.info]])
   })
-  const clientChat = Object.assign({}, baseChat, {participants: {
-    [requester.id]: requester.info,
-    [target.id]: target.info
-  }})
+  const clientChat = Object.assign({}, baseChat, {participants: [requester.info, target.info]})
 
   chatGroup.set(chatId, serverChat)
   return clientChat

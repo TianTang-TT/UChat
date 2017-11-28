@@ -77,7 +77,7 @@ export default {
       // 这里选择在清理聊天信息时顺便清理世界平岛的participants信息
       for (let chat of Object.values(state.chats)) {
         let index = chat.participants.findIndex(user => user.id === userInfo.id)
-        if (index < 0) return
+        if (index < 0) continue
         chat.participants.splice(index, 1)
         // 退出之后在群聊中发送一条系统消息
         commit('ADD_DIALOG', {
