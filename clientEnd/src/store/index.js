@@ -17,9 +17,7 @@ export default new Vuex.Store({
   },
   mutations: {
     INIT_USER_INFO (state, userInfo) {
-      state.userInfo.id = userInfo.id
-      state.userInfo.userName = userInfo.name
-      state.userInfo.avatar = userInfo.avatar
+      state.userInfo = Object.assign({}, userInfo)
     },
     SET_USER_NAME (state, name) {
       state.userInfo.userName = name

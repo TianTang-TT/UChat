@@ -59,9 +59,9 @@
         bottom: 0;
         .tool {
           display: inline-block;
-          width: 30px;
-          height: 30px;
-          margin: 10px;
+          width: 20px;
+          height: 20px;
+          margin: 15px 10px;
           position: relative;
           .minus () {
             &::before {
