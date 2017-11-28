@@ -13,6 +13,7 @@
         <span class="value">{{ contactInfo.name }} </span>
       </p>
       <button
+        v-if="!contactInfo.isSelf"
         type="button"
         class="contcat-detail_request"
         @click="requestChat">
