@@ -69,8 +69,14 @@ module.exports = socketIO => {
           code: 0,
           message: '你要撩的人不在线'
         })
+      } else if (self.chatmates.has(contact.id) >= 0) {
+        // 检查是否已经建立了与该用户的聊天你，如果有，则返回聊天id
+        callback({
+          code: 2,
+          data: self.chatmates.get(contact.id),
+          message: '聊天已存在'
+        })
       } else {
-        // 创建房间，开始对话
         socketIO.to(contact.id).emit('requestChat', self.info)
         callback({
           code: 1,
@@ -99,8 +105,8 @@ module.exports = socketIO => {
           data: null
         })
       }
-      // 将请求者与被请求这加入聊天群组，并分配一个聊天id
-      const chat = handle.initChat(requester.info, socket, onlineNumbers, chatGroup)
+      // 将请求者与被请求这加入聊天群组，并分配一个聊天id,同时加入各自的chatmates数组
+      const chat = handle.initChat(requester, socket, onlineNumbers, chatGroup)
       // 将两者加入聊天
       socket.join(chat.id)
       requester.socket.join(chat.id)

@@ -22,7 +22,8 @@ const addUserToOnline = (userInfo, socket, onlineNumbers, chatGroup) => {
       avatar: userInfo.avatar
     },
     id: id,
-    socket: socket
+    socket: socket,
+    chatmates: new Map()
   })
 
   worldChannel.participants.set(id, {
@@ -43,19 +44,22 @@ const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
 
 const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   const chatId = util.genRandomId(16)
-  const target = onlineNumbers.get(socket.id).info
+  const target = onlineNumbers.get(socket.id)
+  // 保存聊天信息，以免重复发起
+  requester.chatmates.set(target.id, chatId)
+  target.chatmates.set(requester.id, chatId)
   const baseChat = {
     id: chatId,
-    name: `${requester.name}、${target.name}`.substr(0, 12),
+    name: `${requester.info.name}、${target.info.name}`.substr(0, 12),
     type: 2,
     dialogs: []
   }
   const serverChat = Object.assign({}, baseChat, {
-    participants: new Map([[requester.id, requester], [target.id, target]])
+    participants: new Map([[requester.id, requester.info], [target.id, target.info]])
   })
   const clientChat = Object.assign({}, baseChat, {participants: {
-    [requester.id]: requester,
-    [target.id]: target
+    [requester.id]: requester.info,
+    [target.id]: target.info
   }})
 
   chatGroup.set(chatId, serverChat)
