@@ -1,11 +1,10 @@
 const config = require('../../config')
 const util = require('../util')
 /**
- *
+ * 获取用户信息组成的数组，用于登录有在线用户列表的初始化
  * @param onlineNumbers
  * @param chatGroup
  * @param user
- * 获取用户信息组成的数组，用于登录有在线用户列表的初始化
  */
 const getUsersArray = (socket, onlineNumbers) => {
   return [...onlineNumbers.entries()].map(item => {
@@ -13,7 +12,13 @@ const getUsersArray = (socket, onlineNumbers) => {
   })
 }
 
-// 将用户信息加入在线列表,并自动加入世界频道
+/**
+ * 将用户信息加入在线列表,并自动加入世界频道
+ * @param userInfo
+ * @param socket
+ * @param onlineNumbers
+ * @param chatGroup
+ */
 const addUserToOnline = (userInfo, socket, onlineNumbers, chatGroup) => {
   const id = userInfo.id
   const worldChannel = chatGroup.get(config.worldChannelId)
@@ -35,6 +40,12 @@ const addUserToOnline = (userInfo, socket, onlineNumbers, chatGroup) => {
   })
 }
 
+/**
+ * 下线之后从online列表中移除，并在所有的聊天中剔除
+ * @param socket
+ * @param onlineNumbers
+ * @param chatGroup
+ */
 const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
   // 从所有的聊天中退出
   for (let chat of chatGroup.values()) {
@@ -44,6 +55,14 @@ const removeFromOnline = (socket, onlineNumbers, chatGroup) => {
   onlineNumbers.delete(socket.id)
 }
 
+/**
+ * 收到聊天请求后新建一条聊天，并将其加入chatGroup
+ * @param requester
+ * @param socket
+ * @param onlineNumbers
+ * @param chatGroup
+ * @returns {*}
+ */
 const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   const chatId = util.genRandomId(16)
   const target = onlineNumbers.get(socket.id)
