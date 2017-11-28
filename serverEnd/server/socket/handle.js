@@ -7,8 +7,10 @@ const util = require('../util')
  * @param user
  * 获取用户信息组成的数组，用于登录有在线用户列表的初始化
  */
-const getUsersArray = users => {
-  return [...users.values()].map(item => item.info)
+const getUsersArray = (socket, onlineNumbers) => {
+  return [...onlineNumbers.entries()].map(item => {
+    return Object.assign({isSelf: item[0] === socket.id}, item[1].info)
+  })
 }
 
 // 将用户信息加入在线列表,并自动加入世界频道

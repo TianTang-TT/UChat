@@ -45,7 +45,7 @@ module.exports = socketIO => {
         message: '登录成功',
         data: {
           user: onlineNumbers.get(id).info,
-          users: handle.getUsersArray(onlineNumbers)
+          users: handle.getUsersArray(socket, onlineNumbers)
         }
       })
 
