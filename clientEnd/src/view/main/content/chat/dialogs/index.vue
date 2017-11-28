@@ -1,8 +1,12 @@
 <template>
   <section class="dialogs-container">
-    <!--对方名称-->
+    <!--聊天名称-->
     <div class="title">
       <span class="chatting-name">{{ chatInfo.name }}</span>
+      <div class="toolbar">
+        <span class="tool add"></span>
+        <span class="tool minus"></span>
+      </div>
     </div>
     <!--已发送对话-->
     <div class="dialogs" ref="dialogs">
@@ -47,6 +51,51 @@
       padding: 0 20px;
       box-sizing: border-box;
       border-bottom: 1px solid #d6d6d6;
+      position: relative;
+      .toolbar {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        bottom: 0;
+        .tool {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          margin: 10px;
+          position: relative;
+          .minus () {
+            &::before {
+              background-color: darkgrey;
+              display: inline-block;
+              content: '';
+              width: 100%;
+              height: 4px;
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%)
+            }
+          }
+          &.minus {
+            .minus();
+          }
+          &.add {
+            .minus();
+            &::after {
+              background-color: darkgrey;
+              display: inline-block;
+              content: '';
+              width: 4px;
+              height: 100%;
+              position: absolute;
+              left: 50%;
+              top: 0;
+              transform: translateX(-50%)
+            }
+          }
+
+        }
+      }
     }
     .dialogs {
       height: 100%;
