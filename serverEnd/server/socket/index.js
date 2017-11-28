@@ -69,7 +69,7 @@ module.exports = socketIO => {
           code: 0,
           message: '你要撩的人不在线'
         })
-      } else if (self.chatmates.has(contact.id) >= 0) {
+      } else if (self.chatmates.has(contact.id)) {
         // 检查是否已经建立了与该用户的聊天你，如果有，则返回聊天id
         callback({
           code: 2,

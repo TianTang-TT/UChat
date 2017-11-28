@@ -22,7 +22,7 @@
   </section>
 </template>
 <script>
-  import { mapState, mapGetters } from 'vuex'
+  import { mapState, mapGetters, mapActions } from 'vuex'
   export default {
     name: 'contact-detail',
     props: {
@@ -35,6 +35,7 @@
       ...mapGetters('contacts', ['contactInfo'])
     },
     methods: {
+      ...mapActions('chats', ['activeChat']),
       requestChat () {
         // 不能跟自己聊天
         if (this.contactId === this.userInfo.id) {
@@ -42,10 +43,15 @@
           return
         }
         this.socket.emit('requestChat', this.contactInfo, res => {
+          console.log(res)
           if (res.code === 0) {
             this.$message.error(res.message)
           } else if (res.code === 1) {
             this.$message.success(res.message)
+          } else if (res.code === 2) {
+            // 聊天已存在，active该聊天
+            this.$router.push({name: 'chat', params: {chatId: res.data}})
+            this.activeChat(res.data)
           }
         })
       }
