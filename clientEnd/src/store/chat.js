@@ -1,7 +1,7 @@
 const worldChannelId = '999999999'
 export default {
   namespaced: true,
-  // type 1为单聊，2为群聊
+  // type 0为世界频道 1为单聊，2为群聊
   state: {
     total: 1,
     unRead: 0,
@@ -11,7 +11,7 @@ export default {
       [worldChannelId]: {
         id: worldChannelId,
         name: '世界频道',
-        type: '2',
+        type: 0,
         numbers: 0,
         participants: [],
         dialogs: []
