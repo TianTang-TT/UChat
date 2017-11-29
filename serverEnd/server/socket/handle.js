@@ -84,11 +84,13 @@ const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   return clientChat
 }
 
-const quitChat = (socket, chatId, chatGroup) => {
+const quitChat = (socket, chatId, onlineNumbers, chatGroup) => {
   const chatInfo = chatGroup.get(chatId)
+  const requester = onlineNumbers.get(socket.id)
   // 如果是单聊，则直接关闭此聊天，如果是非世界频道的其他群聊，则从群聊中删除
   if (chatInfo.type = 1) {
     chatGroup.delete(chatId)
+    // 从彼此的chatMates中删除
   }
 }
 
