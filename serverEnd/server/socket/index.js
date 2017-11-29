@@ -128,10 +128,10 @@ module.exports = socketIO => {
     })
 
     // 用户主动从群聊中退出
-    socket.on('quitChat', (chattingId, callback) => {
+    socket.on('quitChat', (chatId, callback) => {
       // TODO
       // 从相应的群聊信息中退出该用户
-      handle.quitChat(chattingId, chatGroup)
+      handle.quitChat(socket, chatId, chatGroup)
       // socketIO.to(chattingId).send()
     })
 
