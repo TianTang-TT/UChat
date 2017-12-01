@@ -91,12 +91,13 @@ const quitChat = (socket, chatId, onlineNumbers, chatGroup) => {
   if (chatInfo.type = 1) {
     for (let [participantId, particpantInfo] of  chatInfo.participants) {
       let participant = onlineNumbers.get(participantId)
+      // 从彼此的chatMates中删除
       participant.chatmates.delete(requester.id)
       requester.chatmates.delete(participantId)
     }
     chatGroup.delete(chatId)
-    // 从彼此的chatMates中删除
-
+  } else {
+    chatInfo.participants.delete(requester.id)
   }
 }
 
