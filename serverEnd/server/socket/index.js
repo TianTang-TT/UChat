@@ -132,7 +132,7 @@ module.exports = socketIO => {
       // TODO
       // 从相应的群聊信息中退出该用户
       handle.quitChat(socket, chatId, onlineNumbers, chatGroup)
-      // socketIO.to(chattingId).send()
+      socketIO.to(chattingId).send()
     })
 
     // 从在线列表中删除断连用户

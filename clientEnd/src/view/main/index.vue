@@ -86,6 +86,8 @@
       this.socket.on('startChat', chatInfo => {
         this.addChat(chatInfo)
       })
+      // 有人退出群聊
+      this.socket.on('quitChat', res => {})
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
       })
