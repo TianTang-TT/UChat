@@ -24,6 +24,7 @@
 </template>
 <script>
   import Message from './Message'
+  import { mapActions } from 'vuex'
   export default {
     name: 'dialogs',
     components: {
@@ -43,6 +44,7 @@
       }
     },
     methods: {
+      ...mapActions('chats', ['removeChat']),
       inviteOthers () {
         console.log(this.chatInfo)
       },
@@ -55,7 +57,7 @@
           this.socket.emit('quitChat', this.chatInfo.id, res => {
             // 退出群聊后删除群聊信息
             if (res.code === 1) {
-
+              this.removeChat(this.chatInfo.id)
             }
           })
         }).catch(err => {
