@@ -53,7 +53,10 @@
           type: 'warning'
         }).then(() => {
           this.socket.emit('quitChat', this.chatInfo.id, res => {
-            console.log(res)
+            // 退出群聊后删除群聊信息
+            if (res.code === 1) {
+
+            }
           })
         }).catch(err => {
           console.log(err)

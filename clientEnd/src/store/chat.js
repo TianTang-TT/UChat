@@ -32,6 +32,9 @@ export default {
       state.chats = Object.assign({}, state.chats, {[chat.id]: chat})
       state.total++
     },
+    REMOVE_CHAT (state, chatId) {
+      delete state.chats[chatId]
+    },
     ACTIVE_CHAT (state, chatId) {
       // 当chat 被激活时，消除此聊天的unRead信息，并将其从总数中减去
       state.unRead -= state.chats[chatId].unRead
@@ -64,6 +67,9 @@ export default {
           content: '开始聊天'
         }
       })
+    },
+    removeChat ({ commit }, chatId) {
+      commit('REMOVE_CHAT', chatId)
     },
     activeChat ({ commit }, chatId) {
       commit('ACTIVE_CHAT', chatId)
