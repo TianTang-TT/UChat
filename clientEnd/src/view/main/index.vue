@@ -87,7 +87,18 @@
         this.addChat(chatInfo)
       })
       // 有人退出群聊
-      this.socket.on('quitChat', res => {})
+      this.socket.on('quitChat', chatInfo => {
+        // 不用区分单聊还是群聊
+        // 在群里发消息，然后从聊天列表中删除此人
+        this.addDialog({
+          chatId: chatInfo.id,
+          dialog: {
+            id: Date.now(),
+            type: 'system',
+            content: `${chatInfo.name}退出了聊天`
+          }
+        })
+      })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
       })
