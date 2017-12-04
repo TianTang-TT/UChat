@@ -47,7 +47,7 @@ export default {
         state.chats[msg.chatId].unRead++
         state.unRead++
       }
-      state.chats[msg.chatId]
+      state.chats[msg.chatId] && state.chats[msg.chatId]
         .dialogs.push(msg.dialog)
     },
     ADD_PARTICIPANT (state, payload) {

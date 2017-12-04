@@ -132,6 +132,10 @@ module.exports = socketIO => {
       // TODO
       // 从相应的群聊信息中退出该用户
       handle.quitChat(socket, chatId, onlineNumbers, chatGroup)
+      callback({
+        code: 1,
+        message: 'ok'
+      })
       socketIO.to(chatId).emit('quitChat', chatId, onlineNumbers.get(socket.id).info)
     })
 
