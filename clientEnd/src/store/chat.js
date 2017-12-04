@@ -55,7 +55,7 @@ export default {
     },
     REMOVE_PARTICIPANT (state, payload) {
       const index = state.chats[payload.chatId].participants.findIndex(item => {
-        return item.id === payload.userInfo.id
+        return item.id === payload.userId
       })
       index >= 0 && state.chats[payload.chatId].participants.splice(index, 1)
     }

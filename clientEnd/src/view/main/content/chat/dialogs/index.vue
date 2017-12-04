@@ -24,7 +24,7 @@
 </template>
 <script>
   import Message from './Message'
-  import { mapActions } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   export default {
     name: 'dialogs',
     components: {
@@ -35,6 +35,9 @@
         type: Object,
         required: true
       }
+    },
+    computed: {
+      ...mapState(['socket'])
     },
     watch: {
       'chatInfo.dialogs.length' () {
@@ -55,6 +58,7 @@
           type: 'warning'
         }).then(() => {
           this.socket.emit('quitChat', this.chatInfo.id, res => {
+            debugger
             // 退出群聊后删除群聊信息
             if (res.code === 1) {
               this.removeChat(this.chatInfo.id)

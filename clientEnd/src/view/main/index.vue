@@ -20,7 +20,7 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chats', ['addChat', 'activeChat', 'addDialog', 'cleanChats'])
+      ...mapActions('chats', ['addChat', 'activeChat', 'addDialog', 'removeParticipant', 'cleanChats'])
     },
     mounted () {
       this.socket.on('online', contact => {
@@ -89,7 +89,7 @@
       // 有人退出群聊
       this.socket.on('quitChat', (chatId, userInfo) => {
         // 不用区分单聊还是群聊
-        // 在群里发消息，然后从聊天列表中删除此人
+        // 在群里发消息
         this.addDialog({
           chatId: chatId,
           dialog: {
@@ -98,6 +98,8 @@
             content: `${userInfo.name}退出了聊天`
           }
         })
+        // 然后从聊天列表中删除此人
+        this.removeParticipant(chatId, userInfo.id)
       })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
