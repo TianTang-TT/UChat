@@ -5,7 +5,7 @@
       <div class="profile">
         <img class="portrait" :src="userInfo.avatar">
         <div class="desc">
-          <p class="nick-name">{{ userInfo.userName }}</p>
+          <p class="nick-name">{{ userInfo.name }}</p>
         </div>
       </div>
       <!--搜索框-->
