@@ -58,8 +58,8 @@
           type: 'warning'
         }).then(() => {
           this.socket.emit('quitChat', this.chatInfo.id, res => {
-            debugger
             // 退出群聊后删除群聊信息
+            console.log(res)
             if (res.code === 1) {
               this.removeChat(this.chatInfo.id)
             }

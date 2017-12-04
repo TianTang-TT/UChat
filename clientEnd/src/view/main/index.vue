@@ -16,7 +16,8 @@
       'content-detail': Content
     },
     computed: {
-      ...mapState(['worldChannelId', 'userInfo', 'socket'])
+      ...mapState(['worldChannelId', 'userInfo', 'socket']),
+      ...mapState('chats', ['chats'])
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
@@ -88,7 +89,11 @@
       })
       // 有人退出群聊
       this.socket.on('quitChat', (chatId, userInfo) => {
-        // 不用区分单聊还是群聊
+        // 没有此chat，说明是自己发起的quit
+        if (!this.chats[chatId]) {
+          return
+        }
+
         // 在群里发消息
         this.addDialog({
           chatId: chatId,

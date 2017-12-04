@@ -136,7 +136,7 @@ module.exports = socketIO => {
         code: 1,
         message: 'ok'
       })
-      socketIO.to(chatId).broadcast.emit('quitChat', chatId, onlineNumbers.get(socket.id).info)
+      socketIO.to(chatId).emit('quitChat', chatId, onlineNumbers.get(socket.id).info)
     })
 
     // 从在线列表中删除断连用户

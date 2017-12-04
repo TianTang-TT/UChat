@@ -1,3 +1,4 @@
+import Vue from 'vue'
 const worldChannelId = '999999999'
 export default {
   namespaced: true,
@@ -33,7 +34,7 @@ export default {
       state.total++
     },
     REMOVE_CHAT (state, chatId) {
-      delete state.chats[chatId]
+      Vue.delete(state.chats, chatId)
     },
     ACTIVE_CHAT (state, chatId) {
       // 当chat 被激活时，消除此聊天的unRead信息，并将其从总数中减去
