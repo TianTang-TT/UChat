@@ -49,6 +49,15 @@ export default {
       }
       state.chats[msg.chatId]
         .dialogs.push(msg.dialog)
+    },
+    ADD_PARTICIPANT (state, payload) {
+      state[payload.chatId].participants.push(payload.userInfo)
+    },
+    REMOVE_PARTICIPANT (state, payload) {
+      const index = state.chats[payload.chatId].participants.findIndex(item => {
+        return item.id === payload.userInfo.id
+      })
+      index >= 0 && state.chats[payload.chatId].participants.splice(index, 1)
     }
   },
   actions: {
@@ -76,6 +85,12 @@ export default {
     },
     addDialog ({ commit }, dialog) {
       commit('ADD_DIALOG', dialog)
+    },
+    addParticipant ({ commit }, chatId, userInfo) {
+      commit('ADD_PARTICIPANT', { chatId, userInfo })
+    },
+    removeParticipant ({ commit }, chatId, userId) {
+      commit('REMOVE_PARTICIPANT', { chatId, userId })
     },
     cleanChats ({ commit, state }, userInfo) {
       // 从各个聊天中删除联系人信息
