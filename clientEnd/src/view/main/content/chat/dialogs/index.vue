@@ -49,7 +49,10 @@
     methods: {
       ...mapActions('chats', ['removeChat']),
       inviteOthers () {
-        console.log(this.chatInfo)
+        // 获取可邀请人列表，弹出列表框
+        this.socket.emit('getAvailableUser', this.chatInfo.id, res => {
+          console.log(res)
+        })
       },
       signOutChat () {
         this.$msgbox.confirm('确定退出此聊天?', '操作提示', {
