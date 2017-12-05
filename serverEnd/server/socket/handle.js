@@ -108,6 +108,10 @@ const quitChat = (socket, chatId, onlineNumbers, chatGroup) => {
   }
 }
 
+const getAvailableUsers = chatId => {
+  // 如果chatId不存在，说明新建一个群聊，而不是在一个群聊的基础上邀请别人
+}
+
 module.exports = {
   getUsersArray,
   addUserToOnline,

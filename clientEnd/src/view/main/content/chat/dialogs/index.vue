@@ -50,7 +50,7 @@
       ...mapActions('chats', ['removeChat']),
       inviteOthers () {
         // 获取可邀请人列表，弹出列表框
-        this.socket.emit('getAvailableUser', this.chatInfo.id, res => {
+        this.socket.emit('getAvailableUsers', this.chatInfo.id, res => {
           console.log(res)
         })
       },

@@ -129,7 +129,6 @@ module.exports = socketIO => {
 
     // 用户主动从群聊中退出
     socket.on('quitChat', (chatId, callback) => {
-      // TODO
       // 从相应的群聊信息中退出该用户
       handle.quitChat(socket, chatId, onlineNumbers, chatGroup)
       callback({
@@ -137,6 +136,15 @@ module.exports = socketIO => {
         message: 'ok'
       })
       socketIO.to(chatId).emit('quitChat', chatId, onlineNumbers.get(socket.id).info)
+    })
+
+    // 获取所有可邀请人员列表
+    socket.on('getAvailableUsers', (chatId, callback) => {
+      const availableUsers = handle.getAvailableUsers(chatId)
+      callback({
+        code: 1,
+        data: availableUsers
+      })
     })
 
     // 从在线列表中删除断连用户
