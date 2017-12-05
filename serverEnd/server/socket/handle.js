@@ -84,6 +84,13 @@ const initChat = (requester, socket, onlineNumbers, chatGroup) => {
   return clientChat
 }
 
+/**
+ * 主动退出群聊，清理群聊信息，删除chatMates信息
+ * @param socket
+ * @param chatId
+ * @param onlineNumbers
+ * @param chatGroup
+ */
 const quitChat = (socket, chatId, onlineNumbers, chatGroup) => {
   const chatInfo = chatGroup.get(chatId)
   const requester = onlineNumbers.get(socket.id)
