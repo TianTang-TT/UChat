@@ -117,7 +117,8 @@ module.exports = {
   addUserToOnline,
   removeFromOnline,
   initChat,
-  quitChat
+  quitChat,
+  getAvailableUsers
 }
 
 
