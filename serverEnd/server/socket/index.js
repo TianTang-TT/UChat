@@ -140,7 +140,7 @@ module.exports = socketIO => {
 
     // 获取所有可邀请人员列表
     socket.on('getAvailableUsers', (chatId, callback) => {
-      const availableUsers = handle.getAvailableUsers(chatId)
+      const availableUsers = handle.getAvailableUsers(socket, chatId, onlineNumbers)
       callback({
         code: 1,
         data: availableUsers
