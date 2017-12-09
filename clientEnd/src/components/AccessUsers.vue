@@ -1,9 +1,8 @@
 <template>
   <div class="access-users">
     <el-table
-      ref="multipleTable"
+      border
       :data="userData"
-      tooltip-effect="dark"
       style="width: 100%"
       @selection-change="handleSelectionChange">
       <el-table-column
@@ -82,6 +81,9 @@
       height: 100px;
       border-radius: 50%;
       margin: 20px;
+    }
+    .option {
+      text-align: right;
     }
   }
 </style>
