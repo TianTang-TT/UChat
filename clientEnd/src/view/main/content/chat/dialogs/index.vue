@@ -24,7 +24,6 @@
       title="提示"
       :visible.sync="dialogAccessUsersVisible"
       :key="dialogAccessUsersKey"
-      width="30%"
       @close="handleDialogClose">
       <access-users :chatId="chatInfo.id" :confirm="confirmInvite"></access-users>
     </el-dialog>
@@ -65,7 +64,10 @@
       inviteOthers () {
         this.dialogAccessUsersVisible = true
       },
-      confirmInvite (users) {},
+      confirmInvite (users) {
+        this.dialogAccessUsersVisible = false
+        console.log(users)
+      },
       signOutChat () {
         this.$msgbox.confirm('确定退出此聊天?', '操作提示', {
           confirmButtonText: '确定',

@@ -64,7 +64,9 @@
       }
     },
     mounted () {
-      this.$socket.emit('getAvailableUsers', this.chatId, res => {
+      this.socket.emit('getAvailableUsers', this.chatId, res => {
+        console.log('...................')
+        console.log(res)
         if (res.code === 1) {
           this.userData = res.data
         }
