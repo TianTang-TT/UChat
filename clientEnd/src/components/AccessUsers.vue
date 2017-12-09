@@ -3,7 +3,6 @@
     <el-table
       border
       :data="userData"
-      style="width: 100%"
       @selection-change="handleSelectionChange">
       <el-table-column
         type="selection"
@@ -11,8 +10,9 @@
       </el-table-column>
       <el-table-column
         label="头像"
+        align="center"
         prop="avatar"
-        width="150">
+        width="100">
         <template slot-scope="scope">
           <img class="avatar" :src="scope.row.avatar" :alt="scope.row.name">
         </template>
@@ -26,9 +26,6 @@
         label="昵称">
       </el-table-column>
     </el-table>
-    <div class="option">
-      <el-button type="primary" @click="confirmUsers">确定</el-button>
-    </div>
   </div>
 </template>
 <script>
@@ -77,10 +74,9 @@
 <style lang="less" scoped>
   .access-users {
     .avatar {
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      margin: 20px;
     }
     .option {
       text-align: right;
