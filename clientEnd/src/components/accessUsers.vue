@@ -63,7 +63,13 @@
         this.confirm(this.selection)
       }
     },
-    mounted () {}
+    mounted () {
+      this.$socket.emit('getAvailableUsers', this.chatId, res => {
+        if (res.code === 1) {
+          this.userData = res.data
+        }
+      })
+    }
   }
 </script>
 
@@ -71,8 +77,9 @@
   .access-users {
     .avatar {
       width: 100px;
-      height: 200px;
+      height: 100px;
       border-radius: 50%;
+      margin: 20px;
     }
   }
 </style>
