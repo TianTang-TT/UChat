@@ -20,6 +20,14 @@
     <div class="dialogs" ref="dialogs">
       <message v-for="dialog in chatInfo.dialogs" key :messageContent="dialog"></message>
     </div>
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogAccessUsersVisible"
+      :key="dialogAccessUsersKey"
+      width="30%"
+      @close="handleDialogClose">
+      <access-users :chatId="chatInfo.id" :confirm="confirmInvite"></access-users>
+    </el-dialog>
   </section>
 </template>
 <script>
@@ -29,6 +37,12 @@
     name: 'dialogs',
     components: {
       Message
+    },
+    data () {
+      return {
+        dialogAccessUsersVisible: false,
+        dialogAccessUsersKey: Date.now()
+      }
     },
     props: {
       chatInfo: {
@@ -49,11 +63,9 @@
     methods: {
       ...mapActions('chats', ['removeChat']),
       inviteOthers () {
-        // 获取可邀请人列表，弹出列表框
-        this.socket.emit('getAvailableUsers', this.chatInfo.id, res => {
-          console.log(res)
-        })
+        this.dialogAccessUsersVisible = true
       },
+      confirmInvite (users) {},
       signOutChat () {
         this.$msgbox.confirm('确定退出此聊天?', '操作提示', {
           confirmButtonText: '确定',
@@ -70,6 +82,9 @@
         }).catch(err => {
           console.log(err)
         })
+      },
+      handleDialogClose () {
+        this.dialogAccessUsersKey = Date.now()
       }
     }
   }

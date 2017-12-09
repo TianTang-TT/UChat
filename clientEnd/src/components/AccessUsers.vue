@@ -73,7 +73,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .access-users {
     .avatar {
       width: 100px;
