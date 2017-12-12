@@ -113,6 +113,7 @@ const getAvailableUsers = (socket, chatId, onlineNumbers) => {
   if (!chatId) {
     return getUsersArray(socket, onlineNumbers)
   } else {
+    // 获取剩下的不在此聊天中的人员，差集
     return getUsersArray(socket, onlineNumbers)
   }
 }
