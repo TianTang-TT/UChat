@@ -147,6 +147,8 @@ module.exports = socketIO => {
       })
     })
 
+    // 新建群聊，或者在有的基础上添加用户s
+
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
       const userInfo = onlineNumbers.get(socket.id)
