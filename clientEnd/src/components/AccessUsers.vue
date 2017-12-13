@@ -26,6 +26,9 @@
         label="昵称">
       </el-table-column>
     </el-table>
+    <div class="option-container">
+      <el-button type="primary" @click="confirmUsers">邀請</el-button>
+    </div>
   </div>
 </template>
 <script>
@@ -61,7 +64,6 @@
     },
     mounted () {
       this.socket.emit('getAvailableUsers', this.chatId, res => {
-        console.log('...................')
         console.log(res)
         if (res.code === 1) {
           this.userData = res.data
@@ -78,7 +80,8 @@
       height: 50px;
       border-radius: 50%;
     }
-    .option {
+    .option-container {
+      margin-top: 10px;
       text-align: right;
     }
   }

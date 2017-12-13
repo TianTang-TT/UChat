@@ -21,7 +21,7 @@
       <message v-for="dialog in chatInfo.dialogs" key :messageContent="dialog"></message>
     </div>
     <el-dialog
-      title="提示"
+      title="用戶列表"
       :visible.sync="dialogAccessUsersVisible"
       :key="dialogAccessUsersKey"
       @close="handleDialogClose">
