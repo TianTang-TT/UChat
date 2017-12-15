@@ -108,15 +108,16 @@ const quitChat = (socket, chatId, onlineNumbers, chatGroup) => {
   }
 }
 
-const getAvailableUsers = (socket, chatId, onlineNumbers) => {
+const getAvailableUsers = (socket, chatId, onlineNumbers, chatGroup) => {
   // 如果chatId不存在，说明新建一个群聊，而不是在一个群聊的基础上邀请别人
   if (!chatId) {
     return getUsersArray(socket, onlineNumbers).filter(item => item.id != socket.id)
   } else {
     // 先获取当前聊天中的人员列表
+    const participants = chatGroup.get(chatId).participants
     // 获取剩下的不在此聊天中的人员，差集
     return getUsersArray(socket, onlineNumbers).filter(item => {
-
+      return !participants.has(item.id)
     })
   }
 }
