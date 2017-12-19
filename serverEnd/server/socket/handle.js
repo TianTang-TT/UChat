@@ -124,8 +124,15 @@ const getAvailableUsers = (socket, chatId, onlineNumbers, chatGroup) => {
 
 const addUsersToChat = (chatId, users, onlineNumbers, chatGroup) => {
   const chat = chatGroup.get(chatId)
+  const result = []
   // 将users加入
-
+  if (!users.length) return result
+  users.forEach(item => {
+    let user = onlineNumbers.get(item.id)
+    chat.participants.set(item.id, user.info)
+    result.push(user.info)
+  })
+  return result
 }
 
 module.exports = {
