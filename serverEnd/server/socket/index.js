@@ -153,7 +153,7 @@ module.exports = socketIO => {
       const usersInfo = handle.addUsersToChat(chatId, users, onlineNumbers, chatGroup)
       callback({
         code: 1,
-        data: usersInfo
+        data: 'ok'
       })
     })
     // 从在线列表中删除断连用户

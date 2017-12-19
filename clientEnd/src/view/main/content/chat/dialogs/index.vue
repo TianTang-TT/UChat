@@ -67,7 +67,9 @@
       confirmInvite (users) {
         this.dialogAccessUsersVisible = false
         this.socket.emit('inviteUsersToChat', this.chatInfo.id, users, res => {
-          console.log(res)
+          if (res.code === 1) {
+            this.$message.success('邀请成功')
+          }
         })
       },
       signOutChat () {
