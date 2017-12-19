@@ -122,13 +122,20 @@ const getAvailableUsers = (socket, chatId, onlineNumbers, chatGroup) => {
   }
 }
 
+const addUsersToChat = (chatId, users, onlineNumbers, chatGroup) => {
+  const chat = chatGroup.get(chatId)
+  // 将users加入
+
+}
+
 module.exports = {
   getUsersArray,
   addUserToOnline,
   removeFromOnline,
   initChat,
   quitChat,
-  getAvailableUsers
+  getAvailableUsers,
+  addUsersToChat
 }
 
 

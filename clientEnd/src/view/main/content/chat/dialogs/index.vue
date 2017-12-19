@@ -66,7 +66,7 @@
       },
       confirmInvite (users) {
         this.dialogAccessUsersVisible = false
-        this.$socket.emit('inviteUsersToChat', this.chatInfo.id, users, res => {
+        this.socket.emit('inviteUsersToChat', this.chatInfo.id, users, res => {
           console.log(res)
         })
       },
