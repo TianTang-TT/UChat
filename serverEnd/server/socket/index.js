@@ -152,10 +152,14 @@ module.exports = socketIO => {
       // 將users加入此群聊
       handle.addUsersToChat(chatId, users, onlineNumbers, chatGroup)
       const chat = chatGroup.get(chatId)
-      usersInfo.forEach(user => {
+      users.forEach(user => {
         socketIO.to(user.id).emit('joinChat', chat)
       })
       socketIO.to(chatId).emit('usersJoinChat', users)
+      callback({
+        code: 1,
+        data: 'success'
+      })
     })
     // 从在线列表中删除断连用户
     socket.on('disconnect', () => {
