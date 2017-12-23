@@ -106,6 +106,9 @@
         // 然后从聊天列表中删除此人
         this.removeParticipant(chatId, userInfo.id)
       })
+      this.socket.on('usersJoinChat', (chatId, usersInfo) => {
+        //
+      })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
       })
