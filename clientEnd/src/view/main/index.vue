@@ -21,7 +21,7 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chats', ['addChat', 'activeChat', 'addDialog', 'removeParticipant', 'cleanChats'])
+      ...mapActions('chats', ['addChat', 'activeChat', 'addDialog', 'addParticipant', 'removeParticipant', 'cleanChats'])
     },
     mounted () {
       this.socket.on('online', contact => {
@@ -107,8 +107,8 @@
         this.removeParticipant(chatId, userInfo.id)
       })
       this.socket.on('usersJoinChat', (chatId, usersInfo) => {
-        const chat = this.chats[chatId]
         // 将成员加入群聊名单，自动发送通知消息
+        this.addParticipant(chatId, usersInfo)
       })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
