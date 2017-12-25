@@ -95,6 +95,14 @@ export default {
         })
       }
       commit('ADD_PARTICIPANT', { chatId, userInfo })
+      commit('ADD_DIALOG', {
+        chatId: chatId,
+        dialog: {
+          id: Date.now(),
+          type: 'system',
+          content: `${userInfo}加入了群聊`
+        }
+      })
     },
     removeParticipant ({ commit }, chatId, userId) {
       commit('REMOVE_PARTICIPANT', { chatId, userId })
