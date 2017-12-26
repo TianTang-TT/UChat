@@ -149,6 +149,8 @@ module.exports = socketIO => {
 
     // 在有的基础上添加用户
     socket.on('inviteUsersToChat', (chatId, users, callback) => {
+      console.log('...................')
+      console.log(chatId, users, chatGroup)
       // 將users加入此群聊
       handle.addUsersToChat(chatId, users, onlineNumbers, chatGroup)
       const chat = chatGroup.get(chatId)

@@ -109,6 +109,14 @@
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
       })
+      this.socket.on('joinChat', chat => {
+        console.log('................')
+        console.log(chat)
+      })
+      this.socket.on('usersJoinChat', users => {
+        console.log('--------------')
+        console.log(users)
+      })
     }
   }
 </script>
