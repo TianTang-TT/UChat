@@ -142,5 +142,3 @@ module.exports = {
   getAvailableUsers,
   addUsersToChat
 }
-
-
