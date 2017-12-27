@@ -129,7 +129,7 @@ const addUsersToChat = (chatId, users, onlineNumbers, chatGroup) => {
   if (!users.length) return result
   // 对新加入的人来说是新建群聊
   users.forEach(item => {
-    chat.participants.set(item.id, user)
+    chat.participants.set(item.id, item)
   })
 }
 
