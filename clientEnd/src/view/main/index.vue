@@ -114,16 +114,16 @@
         // 然后从聊天列表中删除此人
         this.removeParticipant(chatId, userInfo.id)
       })
+      // 将成员加入群聊名单，自动发送通知消息
       this.socket.on('usersJoinChat', (chatId, userInfo) => {
-        // 将成员加入群聊名单，自动发送通知消息
         this.addParticipants({chatId, userInfo})
       })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
       })
-      this.socket.on('joinChat', chat => {
+      this.socket.on('joinChat', (chatId, usersInfo) => {
         console.log('................')
-        console.log(chat)
+        console.log(chatId, usersInfo)
       })
     }
   }

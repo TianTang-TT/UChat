@@ -66,7 +66,10 @@
       },
       confirmInvite (users) {
         this.dialogAccessUsersVisible = false
-        let usersInfo = users.map(user => delete user.isSelf)
+        let usersInfo = users.map(user => {
+          delete user.isSelf
+          return user
+        })
         this.socket.emit('inviteUsersToChat', this.chatInfo.id, usersInfo, res => {
           if (res.code === 1) {
             this.$message.success('邀请成功')
