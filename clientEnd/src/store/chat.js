@@ -87,17 +87,21 @@ export default {
     addDialog ({ commit }, dialog) {
       commit('ADD_DIALOG', dialog)
     },
-    addParticipants ({ commit }, { chatId, users }) {
-      users.forEach(user => {
-        commit('ADD_PARTICIPANT', { chatId, userInfo: user })
-        commit('ADD_DIALOG', {
-          chatId: chatId,
-          dialog: {
-            id: Date.now(),
-            type: 'system',
-            content: `${user.name}加入了聊天`
-          }
+    addParticipants ({ commit, dispatch }, {chatId, userInfo}) {
+      // 判断userInfo为数组，则循环加入
+      if (Array.isArray(userInfo)) {
+        return userInfo.forEach(item => {
+          dispatch('addParticipants', {chatId, userInfo: item})
         })
+      }
+      commit('ADD_PARTICIPANT', { chatId, userInfo })
+      commit('ADD_DIALOG', {
+        chatId: chatId,
+        dialog: {
+          id: Date.now(),
+          type: 'system',
+          content: `${userInfo.name}加入了群聊`
+        }
       })
     },
     removeParticipant ({ commit }, chatId, userId) {
