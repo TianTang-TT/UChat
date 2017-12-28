@@ -21,7 +21,15 @@
     },
     methods: {
       ...mapActions('contacts', ['addContact', 'removeContact']),
-      ...mapActions('chats', ['addChat', 'activeChat', 'addDialog', 'removeParticipant', 'cleanChats'])
+      ...mapActions('chats',
+        [
+          'addChat',
+          'activeChat',
+          'addDialog',
+          'addParticipants',
+          'removeParticipant',
+          'cleanChats'
+        ])
     },
     mounted () {
       this.socket.on('online', contact => {
@@ -113,9 +121,10 @@
         console.log('................')
         console.log(chat)
       })
-      this.socket.on('usersJoinChat', users => {
+      this.socket.on('usersJoinChat', (chatId, users) => {
         console.log('--------------')
-        console.log(users)
+        console.log(chatId, users)
+        this.addParticipants({chatId, users})
       })
     }
   }

@@ -52,7 +52,7 @@ export default {
         .dialogs.push(msg.dialog)
     },
     ADD_PARTICIPANT (state, payload) {
-      state[payload.chatId].participants.push(payload.userInfo)
+      state.chats[payload.chatId].participants.push(payload.userInfo)
     },
     REMOVE_PARTICIPANT (state, payload) {
       const index = state.chats[payload.chatId].participants.findIndex(item => {
@@ -87,8 +87,18 @@ export default {
     addDialog ({ commit }, dialog) {
       commit('ADD_DIALOG', dialog)
     },
-    addParticipant ({ commit }, chatId, userInfo) {
-      commit('ADD_PARTICIPANT', { chatId, userInfo })
+    addParticipants ({ commit }, { chatId, users }) {
+      users.forEach(user => {
+        commit('ADD_PARTICIPANT', { chatId, userInfo: user })
+        commit('ADD_DIALOG', {
+          chatId: chatId,
+          dialog: {
+            id: Date.now(),
+            type: 'system',
+            content: `${user.name}加入了聊天`
+          }
+        })
+      })
     },
     removeParticipant ({ commit }, chatId, userId) {
       commit('REMOVE_PARTICIPANT', { chatId, userId })
