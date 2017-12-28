@@ -12,6 +12,11 @@ const getUsersArray = (socket, onlineNumbers) => {
   })
 }
 
+const getChatUsers = (chatId, chatGroup) => {
+  const chat = chatGroup.get(chatId)
+  return [...chat.participants.values()]
+}
+
 /**
  * 将用户信息加入在线列表,并自动加入世界频道
  * @param userInfo
@@ -135,6 +140,7 @@ const addUsersToChat = (chatId, users, onlineNumbers, chatGroup) => {
 
 module.exports = {
   getUsersArray,
+  getChatUsers,
   addUserToOnline,
   removeFromOnline,
   initChat,
