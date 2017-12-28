@@ -157,7 +157,7 @@ module.exports = socketIO => {
       users.forEach(user => {
         socketIO.to(user.id).emit('joinChat', chat)
       })
-      socketIO.to(chatId).emit('usersJoinChat', users)
+      socketIO.to(chatId).emit('usersJoinChat', chatId, users)
       callback({
         code: 1,
         data: 'success'
