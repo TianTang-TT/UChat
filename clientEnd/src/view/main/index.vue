@@ -124,6 +124,7 @@
       this.socket.on('joinChat', (chatId, usersInfo) => {
         console.log('................')
         console.log(chatId, usersInfo)
+        // 在本地新建群聊，并初始化信息
       })
     }
   }
