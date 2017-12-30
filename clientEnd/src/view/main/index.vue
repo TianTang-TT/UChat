@@ -123,7 +123,7 @@
       })
       this.socket.on('joinChat', (chatId, chatInfo) => {
         console.log('................')
-        console.log(chatId, usersInfo)
+        console.log(chatId, chatInfo)
         // 在本地新建群聊，并初始化信息
         this.addChat(chatId, chatInfo)
       })
