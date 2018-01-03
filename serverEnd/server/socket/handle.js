@@ -119,6 +119,13 @@ const quitChat = (socket, chatId, onlineNumbers, chatGroup) => {
   }
 }
 
+/**
+ * 获取可邀请的人员数组
+ * @param socket
+ * @param chatId
+ * @param onlineNumbers
+ * @param chatGroup
+ */
 const getAvailableUsers = (socket, chatId, onlineNumbers, chatGroup) => {
   // 如果chatId不存在，说明新建一个群聊，而不是在一个群聊的基础上邀请别人
   if (!chatId) {
@@ -133,6 +140,14 @@ const getAvailableUsers = (socket, chatId, onlineNumbers, chatGroup) => {
   }
 }
 
+/**
+ * 将用户加入已有的群聊
+ * @param chatId
+ * @param users
+ * @param onlineNumbers
+ * @param chatGroup
+ * @returns {Array}
+ */
 const addUsersToChat = (chatId, users, onlineNumbers, chatGroup) => {
   const chat = chatGroup.get(chatId)
   const result = []
