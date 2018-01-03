@@ -150,7 +150,7 @@ module.exports = socketIO => {
     // 在有的基础上添加用户
     socket.on('inviteUsersToChat', (chatId, users, callback) => {
       // 將users加入此群聊
-      handle.addUsersToChat(chatId, users, onlineNumbers, chatGroup)
+      handle.addUsersToChat(socket, chatId, users, onlineNumbers, chatGroup)
       users.forEach(user => {
         socketIO.to(user.id).emit('joinChat', chatId, handle.getChatInfo(chatId, chatGroup))
       })

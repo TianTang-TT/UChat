@@ -148,13 +148,16 @@ const getAvailableUsers = (socket, chatId, onlineNumbers, chatGroup) => {
  * @param chatGroup
  * @returns {Array}
  */
-const addUsersToChat = (chatId, users, onlineNumbers, chatGroup) => {
+const addUsersToChat = (socket, chatId, users, onlineNumbers, chatGroup) => {
   const chat = chatGroup.get(chatId)
   const result = []
   // 将users加入
   if (!users.length) return result
   // 对新加入的人来说是新建群聊
   users.forEach(item => {
+    const user = onlineNumbers.get(item.id)
+    // 加入群聊频道
+    user.socket.join(chatId)
     chat.participants.set(item.id, item)
   })
 }
