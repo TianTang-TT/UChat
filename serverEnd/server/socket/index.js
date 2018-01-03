@@ -152,7 +152,7 @@ module.exports = socketIO => {
       // 將users加入此群聊
       handle.addUsersToChat(chatId, users, onlineNumbers, chatGroup)
       users.forEach(user => {
-        socketIO.to(user.id).emit('joinChat', chatId, handle.getChatUsers(chatId, chatGroup))
+        socketIO.to(user.id).emit('joinChat', chatId, handle.getChatInfo(chatId, chatGroup))
       })
       socketIO.to(chatId).emit('usersJoinChat', chatId, chatGroup.get(chatId))
       callback({
