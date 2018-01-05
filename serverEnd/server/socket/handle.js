@@ -160,6 +160,7 @@ const addUsersToChat = (socket, chatId, users, onlineNumbers, chatGroup) => {
     user.socket.join(chatId)
     chat.participants.set(item.id, item)
   })
+  chat.type = 2
 }
 
 module.exports = {
