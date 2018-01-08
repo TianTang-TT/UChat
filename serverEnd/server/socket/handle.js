@@ -153,6 +153,19 @@ const addUsersToChat = (socket, chatId, users, onlineNumbers, chatGroup) => {
   const result = []
   // 将users加入
   if (!users.length) return result
+  // 将单聊改为群聊的同时，清除各个user的chatmates
+  if (chat.type == 1) {
+    let users = [...chat.participants.keys()]
+    chat.participant.forEach(item => {
+      let user = onlineNumbers.get(item.id)
+      users.forEach(par => {
+        if (user.id != par) {
+          user.chatmates.delete(par)
+        }
+      })
+    })
+    chat.type = 2
+  }
   // 对新加入的人来说是新建群聊
   users.forEach(item => {
     const user = onlineNumbers.get(item.id)
@@ -160,7 +173,6 @@ const addUsersToChat = (socket, chatId, users, onlineNumbers, chatGroup) => {
     user.socket.join(chatId)
     chat.participants.set(item.id, item)
   })
-  chat.type = 2
 }
 
 module.exports = {
