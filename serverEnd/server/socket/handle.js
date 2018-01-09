@@ -156,7 +156,7 @@ const addUsersToChat = (socket, chatId, users, onlineNumbers, chatGroup) => {
   // 将单聊改为群聊的同时，清除各个user的chatmates
   if (chat.type == 1) {
     let users = [...chat.participants.keys()]
-    chat.participant.forEach(item => {
+    chat.participants.forEach(item => {
       let user = onlineNumbers.get(item.id)
       users.forEach(par => {
         if (user.id != par) {
