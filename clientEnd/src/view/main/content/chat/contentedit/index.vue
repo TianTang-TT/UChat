@@ -13,6 +13,7 @@
         <i class="iconfont icon-folder">
           <input
             type="file"
+            v-model="files"
             class="uploadImg"
             @change="sendImg"
             accept=".png, .jpg, .jpeg, gif"
@@ -48,7 +49,8 @@
     },
     data () {
       return {
-        emojiVisible: false
+        emojiVisible: false,
+        files: ''
       }
     },
     computed: {
@@ -82,6 +84,7 @@
         if (!img) return
         if (!/(png|jpg|jpeg|gif)$/.test(img.type)) {
           alert('只能发送图片')
+          return
         }
       },
       showEmojiTab () {
