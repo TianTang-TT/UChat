@@ -13,7 +13,6 @@
         <i class="iconfont icon-folder">
           <input
             type="file"
-            v-model="files"
             class="uploadImg"
             @change="sendImg"
             accept=".png, .jpg, .jpeg, gif"
@@ -49,8 +48,7 @@
     },
     data () {
       return {
-        emojiVisible: false,
-        files: ''
+        emojiVisible: false
       }
     },
     computed: {

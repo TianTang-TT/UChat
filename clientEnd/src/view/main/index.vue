@@ -115,8 +115,8 @@
         this.removeParticipant(chatId, userInfo.id)
       })
       // 将成员加入群聊名单，自动发送通知消息
-      this.socket.on('usersJoinChat', (chatId, usersInfo) => {
-        this.addParticipants({chatId, usersInfo})
+      this.socket.on('usersJoinChat', (chatId, userInfo) => {
+        this.addParticipants({chatId, userInfo})
       })
       this.socket.on('message', dialog => {
         this.addDialog(dialog)
