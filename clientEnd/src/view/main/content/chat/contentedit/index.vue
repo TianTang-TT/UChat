@@ -14,7 +14,7 @@
           <input
             type="file"
             class="uploadImg"
-            @change="sendImg"
+            @change="sendImg($event)"
             accept=".png, .jpg, .jpeg, gif"
             ref="uploadImg">
         </i>
@@ -77,13 +77,16 @@
         this.socket.send(msg)
         this.$refs['typeContent'].innerHTML = ''
       },
-      sendImg () {
-        let img = this.$refs['uploadImg'].files[0]
+      sendImg (e) {
+        let target = e.target
+        let img = target.files[0]
         if (!img) return
         if (!/(png|jpg|jpeg|gif)$/.test(img.type)) {
           alert('只能发送图片')
+          target.value = ''
           return
         }
+        // TODO
       },
       showEmojiTab () {
         this.emojiVisible = !this.emojiVisible
