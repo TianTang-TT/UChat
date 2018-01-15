@@ -86,7 +86,7 @@
           target.value = ''
           return
         }
-        let reader = new FileReader();
+        let reader = new FileReader()
         // 图片读取完毕之后马上显示
         reader.onload = function (e) {
           const imgData = e.target.result
@@ -99,9 +99,9 @@
               content: imgData
             }
           })
-          target.value = '';
+          target.value = ''
         }.bind(this)
-        reader.readAsDataURL(img);
+        reader.readAsDataURL(img)
       },
       showEmojiTab () {
         this.emojiVisible = !this.emojiVisible
