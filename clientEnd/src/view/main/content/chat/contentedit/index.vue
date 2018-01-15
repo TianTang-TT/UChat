@@ -82,7 +82,7 @@
         let img = target.files[0]
         if (!img) return
         if (!/(png|jpg|jpeg|gif)$/.test(img.type)) {
-          alert('只能发送图片')
+          this.$message.warning('只能发送图片')
           target.value = ''
           return
         }
