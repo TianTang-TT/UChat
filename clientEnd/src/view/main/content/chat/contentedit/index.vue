@@ -89,10 +89,18 @@
         let reader = new FileReader();
         // 图片读取完毕之后马上显示
         reader.onload = function (e) {
-          self.addDialogItem({type: 'self', data: e.target.result, msgType: 'img', username: self.name});
-          self.socket.send({type: 'dialog', msgType: 'img', data: e.target.result, username: self.name});
-          imgInput.value = '';
-        }
+          const imgData = e.target.result
+          this.socket.send({
+            chatId: this.chatInfo.id,
+            dialog: {
+              id: Date.now(),
+              type: 'img',
+              speaker: this.userInfo,
+              content: imgData
+            }
+          })
+          target.value = '';
+        }.bind(this)
         reader.readAsDataURL(img);
       },
       showEmojiTab () {
