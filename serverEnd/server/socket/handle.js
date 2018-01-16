@@ -12,11 +12,23 @@ const getUsersArray = (socket, onlineNumbers) => {
   })
 }
 
+/**
+ * 获取某个聊天你的用户，返回当前聊天你的用户列表数组
+ * @param chatId
+ * @param chatGroup
+ * @returns {[null]}
+ */
 const getChatUsers = (chatId, chatGroup) => {
   const chat = chatGroup.get(chatId)
   return [...chat.participants.values()]
 }
 
+/**
+ * 获取聊天信息，返回一个信息对象
+ * @param chatId
+ * @param chatGroup
+ * @returns {*}
+ */
 const getChatInfo = (chatId, chatGroup) => {
   const chat = chatGroup.get(chatId)
   const participants = [...chat.participants.values()]
