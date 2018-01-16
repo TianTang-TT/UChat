@@ -6,7 +6,10 @@
     <template v-else>
       <img :src="messageContent.speaker.avatar" class="speak-portrait">
       <p class="speak-user">{{ messageContent.speaker.name }}</p>
-      <p class="speak-content" v-html="messageDetail"></p>
+      <p class="speak-content" v-if="messageContent.type==='img'">
+        <img :src="messageDetail">
+      </p>
+      <p class="speak-content" v-else v-html="messageDetail"></p>
     </template>
   </div>
 </template>
